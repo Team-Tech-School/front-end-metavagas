@@ -12,7 +12,7 @@ const BaseLayout = () => {
          <div style={{ height: "2000px" }}>
             <Outlet />
          </div>
-         <Footer />
+         <Footer showButton={false} />
       </>
    );
 };
