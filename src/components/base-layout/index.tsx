@@ -9,10 +9,10 @@ const BaseLayout = () => {
          <S.HeaderWrapper>
             <Header />
          </S.HeaderWrapper>
-         <div style={{ height: "2000px" }}>
+         <S.MainContent>
             <Outlet />
-         </div>
-         <Footer showButton={false} />
+         </S.MainContent>
+         <Footer showButton={true} />
       </>
    );
 };

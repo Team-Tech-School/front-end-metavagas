@@ -20,7 +20,7 @@ export const Footer = ({ showButton }: Props) => {
    }, [showButton]);
 
    return (
-      <>
+      <S.FooterWrapper>
          <S.PurpleBackground>
             <S.ContentDiv>
                <S.LogoAndContactDiv>
@@ -48,7 +48,7 @@ export const Footer = ({ showButton }: Props) => {
                ) : null}
             </S.ContentDiv>
          </S.PurpleBackground>
-      </>
+      </S.FooterWrapper>
    );
 };
 
