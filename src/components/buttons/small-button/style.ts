@@ -5,7 +5,7 @@ export const Button = styled.button`
    width: 120px;
    border-color: ${({ theme }) => theme.colors.white};
    border-radius: ${({ theme }) => theme.borderRadius.md};
-   border-width: 1.5px;
+   border-width: 2px;
    background-color: ${({ theme }) => theme.colors.darkPurple};
    font-size: 16.5px;
    font-weight: ${({ theme }) => theme.fontWeight.midMedium};
