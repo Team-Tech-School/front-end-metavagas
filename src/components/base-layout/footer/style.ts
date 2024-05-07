@@ -1,23 +1,23 @@
 import styled from "styled-components";
 
-export const ContentWrapper = styled.div`
+export const ContentDiv = styled.div`
    display: flex;
-   align-items: center;
+   align-items: start;
    justify-content: space-between;
    padding: 70px 20px 50px 20px;
 `;
 
 export const Logo = styled.img`
-   padding-top: 10px;
+   padding-bottom: 120px;
    padding-left: 107px;
 `;
 
 export const PurpleBackground = styled.div`
-   height: 20em;
+   height: 19em;
    background-color: ${({ theme }) => theme.colors.darkPurple};
 `;
 
-export const ButtonsWrapper = styled.div`
+export const ButtonsDiv = styled.div`
    display: flex;
 
    justify-content: space-between;
@@ -28,13 +28,13 @@ export const ButtonsWrapper = styled.div`
    }
 `;
 
-export const LogoAndContactWrapper = styled.div`
+export const LogoAndContactDiv = styled.div`
    display: flex;
    align-items: center;
    justify-content: center;
 `;
 
-export const ContactAndAddressWrapper = styled.div`
+export const ContactAndAddressDiv = styled.div`
    display: flex;
    flex-direction: column;
    align-items: start;
