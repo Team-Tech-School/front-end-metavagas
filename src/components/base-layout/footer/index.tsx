@@ -1,5 +1,5 @@
 import Logo from "../../../assets/images/metavagas.png";
-import LargeButton from "../../buttons/large-button";
+import OrangeButton from "../../buttons/orange-button";
 import SmallButton from "../../buttons/small-button";
 import Title from "../../title";
 import * as S from "./style";
@@ -43,7 +43,7 @@ export const Footer = ({ showButton }: Props) => {
                {isShowButton ? (
                   <S.ButtonsDiv>
                      <SmallButton title="Entrar" link="/fazer-login" />
-                     <LargeButton title="Cadastre-se gratuitamente" link="/fazer-cadastro" />
+                     <OrangeButton title="Cadastre-se gratuitamente" link="/fazer-cadastro" />
                   </S.ButtonsDiv>
                ) : null}
             </S.ContentDiv>
