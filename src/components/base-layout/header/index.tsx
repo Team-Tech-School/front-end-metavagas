@@ -10,8 +10,8 @@ const Header = () => {
             <S.ContentWrapper>
                <S.Logo src={Logo} />
                <S.ButtonsWrapper>
-                  <SmallButton title="Entrar" />
-                  <LargeButton title="Cadastre-se gratuitamente" />
+                  <SmallButton title="Entrar" link="/fazer-login" />
+                  <LargeButton title="Cadastre-se gratuitamente" link="/fazer-cadastro" />
                </S.ButtonsWrapper>
             </S.ContentWrapper>
          </S.PurpleBackground>

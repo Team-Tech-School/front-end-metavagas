@@ -10,11 +10,12 @@ export const ContentWrapper = styled.div`
 
 export const Logo = styled.img`
    padding-top: 10px;
-   padding-left: 107px;
+   padding-left: 110px;
 `;
 
 export const PurpleBackground = styled.div`
    background-color: ${({ theme }) => theme.colors.darkPurple};
+   box-shadow: ${({ theme }) => theme.shadows.lg};
 `;
 
 export const ButtonsWrapper = styled.div`
