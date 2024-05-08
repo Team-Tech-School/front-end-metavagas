@@ -26,7 +26,7 @@ export const Footer = ({ showButton }: Props) => {
                <S.LogoAndContactDiv>
                   <S.Logo src={Logo} />
                   <S.ContactAndAddressDiv>
-                     <Title color="#fbb04d" fontWeight="400" fontSize="18px">
+                     <Title color="#fbb04d" fontWeight="400" fontSize="16px">
                         Contato e Endereço
                      </Title>
                      <Title iconSrc={Phone} iconSize="28px" color="#f1f1f1" fontWeight="300" fontSize="16px">
@@ -42,8 +42,8 @@ export const Footer = ({ showButton }: Props) => {
                </S.LogoAndContactDiv>
                {isShowButton ? (
                   <S.ButtonsDiv>
-                     <SmallButton title="Entrar" />
-                     <LargeButton title="Cadastre-se gratuitamente" />
+                     <SmallButton title="Entrar" link="/fazer-login" />
+                     <LargeButton title="Cadastre-se gratuitamente" link="/fazer-cadastro" />
                   </S.ButtonsDiv>
                ) : null}
             </S.ContentDiv>

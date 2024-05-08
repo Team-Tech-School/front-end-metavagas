@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
 export const FooterWrapper = styled.footer`
-   position: fixed;
    bottom: 0;
+   z-index: 1;
    width: 100%;
 `;
 
@@ -14,12 +14,12 @@ export const ContentDiv = styled.div`
 `;
 
 export const Logo = styled.img`
-   padding-bottom: 120px;
-   padding-left: 107px;
+   padding-bottom: 130px;
+   padding-left: 110px;
 `;
 
 export const PurpleBackground = styled.div`
-   height: 19em;
+   height: 22em;
    background-color: ${({ theme }) => theme.colors.darkPurple};
 `;
 
