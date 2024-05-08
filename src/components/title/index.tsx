@@ -15,7 +15,7 @@ const StyledTitle = styled.h1<{ color?: string; fontSize?: string; fontWeight?: 
    font-weight: ${(props) => props.fontWeight || "normal"};
    display: flex;
    align-items: center;
-   padding: 5px;
+   padding: 8px;
 `;
 
 const IconImage = styled.img<{ iconSize?: string }>`
