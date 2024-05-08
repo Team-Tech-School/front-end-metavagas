@@ -1,6 +1,10 @@
 import * as S from "./style";
 import ManWithLaptop from "../../assets/images/man-with-laptop.png";
 import Title from "../../components/title";
+import Input from "../../components/input";
+import { PiMagnifyingGlassBold } from "react-icons/pi";
+import { GrLocation } from "react-icons/gr";
+import OrangeButton from "../../components/buttons/orange-button";
 
 const HomePage = () => {
    return (
@@ -30,7 +34,7 @@ const HomePage = () => {
             <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
                <div
                   style={{
-                     width: "85vw",
+                     width: "86vw",
                      height: "30vh",
                      marginTop: "1em",
                      position: "absolute",
@@ -39,7 +43,15 @@ const HomePage = () => {
                      right: "3.5em",
                      boxShadow: "0px 10px 5px rgba(255, 255, 255, 0.822)",
                   }}
-               ></div>
+               >
+                  <div style={{ display: "flex", alignItems: "center", justifyContent: "center", marginTop: "20px" }}>
+                     <Input label="O quê você procura?" id="search" placeholder="Cargo, tecnologia ou palavra-chave" icon={<PiMagnifyingGlassBold />} iconColor="gray" size="25px" />
+                     <Input label="Onde?" id="city" placeholder="Localização" icon={<GrLocation />} iconColor="gray" size="25px" />
+                     <div style={{ marginTop: "28px" }}>
+                        <OrangeButton title="Buscar vagas" link="/buscar-vagas" width="small" />
+                     </div>
+                  </div>
+               </div>
             </div>
          </S.WhiteBackgroundDiv>
       </>
