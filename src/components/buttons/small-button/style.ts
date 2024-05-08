@@ -11,4 +11,5 @@ export const Button = styled.button`
    font-weight: ${({ theme }) => theme.fontWeight.midMedium};
    color: ${({ theme }) => theme.colors.white};
    letter-spacing: 0.4px;
+   cursor: pointer;
 `;
