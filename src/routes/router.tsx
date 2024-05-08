@@ -12,7 +12,7 @@ export default function Router() {
       <BrowserRouter>
          <Routes>
             <Route element={<BaseLayout />}>
-               <Route index path="/" element={<HomePage />} />
+               <Route index element={<HomePage />} />
                <Route path="buscar-vagas" element={<SearchVacancyPage />} />
                <Route element={<BaseLayoutSignInSignUp />}>
                   <Route path="fazer-login" element={<SignInPage />} />
