@@ -7,8 +7,11 @@ export const theme = {
       black: "#000",
       white: "#f1f1f1",
       darkGray: "#4a4a68",
+      midGray: "#a6a8ab",
       lightGray: "#d1d1d1",
       blue: "#5d5fef",
+      green: "#00b33c",
+      red: "#ff0000",
    },
    fontSize: {
       xsm: "14px",
