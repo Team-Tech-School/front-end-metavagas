@@ -1,9 +1,9 @@
-import Title from "../../components/title";
+import * as S from "./style";
 import AddUserIcon from "../../assets/icons/user-add-line.png";
 import EmailIcon from "../../assets/icons/mail-line.png";
-import * as S from "./style";
+import { Title } from "../../components/index";
 
-const SignUpPage = () => {
+export const SignUpPage = () => {
    return (
       <>
          <S.PurpleBackgroundDiv>
@@ -32,5 +32,3 @@ const SignUpPage = () => {
       </>
    );
 };
-
-export default SignUpPage;

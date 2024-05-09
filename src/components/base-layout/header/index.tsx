@@ -1,9 +1,8 @@
 import Logo from "../../../assets/images/metavagas.png";
-import OrangeButton from "../../buttons/orange-button";
-import SmallButton from "../../buttons/small-button";
+import { OrangeButton, SmallButton } from "../../buttons/index";
 import * as S from "./style";
 
-const Header = () => {
+export const Header = () => {
    return (
       <>
          <S.PurpleBackground>
@@ -18,5 +17,3 @@ const Header = () => {
       </>
    );
 };
-
-export default Header;

@@ -5,7 +5,7 @@ type Props = {
    title: string;
 };
 
-const PurpleCard = ({ cardNumber, title }: Props) => {
+export const PurpleCard = ({ cardNumber, title }: Props) => {
    return (
       <S.ContentDiv>
          <S.Number>{cardNumber}</S.Number>
@@ -16,5 +16,3 @@ const PurpleCard = ({ cardNumber, title }: Props) => {
       </S.ContentDiv>
    );
 };
-
-export default PurpleCard;

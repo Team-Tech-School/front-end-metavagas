@@ -1,12 +1,10 @@
 import Logo from "../../../assets/images/metavagas.png";
-import OrangeButton from "../../buttons/orange-button";
-import SmallButton from "../../buttons/small-button";
-import Title from "../../title";
-import * as S from "./style";
-import { useState, useEffect } from "react";
 import Phone from "../../../assets/icons/telefone.png";
 import Email from "../../../assets/icons/email.png";
 import Location from "../../../assets/icons/local.png";
+import { OrangeButton, SmallButton, Title } from "../../index";
+import * as S from "./style";
+import { useState, useEffect } from "react";
 
 type Props = {
    showButton: boolean;
@@ -51,5 +49,3 @@ export const Footer = ({ showButton }: Props) => {
       </S.FooterWrapper>
    );
 };
-
-export default Footer;

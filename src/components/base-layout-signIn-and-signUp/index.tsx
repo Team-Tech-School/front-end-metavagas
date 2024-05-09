@@ -1,9 +1,8 @@
 import { Outlet } from "react-router-dom";
-import Title from "../title";
-import PurpleCard from "../cards/purple-card";
+import { Title, PurpleCard } from "../index";
 import * as S from "./style";
 
-const BaseLayoutSignInSignUp = () => {
+export const BaseLayoutSignInSignUp = () => {
    return (
       <>
          <Outlet />
@@ -22,5 +21,3 @@ const BaseLayoutSignInSignUp = () => {
       </>
    );
 };
-
-export default BaseLayoutSignInSignUp;

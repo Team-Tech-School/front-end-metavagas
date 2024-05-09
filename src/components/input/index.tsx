@@ -1,6 +1,8 @@
 import * as S from "./style";
 import { IconContext } from "react-icons";
 
+// TODO: cor da label precisa ser por props também.
+
 type InputProps = {
    id: string;
    placeholder: string;
@@ -10,7 +12,7 @@ type InputProps = {
    label: string;
 };
 
-const Input = ({ id, placeholder, icon, iconColor, size, label }: InputProps) => {
+export const Input = ({ id, placeholder, icon, iconColor, size, label }: InputProps) => {
    return (
       <S.InputWrapper>
          <S.Label htmlFor={id}>{label}</S.Label>
@@ -23,5 +25,3 @@ const Input = ({ id, placeholder, icon, iconColor, size, label }: InputProps) =>
       </S.InputWrapper>
    );
 };
-
-export default Input;

@@ -51,9 +51,9 @@ export const Input = styled.input`
    height: 55px;
    background-color: "#f1f1f1";
    border-radius: 9px;
-   padding: 27px 10px 27px 45px;
+   padding: 27px 10px 27px 50px;
    outline: none;
-   color: ${({ theme }) => theme.colors.darkGray};
+   color: ${({ theme }) => theme.colors.darkPurple};
    width: 450px;
    margin: 12px;
 
@@ -61,7 +61,7 @@ export const Input = styled.input`
       color: ${({ theme }) => theme.colors.midGray};
       font-style: italic;
       font-size: 17px;
-      padding: 0px 7px;
+      padding: 0px 3px;
    }
 
    &:focus {

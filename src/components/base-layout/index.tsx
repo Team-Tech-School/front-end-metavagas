@@ -1,9 +1,8 @@
 import { Outlet } from "react-router-dom";
 import * as S from "./style";
-import Header from "./header";
-import Footer from "./footer";
+import { Header, Footer } from "./index1";
 
-const BaseLayout = () => {
+export const BaseLayout = () => {
    return (
       <>
          <S.HeaderWrapper>
@@ -16,5 +15,3 @@ const BaseLayout = () => {
       </>
    );
 };
-
-export default BaseLayout;

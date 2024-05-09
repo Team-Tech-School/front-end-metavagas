@@ -1,11 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import BaseLayout from "../components/base-layout";
-import HomePage from "../pages/home-page";
-import SearchVacancyPage from "../pages/search-vacancy-page";
-import SignUpPage from "../pages/sign-up-page";
-import ShowVacanciesPage from "../pages/show-vacancies-page";
-import SignInPage from "../pages/sign-in-page";
-import BaseLayoutSignInSignUp from "../components/base-layout-signIn-and-signUp";
+import { HomePage, SignUpPage, ShowVacanciesPage, SignInPage } from "../pages/index";
+import { BaseLayoutSignInSignUp, BaseLayout } from "../components/index";
 
 export default function Router() {
    return (
@@ -13,7 +8,6 @@ export default function Router() {
          <Routes>
             <Route element={<BaseLayout />}>
                <Route index element={<HomePage />} />
-               <Route path="buscar-vagas" element={<SearchVacancyPage />} />
                <Route element={<BaseLayoutSignInSignUp />}>
                   <Route path="fazer-login" element={<SignInPage />} />
                   <Route path="fazer-cadastro" element={<SignUpPage />} />
