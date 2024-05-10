@@ -19,7 +19,7 @@ export const WhiteBackground = styled.div`
 `;
 
 export const PurpleBackgroundDiv = styled.div`
-   margin-top: -5px;
+   margin-top: -20px;
    background-color: ${({ theme }) => theme.colors.darkPurple};
    width: 100%;
    height: 77vh;
