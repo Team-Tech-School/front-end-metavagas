@@ -1,9 +1,9 @@
-import Title from "../../components/title";
 import * as S from "./style";
 import AddUserIcon from "../../assets/icons/user-add-line.png";
 import EmailIcon from "../../assets/icons/mail-line.png";
+import { Title } from "../../components/index";
 
-const SignInPage = () => {
+export const SignInPage = () => {
    return (
       <>
          <S.PurpleBackgroundDiv>
@@ -32,5 +32,3 @@ const SignInPage = () => {
       </>
    );
 };
-
-export default SignInPage;

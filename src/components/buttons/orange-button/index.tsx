@@ -4,10 +4,10 @@ import * as S from "./style";
 type Props = {
    title: string;
    link?: string;
-   width?: "large" | "small"; // Nova propriedade para definir a largura
+   width?: "large" | "small";
 };
 
-const OrangeButton = ({ title, link, width = "large" }: Props) => {
+export const OrangeButton = ({ title, link, width = "large" }: Props) => {
    // Define um valor padrão para width
    const navigate = useNavigate();
 
@@ -23,5 +23,3 @@ const OrangeButton = ({ title, link, width = "large" }: Props) => {
       </S.Button>
    );
 };
-
-export default OrangeButton;

@@ -6,7 +6,7 @@ type Props = {
    link?: string;
 };
 
-const SmallButton = ({ title, link }: Props) => {
+export const SmallButton = ({ title, link }: Props) => {
    const navigate = useNavigate();
 
    const handleClick = () => {
@@ -17,5 +17,3 @@ const SmallButton = ({ title, link }: Props) => {
 
    return <S.Button onClick={handleClick}>{title}</S.Button>;
 };
-
-export default SmallButton;
