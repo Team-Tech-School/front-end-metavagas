@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const ProfileContainer = styled.div`
    display: flex;
    align-items: center;
-   margin: 0px 50px;
+   margin: 0px 40px;
 `;
 
 export const ProfilePicture = styled.div`
