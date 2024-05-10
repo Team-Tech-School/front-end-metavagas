@@ -6,6 +6,10 @@ export const StyledTitle = styled.h1<{ color?: string; fontSize?: string; fontWe
    font-weight: ${(props) => props.fontWeight || "normal"};
    display: flex;
    align-items: center;
+<<<<<<< HEAD
+=======
+   letter-spacing: 0.1px;
+>>>>>>> bca0e08efc198a28792d3cfea772144c84b84807
    padding: 8px;
 `;
 

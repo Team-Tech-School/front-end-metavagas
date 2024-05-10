@@ -1,4 +1,5 @@
 
+
 import { useState } from "react";
 import { InputsAndButton } from "../../components";
 import * as S from "./style";
@@ -25,4 +26,4 @@ export const ShowVacanciesPage = () => {
       </div>
     </>
   );
-};
+}

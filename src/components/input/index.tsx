@@ -13,7 +13,10 @@ type InputProps = {
    whiteLabel?: boolean;
 };
 
+
 export const Input = ({ id, placeholder, icon, iconColor, size, label, whiteLabel = false  }: InputProps) => {
+
+
    return (
       <S.InputWrapper>
          <S.Label htmlFor={id} whiteLabel={whiteLabel}>{label}</S.Label>

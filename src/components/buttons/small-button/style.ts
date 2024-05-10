@@ -12,4 +12,9 @@ export const Button = styled.button`
    color: ${({ theme }) => theme.colors.white};
    letter-spacing: 0.4px;
    cursor: pointer;
+
+   &:hover {
+      color: #ffffff;
+      background-color: #1e133b;
+   }
 `;
