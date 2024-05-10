@@ -8,7 +8,6 @@ type Props = {
 };
 
 export const OrangeButton = ({ title, link, width = "large" }: Props) => {
-   // Define um valor padrão para width
    const navigate = useNavigate();
 
    const handleClick = () => {
