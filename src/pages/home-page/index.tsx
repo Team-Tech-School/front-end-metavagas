@@ -3,6 +3,8 @@ import ManWithLaptop from "../../assets/images/man-with-laptop.png";
 import { Title, InputsAndButton, VacancyHomePageCard, OrangeButton } from "../../components/index";
 import { JobsSection } from "../../components/jobs-section";
 
+// TODO: Fazer o balão "cadastre-se"
+
 export const HomePage = () => {
    return (
       <>
