@@ -1,6 +1,7 @@
 import * as S from "./style";
 import ManWithLaptop from "../../assets/images/man-with-laptop.png";
 import { Title, InputsAndButton, VacancyHomePageCard, OrangeButton } from "../../components/index";
+import { JobsSection } from "../../components/jobs-section";
 
 export const HomePage = () => {
    return (
@@ -47,10 +48,10 @@ export const HomePage = () => {
                </div>
             </div>
          </div>
-         <div style={{ backgroundColor: "purple" }}>
-            {/* <div>Aqui vai ter a parte de "Vagas por todo Brasil"</div>
-            <div>Aqui as vagas</div> */}
+         <div>
+            <JobsSection />
          </div>
+         <hr style={{ borderColor: "orange", borderStyle: "solid", borderWidth: "1px 0 0", width: "85%", margin: "0 auto", position: "absolute", right: "7%" }} />
       </>
    );
 };
