@@ -16,6 +16,7 @@ export const Logo = styled.img`
 export const PurpleBackground = styled.div`
    background-color: ${({ theme }) => theme.colors.darkPurple};
    box-shadow: ${({ theme }) => theme.shadows.lg};
+
 `;
 
 export const ButtonsWrapper = styled.div`
@@ -27,4 +28,10 @@ export const ButtonsWrapper = styled.div`
    button {
       margin-right: 20px;
    }
+`;
+export const BlackLine = styled.div`
+  height: 1px;
+  width: 90%; /* Defina a largura que você deseja para a linha */
+  background-color: black; 
+  margin: 0 auto; /* Isso centralizará a linha horizontalmente */
 `;

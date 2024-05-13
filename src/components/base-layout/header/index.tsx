@@ -13,6 +13,7 @@ export const Header = () => {
                   <OrangeButton title="Cadastre-se gratuitamente" link="/fazer-cadastro" width="large" />
                </S.ButtonsWrapper>
             </S.ContentWrapper>
+            <S.BlackLine />
          </S.PurpleBackground>
       </>
    );
