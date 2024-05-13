@@ -18,6 +18,7 @@ export const Logo = styled.img`
 `;
 
 export const PurpleBackground = styled.div`
+   border-top: 0.5px solid ${({ theme }) => theme.colors.lightPurple};
    height: 22em;
    background-color: ${({ theme }) => theme.colors.darkPurple};
 `;

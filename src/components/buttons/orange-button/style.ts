@@ -5,7 +5,7 @@ interface ButtonProps {
 }
 
 export const Button = styled.button<ButtonProps>`
-   ${({ width }) => (width === "large" ? "width: 290px;" : width === "small" ? "width: 170px;" : "")};
+   ${({ width }) => (width === "large" ? "width: 290px;" : width === "small" ? "width: 180px;" : "")};
    padding: 15px 20px;
    border: none;
    border-radius: ${({ theme }) => theme.borderRadius.md};

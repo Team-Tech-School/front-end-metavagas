@@ -2,7 +2,7 @@ import styled, { css } from "styled-components";
 
 interface LabelProps {
    whiteLabel?: boolean;
- }
+}
 
 export const Icon = styled.div`
    position: absolute;
@@ -38,8 +38,8 @@ export const InputWrapper = styled.div`
    }
 `;
 
-export const Label = styled.label <LabelProps>`
-   font-size: 17px;   
+export const Label = styled.label<LabelProps>`
+   font-size: 16px;
    font-weight: ${({ theme }) => theme.fontWeight.midMedium};
    letter-spacing: 0.1px;
    position: absolute;
@@ -50,9 +50,11 @@ export const Label = styled.label <LabelProps>`
    //Estilos padrão
    color: ${({ theme }) => theme.colors.darkPurple};
 
-   ${({ whiteLabel, theme }) => whiteLabel && css`
-      color: ${theme.colors.white};
-   `}
+   ${({ whiteLabel, theme }) =>
+      whiteLabel &&
+      css`
+         color: ${theme.colors.white};
+      `}
 `;
 
 export const Input = styled.input`
@@ -61,16 +63,16 @@ export const Input = styled.input`
    height: 55px;
    background-color: "#f1f1f1";
    border-radius: 9px;
-   padding: 27px 10px 27px 50px;
+   padding: 25px 10px 25px 50px;
    outline: none;
    color: ${({ theme }) => theme.colors.darkPurple};
-   width: 450px;
-   margin: 12px;
+   width: 430px;
+   margin: 10px;
 
    &::placeholder {
       color: ${({ theme }) => theme.colors.midGray};
       font-style: italic;
-      font-size: 17px;
+      font-size: 16px;
       padding: 0px 3px;
    }
 
