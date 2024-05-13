@@ -1,5 +1,16 @@
 import styled from "styled-components";
 
+export const WhiteBackground = styled.div`
+   width: 86vw;
+   height: 30vh;
+   margin-top: -2em;
+   position: absolute;
+   background-color: white;
+   border-radius: 15px;
+   right: 3.5em;
+   box-shadow: 0px 2px 5px rgba(255, 255, 255, 0.822);
+`;
+
 export const WhiteBackgroundToInputs = styled.div`
    width: 86vw;
    height: 30vh;
@@ -11,18 +22,10 @@ export const WhiteBackgroundToInputs = styled.div`
    box-shadow: 0 2px 14px rgba(0, 0, 0, 0.1);
 `;
 
-export const WhiteBackground = styled.div`
-   width: 100%;
-   height: fit-content;
-   background-color: white;
-   margin-top: 125px;
-`;
-
 export const PurpleBackgroundDiv = styled.div`
    margin-top: -20px;
    background-color: ${({ theme }) => theme.colors.darkPurple};
    width: 100%;
-   height: 77vh;
 `;
 
 export const ContentDiv = styled.div`

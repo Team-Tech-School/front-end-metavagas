@@ -22,6 +22,7 @@ export const Header = ({ isLoggedIn }: HeaderProps) => {
                   </S.ButtonsWrapper>
                )}
             </S.ContentWrapper>
+            <S.BlackLine />
          </S.PurpleBackground>
       </>
    );

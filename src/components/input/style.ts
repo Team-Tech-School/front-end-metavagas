@@ -1,4 +1,8 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
+
+interface LabelProps {
+   whiteLabel?: boolean;
+ }
 
 export const Icon = styled.div`
    position: absolute;
@@ -34,15 +38,21 @@ export const InputWrapper = styled.div`
    }
 `;
 
-export const Label = styled.label`
-   font-size: 17px;
-   color: ${({ theme }) => theme.colors.darkPurple};
+export const Label = styled.label <LabelProps>`
+   font-size: 17px;   
    font-weight: ${({ theme }) => theme.fontWeight.midMedium};
    letter-spacing: 0.1px;
    position: absolute;
    margin-top: -20px;
    left: 10px;
    padding: 0px 5px;
+
+   //Estilos padrão
+   color: ${({ theme }) => theme.colors.darkPurple};
+
+   ${({ whiteLabel, theme }) => whiteLabel && css`
+      color: ${theme.colors.white};
+   `}
 `;
 
 export const Input = styled.input`
