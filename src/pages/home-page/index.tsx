@@ -25,9 +25,9 @@ export const HomePage = () => {
                   </S.ForWhiteTitleDiv>
                </S.ForMainTitleDiv>
             </S.ContentDiv>
-            <S.WhiteBackground>
+            <S.WhiteBackgroundToInputs>
                <InputsAndButton searchPlaceholder={"Cargo, tecnologia ou palavra-chave"} cityPlaceholder={"Localização"} />
-            </S.WhiteBackground>
+            </S.WhiteBackgroundToInputs>
          </S.PurpleBackgroundDiv>
          <div style={{ margin: "135px 0px 30px 110px" }}>
             <Title color="#1a1033" fontWeight="600" fontSize="32px">

@@ -1,25 +1,15 @@
 import styled from "styled-components";
 
-export const WhiteBackground = styled.div`
-   width: 86vw;
-   height: 30vh;
-   margin-top: -2em;
-   position: absolute;
-   background-color: white;
-   border-radius: 15px;
-   right: 3.5em;
-   box-shadow: 0px 2px 5px rgba(255, 255, 255, 0.822);
-`;
-
 export const WhiteBackgroundToInputs = styled.div`
-   width: 86vw;
-   height: 30vh;
-   margin-top: 6%;
+   width: fit-content;
+   height: fit-content;
+   padding: -5px 15px 0px 15px;
+   top: 73%;
+   margin: 0% 8%;
    position: absolute;
    border-radius: 15px;
-   right: 5em;
-   background-color: #ffffff;
-   box-shadow: 0px 2px 5px rgba(255, 255, 255, 0.822);
+   background-color: #fff;
+   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
 `;
 
 export const PurpleBackgroundDiv = styled.div`
@@ -53,7 +43,7 @@ export const StyledSpan = styled.span`
 `;
 
 export const StyledImg = styled.img`
-   right: 40px;
-   top: 115px;
+   right: 55px;
+   top: 105px;
    position: absolute;
 `;
