@@ -24,15 +24,23 @@ export const CategoryContainer = styled.div<{ isSelected: boolean }>`
    align-items: center;
    color: ${({ theme, isSelected }) => (isSelected ? theme.colors.orange : theme.colors.white)};
    cursor: pointer;
-   font-size: 18px;
+   font-size: 17px;
    font-weight: 400;
-   padding: 25px 50px;
-   margin-left: 25px;
+   padding: 5px 75px;
+
+   &:hover {
+      background-color: ${({ theme }) => theme.colors.purple};
+      color: ${({ theme, isSelected }) => (isSelected ? theme.colors.orange : theme.colors.white)};
+   }
 `;
 
 export const CategoriesWrapper = styled.div`
    display: flex;
    justify-content: space-between;
    align-items: center;
-   width: 400px;
+   border-bottom: 1px solid ${({ theme }) => theme.colors.white};
+   width: fit-content;
+   margin-top: 10px;
+   margin-left: 30px;
+   margin-bottom: 20px;
 `;

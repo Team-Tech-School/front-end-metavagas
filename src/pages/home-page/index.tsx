@@ -1,6 +1,6 @@
 import * as S from "./style";
 import ManWithLaptop from "../../assets/images/man-with-laptop.png";
-import { Title, InputsAndButton, VacancyHomePageCard, OrangeButton, JobsSection } from "../../components";
+import { Title, InputsAndButton, VacancyHomePageCard, OrangeButton, JobsSection, MostRecentSearch } from "../../components";
 
 export const HomePage = () => {
    return (
@@ -27,6 +27,7 @@ export const HomePage = () => {
             </S.ContentDiv>
             <S.WhiteBackgroundToInputs>
                <InputsAndButton searchPlaceholder={"Cargo, tecnologia ou palavra-chave"} cityPlaceholder={"Localização"} />
+               <MostRecentSearch />
             </S.WhiteBackgroundToInputs>
          </S.PurpleBackgroundDiv>
          <div style={{ margin: "135px 0px 30px 110px" }}>

@@ -7,3 +7,5 @@ export * from "./title";
 export * from "./inputs-and-button";
 export * from "./jobs-section";
 export * from "./job+category-selected";
+export * from "./most-recent-search";
+export * from "./registration-banner";
