@@ -1,15 +1,31 @@
 import styled, { css } from "styled-components";
 
+interface IconProps {
+   left?: boolean;
+   right?: boolean;
+}
+
 interface LabelProps {
    whiteLabel?: boolean;
 }
 
-export const Icon = styled.div`
+export const Icon = styled.div<IconProps>`
    position: absolute;
-   left: 30px;
-   top: 55%;
+   top: 50%;
    transform: translateY(-50%);
    cursor: pointer;
+
+   ${({ left }) =>
+      left &&
+      css`
+         left: 30px;
+      `}
+
+   ${({ right }) =>
+      right &&
+      css`
+         right: 10px;
+      `}
 `;
 
 export const IconAndInput = styled.div`

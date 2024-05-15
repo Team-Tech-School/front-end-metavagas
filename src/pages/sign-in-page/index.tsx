@@ -1,12 +1,13 @@
 import * as S from "./style";
 import AddUserIcon from "../../assets/icons/user-add-line.png";
 import EmailIcon from "../../assets/icons/mail-line.png";
-import { Title } from "../../components/index";
+import { Title, Form } from "../../components/index";
 
 export const SignInPage = () => {
    return (
       <>
          <S.PurpleBackgroundDiv>
+            <Form isSignup={false} formTitle="Faça seu login" linkText="Não é cadastrado? Cadastre-se gratuitamente" linkHref="/fazer-cadastro" />
             <S.ContentDiv>
                <Title color="#f1f1f1" fontWeight="400" fontSize="18px">
                   FAÇA SEU LOGIN

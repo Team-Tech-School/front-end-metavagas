@@ -1,11 +1,11 @@
 import styled from "styled-components";
 
 interface ButtonProps {
-   width?: "large" | "small";
+   width?: "large" | "medium" | "small";
 }
 
 export const Button = styled.button<ButtonProps>`
-   ${({ width }) => (width === "large" ? "width: 290px;" : width === "small" ? "width: 180px;" : "")};
+   ${({ width }) => (width === "medium" ? "width: 290px;" : width === "small" ? "width: 180px;" : "")};
    padding: 15px 20px;
    border: none;
    border-radius: ${({ theme }) => theme.borderRadius.md};

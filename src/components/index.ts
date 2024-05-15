@@ -9,3 +9,4 @@ export * from "./jobs-section";
 export * from "./job+category-selected";
 export * from "./most-recent-search";
 export * from "./registration-banner";
+export * from "./form";
