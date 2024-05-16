@@ -44,23 +44,19 @@ display: flex;
 justify-content: space-between;
 `
 export const FilterTitle = styled.div`
-display: flex;
-width: 147px;
-  height: 25px;
-  top: 481px;
-  left: 159px;
-  font-weight: 600;
-  font-size: 18px;
-  line-height: 24.57px;
-  color: #000000;
+font-family: 'Poppins', sans-serif;
+font-weight: 700;
+font-size: 18px;
+line-height: 24.57px;
+color: #000000;
 `
 
 export const ClearLink = styled.a`
-  padding: 3px;
-  font-weight: 400;
-  font-size: 12px;
-  line-height: 16.8px;
-  color: #6A5ACD; /* Roxo */
+font-family: 'Poppins', sans-serif;
+font-weight: 400;
+font-size: 12px;
+line-height: 16.8px;
+color: #6950A1;
  
   cursor: pointer;
 `;

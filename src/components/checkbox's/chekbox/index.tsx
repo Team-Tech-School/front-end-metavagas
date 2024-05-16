@@ -12,7 +12,7 @@ export const Checkbox = ({title, opstions, onFilterChange}: CheckboxProps) => {
     const handleCheckboxChange = (option: string) => {
         const newFilters = selectedFilters.includes(option)
         const newSelectedFilters = [...selectedFilters];
-        if(newFilters) {
+        if(!newFilters) {
             newSelectedFilters.push(option);
         } else {
             newSelectedFilters.splice(newSelectedFilters.indexOf(option), 1);
@@ -24,7 +24,7 @@ export const Checkbox = ({title, opstions, onFilterChange}: CheckboxProps) => {
     return (
         <S.CheckboxFilterContainer> 
             <br />           
-            <h4>{title}</h4>
+            <S.H4Title>{title}</S.H4Title>
             {opstions.map(option => (
                 <S.CheckboxLabel key={option}>
                     <S.CheckboxInput
@@ -33,7 +33,7 @@ export const Checkbox = ({title, opstions, onFilterChange}: CheckboxProps) => {
                         checked={selectedFilters.includes(option)}
                         onChange={() => handleCheckboxChange(option)}
                     />
-                    {option}
+                    <S.CheckboxOption checked={selectedFilters.includes(option)}>{option}</S.CheckboxOption>
                 </S.CheckboxLabel>
             ))}
         

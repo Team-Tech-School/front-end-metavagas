@@ -5,8 +5,9 @@ import { Link } from "react-router-dom";
 import * as S from "./style";
 // import components
 import { InputsAndButton, CustomButton, OrangeButton } from "../../components/index";
-import { Checkbox } from "../../components/chekbox";
-import { SalaryRangeCheckbox } from "../../components/checkbox-ranger";
+import { Checkbox } from "../../components/checkbox's/chekbox";
+import { SalaryRangeCheckbox } from "../../components/checkbox's/checkbox-ranger";
+import { NumberVacancies } from "../../components/number-vacancies";
 
 
 export const ShowVacanciesPage = () => {
@@ -21,39 +22,48 @@ export const ShowVacanciesPage = () => {
 //-----------------------------Filters Checkboxes-----------------------------
    // State para os filtros dos Chekboxes
  const [seletedTechnologies, setSeletedTechnologies] = useState<string[]>([]);
- const [selectedTipodeVaga, setSelectedTipodeVaga] = useState<string[]>([]);
- const [selectedRegimeDeTrabalho, setSelectedRegimeDeTrabalho] = useState<string[]>([]);
- const [selectedTamanhoDaEmpresa, setSelectedTamanhoDaEmpresa] = useState<string[]>([]);
- const [selectedNivelDeExperiencia, setSelectedNivelDeExperiencia] = useState<string[]>([]);
+ const [selectedTypeOfVacancy, setSelectedTypeOfVacancy] = useState<string[]>([]);
+ const [selectedWorkRegime, setSelectedWorkRegime] = useState<string[]>([]);
+ const [selectedCompanySize, setSelectedCompanySize] = useState<string[]>([]);
+ const [selectedExperienceLevel, setSelectedExperienceLevel] = useState<string[]>([]);
 
    // Funções para os filtros de chekboxes
    const handleCheckboxTechnologyChange = (optionsSelected: string[]) => {
       setSeletedTechnologies(optionsSelected);  
       // Chama a função para fazer a requisição à API    
    }
-  const handleCheckboxTipoDeVagaChange = (optionsSelected: string[]) => {
-      setSelectedTipodeVaga(optionsSelected);
+  const handleCheckboxTypeOfVacancyChange = (optionsSelected: string[]) => {
+   setSelectedTypeOfVacancy(optionsSelected);
       // Chama a função para fazer a requisição à API
    }
-   const handleCheckboxRegimeDeTrabalhoChange = (optionsSelected: string[]) => {
-      setSelectedRegimeDeTrabalho(optionsSelected);
+   const handleCheckboxWorkRegimeChange = (optionsSelected: string[]) => {
+      setSelectedWorkRegime(optionsSelected);
       // Chama a função para fazer a requisição à API
    }
-   const handleCheckboxTamanhoDaEmpresaChange = (optionsSelected: string[]) => {
-      setSelectedTamanhoDaEmpresa(optionsSelected);
+   const handleCheckboxCompanySizeChange = (optionsSelected: string[]) => {
+      setSelectedCompanySize(optionsSelected);
       // Chama a função para fazer a requisição à API
    }
-   const handleCheckboxNivelDeExperienciaChange = (optionsSelected: string[]) => {
-      setSelectedNivelDeExperiencia(optionsSelected);
+   const handleCheckboxExperienceLevelChange = (optionsSelected: string[]) => {
+      setSelectedExperienceLevel(optionsSelected);
       // Chama a função para fazer a requisição à API
    }
 
+   // Função para limpar todos os filtros
+   const clearAllFilters = () => {
+      setSeletedTechnologies([]);
+      setSelectedTypeOfVacancy([]);
+      setSelectedWorkRegime([]);
+      setSelectedCompanySize([]);
+      setSelectedExperienceLevel([]);
+  }
+
    //Arrays de options de chekboxes
-   const Tecnologias = ["React", "PHP", "Java", "Phyton", ".Net", "CSS", "HTML", "Ruby"];
-   const TipoDeVaga = ["Remoto", "Presencial", "Hibrido"];
-   const RegimeDeTrabalho = ["CLT", "PJ"];
-   const TamanhoDaEmpresa = ["Pequena", "Media", "Grande"];
-   const NivelDeExperienci = ["Júnior", "Pleno", "Senior"];
+   const technologies = ["React", "PHP", "Java", "Phyton", ".Net", "CSS", "HTML", "Ruby"];
+   const typeOfVacancies = ["Remoto", "Presencial", "Hibrido"];
+   const workRegime = ["CLT", "PJ"];
+   const companySize = ["Pequena", "Media", "Grande"];
+   const experienceLevel = ["Júnior", "Pleno", "Senior"];
 
 
    return (
@@ -72,28 +82,27 @@ export const ShowVacanciesPage = () => {
          </div>
          
          <S.ContainerBodyPageDIV>
-            <h1>Vagas em {searchPlaceholder}</h1>
-            <p>225 vagas encontradas</p>
+            <NumberVacancies searchPlaceholder={searchPlaceholder} vacanciesFound={255} />
 
             <S.ContainerFilterResult>
                <S.FilterDiv>            
                   
                   <S.HeadDivisionDiv>
                   <S.FilterTitle>Filtre sua busca</S.FilterTitle>    
-                  <S.ClearLink>Limpar</S.ClearLink> 
+                  <S.ClearLink href="#" onClick={clearAllFilters}>Limpar</S.ClearLink> 
                   </S.HeadDivisionDiv>
                   <div>                   
                      <div>
-                     <Checkbox title={"Tecnologias"} opstions={Tecnologias} onFilterChange={handleCheckboxTechnologyChange } />
+                     <Checkbox title={"Tecnologias"} opstions={technologies} onFilterChange={handleCheckboxTechnologyChange } />
                      <Link to="/fazer-cadastro">Ver mais...</Link>
                      </div>
-                     <Checkbox title={"Tipo de vaga"} opstions={TipoDeVaga} onFilterChange={handleCheckboxTipoDeVagaChange } />
-                     <Checkbox title={"Regime de trabalho"} opstions={RegimeDeTrabalho} onFilterChange={handleCheckboxRegimeDeTrabalhoChange } />
-                     <Checkbox title={"Tamanho da empresa"} opstions={TamanhoDaEmpresa} onFilterChange={handleCheckboxTamanhoDaEmpresaChange } />
+                     <Checkbox title={"Tipo de vaga"} opstions={typeOfVacancies} onFilterChange={handleCheckboxTypeOfVacancyChange } />
+                     <Checkbox title={"Regime de trabalho"} opstions={workRegime} onFilterChange={handleCheckboxWorkRegimeChange } />
+                     <Checkbox title={"Tamanho da empresa"} opstions={companySize} onFilterChange={handleCheckboxCompanySizeChange } />
                      <SalaryRangeCheckbox />
-                     <Checkbox title={"Nivel de experiencia"} opstions={NivelDeExperienci} onFilterChange={handleCheckboxNivelDeExperienciaChange } />
+                     <Checkbox title={"Nivel de experiencia"} opstions={experienceLevel} onFilterChange={handleCheckboxExperienceLevelChange } />
                   </div> 
-                       <OrangeButton title={"Filtrar"} />                          
+                   <OrangeButton title={"Filtrar"} />               
                </S.FilterDiv>                                
                             
                <S.ResultDiv>               

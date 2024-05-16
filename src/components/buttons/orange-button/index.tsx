@@ -5,6 +5,7 @@ type Props = {
    title: string;
    link?: string;
    width?: "large" | "small";
+   
 };
 
 export const OrangeButton = ({ title, link, width = "large" }: Props) => {
