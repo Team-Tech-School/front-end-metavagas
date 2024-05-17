@@ -3,121 +3,216 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 //import style
 import * as S from "./style";
+//import images
+import tableBrazil from "../../assets/images/table-brazil.png";
+import tableReact from "../../assets/images/table-react.png";
+
 // import components
-import { InputsAndButton, CustomButton, OrangeButton } from "../../components/index";
+import {
+  InputsAndButton,
+  CustomButton,
+  FilterButton,
+  OrangeButton,
+} from "../../components/index";
 import { Checkbox } from "../../components/checkbox's/chekbox";
 import { SalaryRangeCheckbox } from "../../components/checkbox's/checkbox-ranger";
 import { NumberVacancies } from "../../components/number-vacancies";
-
+import { BlurredImageWith } from "../../components/table-search";
 
 export const ShowVacanciesPage = () => {
-   // State para os filtros de busca
-   const [searchPlaceholder, setSearchPlaceholder] = useState("React");
-   const [selectedButton, setSelectedButton] = useState("React");
+  // State para os filtros de busca
+  const [searchPlaceholder, setSearchPlaceholder] = useState("React");
+  const [selectedButton, setSelectedButton] = useState("React");
 
-   // Função para os filtros de busca
-   const updateSearchPlaceholder = (text: string) => {    
-      setSearchPlaceholder(text);
-   };
-//-----------------------------Filters Checkboxes-----------------------------
-   // State para os filtros dos Chekboxes
- const [seletedTechnologies, setSeletedTechnologies] = useState<string[]>([]);
- const [selectedTypeOfVacancy, setSelectedTypeOfVacancy] = useState<string[]>([]);
- const [selectedWorkRegime, setSelectedWorkRegime] = useState<string[]>([]);
- const [selectedCompanySize, setSelectedCompanySize] = useState<string[]>([]);
- const [selectedExperienceLevel, setSelectedExperienceLevel] = useState<string[]>([]);
+  // Função para os filtros de busca
+  const updateSearchPlaceholder = (text: string) => {
+    setSearchPlaceholder(text);
+  };
+  //-----------------------------Filters Checkboxes-----------------------------
+  // State para os filtros dos Chekboxes
+  const [seletedTechnologies, setSeletedTechnologies] = useState<string[]>([]);
+  const [selectedTypeOfVacancy, setSelectedTypeOfVacancy] = useState<string[]>(
+    []
+  );
+  const [selectedWorkRegime, setSelectedWorkRegime] = useState<string[]>([]);
+  const [selectedCompanySize, setSelectedCompanySize] = useState<string[]>([]);
+  const [selectedExperienceLevel, setSelectedExperienceLevel] = useState<
+    string[]
+  >([]);
 
-   // Funções para os filtros de chekboxes
-   const handleCheckboxTechnologyChange = (optionsSelected: string[]) => {
-      setSeletedTechnologies(optionsSelected);  
-      // Chama a função para fazer a requisição à API    
-   }
+  // Funções para os filtros de chekboxes
+  const handleCheckboxTechnologyChange = (optionsSelected: string[]) => {
+    setSeletedTechnologies(optionsSelected);
+    // Chama a função para fazer a requisição à API
+  };
   const handleCheckboxTypeOfVacancyChange = (optionsSelected: string[]) => {
-   setSelectedTypeOfVacancy(optionsSelected);
-      // Chama a função para fazer a requisição à API
-   }
-   const handleCheckboxWorkRegimeChange = (optionsSelected: string[]) => {
-      setSelectedWorkRegime(optionsSelected);
-      // Chama a função para fazer a requisição à API
-   }
-   const handleCheckboxCompanySizeChange = (optionsSelected: string[]) => {
-      setSelectedCompanySize(optionsSelected);
-      // Chama a função para fazer a requisição à API
-   }
-   const handleCheckboxExperienceLevelChange = (optionsSelected: string[]) => {
-      setSelectedExperienceLevel(optionsSelected);
-      // Chama a função para fazer a requisição à API
-   }
+    setSelectedTypeOfVacancy(optionsSelected);
+    // Chama a função para fazer a requisição à API
+  };
+  const handleCheckboxWorkRegimeChange = (optionsSelected: string[]) => {
+    setSelectedWorkRegime(optionsSelected);
+    // Chama a função para fazer a requisição à API
+  };
+  const handleCheckboxCompanySizeChange = (optionsSelected: string[]) => {
+    setSelectedCompanySize(optionsSelected);
+    // Chama a função para fazer a requisição à API
+  };
+  const handleCheckboxExperienceLevelChange = (optionsSelected: string[]) => {
+    setSelectedExperienceLevel(optionsSelected);
+    // Chama a função para fazer a requisição à API
+  };
 
-   // Função para limpar todos os filtros
-   const clearAllFilters = () => {
-      setSeletedTechnologies([]);
-      setSelectedTypeOfVacancy([]);
-      setSelectedWorkRegime([]);
-      setSelectedCompanySize([]);
-      setSelectedExperienceLevel([]);
-  }
+  // Função para limpar todos os filtros
+  const clearAllFilters = () => {
+    setSeletedTechnologies([]);
+    setSelectedTypeOfVacancy([]);
+    setSelectedWorkRegime([]);
+    setSelectedCompanySize([]);
+    setSelectedExperienceLevel([]);
+  };
 
-   //Arrays de options de chekboxes
-   const technologies = ["React", "PHP", "Java", "Phyton", ".Net", "CSS", "HTML", "Ruby"];
-   const typeOfVacancies = ["Remoto", "Presencial", "Hibrido"];
-   const workRegime = ["CLT", "PJ"];
-   const companySize = ["Pequena", "Media", "Grande"];
-   const experienceLevel = ["Júnior", "Pleno", "Senior"];
+  //Arrays de options de chekboxes
+  const technologies = [
+    "React",
+    "PHP",
+    "Java",
+    "Phyton",
+    ".Net",
+    "CSS",
+    "HTML",
+    "Ruby",
+  ];
+  const typeOfVacancies = ["Remoto", "Presencial", "Hibrido"];
+  const workRegime = ["CLT", "PJ"];
+  const companySize = ["Pequena", "Media", "Grande"];
+  const experienceLevel = ["Júnior", "Pleno", "Senior"];
 
+  // State para armazenar os resultados da API
+  const [apiResults, setApiResults] = useState<any[]>([]);
 
-   return (
-      <>
-         <div>
-            <S.PurpleBackgroundDiv>
-               <InputsAndButton searchPlaceholder={searchPlaceholder} cityPlaceholder={"Localização"} colorWhiteLabel={true} />
+  const executeSearch = async () => {
+    const filters = {
+      technologies: seletedTechnologies,
+      typeOfVacancies: selectedTypeOfVacancy,
+      workRegime: selectedWorkRegime,
+      companySize: selectedCompanySize,
+      experienceLevel: selectedExperienceLevel,
+    };
+    console.log(filters);
 
-               <S.DivButton>
-               <CustomButton  title={"Java"} selectedButton={selectedButton} setSelectedButton={setSelectedButton} updateSearchPlaceholder={updateSearchPlaceholder} />
-               <CustomButton title={"PHP"} selectedButton={selectedButton} setSelectedButton={setSelectedButton} updateSearchPlaceholder={updateSearchPlaceholder} />
-               <CustomButton title={"Phyton"} selectedButton={selectedButton} setSelectedButton={setSelectedButton} updateSearchPlaceholder={updateSearchPlaceholder} />
-               <CustomButton title={"React"} selectedButton={selectedButton} setSelectedButton={setSelectedButton} updateSearchPlaceholder={updateSearchPlaceholder} />
-               </S.DivButton>              
-            </S.PurpleBackgroundDiv>
-         </div>
-         
-         <S.ContainerBodyPageDIV>
-            <NumberVacancies searchPlaceholder={searchPlaceholder} vacanciesFound={255} />
+    // Chama a função para fazer a requisição à API
+  };
 
-            <S.ContainerFilterResult>
-               <S.FilterDiv>            
-                  
-                  <S.HeadDivisionDiv>
-                  <S.FilterTitle>Filtre sua busca</S.FilterTitle>    
-                  <S.ClearLink href="#" onClick={clearAllFilters}>Limpar</S.ClearLink> 
-                  </S.HeadDivisionDiv>
-                  <div>                   
-                     <div>
-                     <Checkbox title={"Tecnologias"} opstions={technologies} onFilterChange={handleCheckboxTechnologyChange } />
-                     <Link to="/fazer-cadastro">Ver mais...</Link>
-                     </div>
-                     <Checkbox title={"Tipo de vaga"} opstions={typeOfVacancies} onFilterChange={handleCheckboxTypeOfVacancyChange } />
-                     <Checkbox title={"Regime de trabalho"} opstions={workRegime} onFilterChange={handleCheckboxWorkRegimeChange } />
-                     <Checkbox title={"Tamanho da empresa"} opstions={companySize} onFilterChange={handleCheckboxCompanySizeChange } />
-                     <SalaryRangeCheckbox />
-                     <Checkbox title={"Nivel de experiencia"} opstions={experienceLevel} onFilterChange={handleCheckboxExperienceLevelChange } />
-                  </div> 
-                   <OrangeButton title={"Filtrar"} />               
-               </S.FilterDiv>                                
-                            
-               <S.ResultDiv>               
-               
-                  <div>
-                     <h1>Tabelas Graficos</h1>
-                  </div>
-                  <div>
-                  <h1>Resultado da Pesquisa</h1>
-                  </div>
-               </S.ResultDiv>
-            </S.ContainerFilterResult>
+  return (
+    <>
+      <div>
+        <S.PurpleBackgroundDiv>
+          <InputsAndButton
+            searchPlaceholder={searchPlaceholder}
+            cityPlaceholder={"Localização"}
+            colorWhiteLabel={true}
+          />
 
-          </S.ContainerBodyPageDIV> 
-         
-      </>
-   );
+          <S.DivButton>
+            <CustomButton
+              title={"Java"}
+              selectedButton={selectedButton}
+              setSelectedButton={setSelectedButton}
+              updateSearchPlaceholder={updateSearchPlaceholder}
+            />
+            <CustomButton
+              title={"PHP"}
+              selectedButton={selectedButton}
+              setSelectedButton={setSelectedButton}
+              updateSearchPlaceholder={updateSearchPlaceholder}
+            />
+            <CustomButton
+              title={"Phyton"}
+              selectedButton={selectedButton}
+              setSelectedButton={setSelectedButton}
+              updateSearchPlaceholder={updateSearchPlaceholder}
+            />
+            <CustomButton
+              title={"React"}
+              selectedButton={selectedButton}
+              setSelectedButton={setSelectedButton}
+              updateSearchPlaceholder={updateSearchPlaceholder}
+            />
+          </S.DivButton>
+        </S.PurpleBackgroundDiv>
+      </div>
+
+      <S.ContainerBodyPageDIV>
+        <NumberVacancies
+          searchPlaceholder={searchPlaceholder}
+          vacanciesFound={255}
+        />
+
+        <S.ContainerFilterResult>
+          <S.FilterDiv>
+            <S.HeadDivisionDiv>
+              <S.FilterTitle>Filtre sua busca</S.FilterTitle>
+              <S.ClearLink href="#" onClick={clearAllFilters}>
+                Limpar
+              </S.ClearLink>
+            </S.HeadDivisionDiv>
+            <div>
+              <div>
+                <Checkbox
+                  title={"Tecnologias"}
+                  opstions={technologies}
+                  onFilterChange={handleCheckboxTechnologyChange}
+                />
+                <Link to="/fazer-cadastro">Ver mais...</Link>
+              </div>
+              <Checkbox
+                title={"Tipo de vaga"}
+                opstions={typeOfVacancies}
+                onFilterChange={handleCheckboxTypeOfVacancyChange}
+              />
+              <Checkbox
+                title={"Regime de trabalho"}
+                opstions={workRegime}
+                onFilterChange={handleCheckboxWorkRegimeChange}
+              />
+              <Checkbox
+                title={"Tamanho da empresa"}
+                opstions={companySize}
+                onFilterChange={handleCheckboxCompanySizeChange}
+              />
+              <SalaryRangeCheckbox />
+              <Checkbox
+                title={"Nivel de experiencia"}
+                opstions={experienceLevel}
+                onFilterChange={handleCheckboxExperienceLevelChange}
+              />
+            </div>
+            <FilterButton onClickExecuteSearch={executeSearch} />
+          </S.FilterDiv>
+
+          <S.ResultDiv>
+            <S.ButtonAboveImages>
+               <OrangeButton title={"Cadastre-se para visualizar"} link="/fazer-cadastro"/>
+            </S.ButtonAboveImages>
+            <S.ButtonAboveImages>
+               <OrangeButton title={"Cadastre-se para visualizar"} link="/fazer-cadastro"/>
+            </S.ButtonAboveImages>
+           
+            <S.GraphicDiv>
+              <BlurredImageWith blurred={false} src={tableBrazil} />
+              <BlurredImageWith blurred={false} src={tableReact} />
+            </S.GraphicDiv>
+            <div>
+              <h1>Resultado da Pesquisa</h1>
+              <ul>
+                {apiResults.map((result, index) => (
+                  <li key={index}>{result}</li>
+                ))}
+              </ul>
+            </div>
+          </S.ResultDiv>
+        </S.ContainerFilterResult>
+      </S.ContainerBodyPageDIV>
+    </>
+  );
 };

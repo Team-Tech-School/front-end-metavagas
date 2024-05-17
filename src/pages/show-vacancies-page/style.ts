@@ -35,9 +35,9 @@ height: 1115px;
 top: 457px;
 left: 135px;
 border-radius: 16px;
-border: 1px solid #FFFFFF;
+border: 1px solid #ECF1F4;
 box-shadow: 0px 15px 35px 0px rgba(208, 208, 208, 0.2); /* Sombra definida com as propriedades especificadas */
-background-color: #ECF1F4; 
+ 
 `
 export const HeadDivisionDiv = styled.div`
 display: flex;
@@ -62,8 +62,29 @@ color: #6950A1;
 `;
 export const ResultDiv = styled.div`
 border: 2px solid ${({ theme }) => theme.colors.darkPurple};
+width: 100%;
 margin-top: 30px;
-margin-left: 30px;
+margin-left: 8px;
+margin-bottom: 30px;
+`
+export const ButtonAboveImages = styled.div`
+  position: absolute;
+  top:87%; /* Ajuste conforme necessário */
+  left: 48%; /* Ajuste conforme necessário */
+  transform: translateX(-50%);
+  z-index: 1; /* Para ficar acima das imagens */
+  &:nth-child(1) {
+    top:87%;
+  }
+  &:nth-child(2) {
+    top:87%; /* Ajuste conforme necessário */
+    left: 81%; /* Ajuste conforme possível */
+  }
+
+`;
+export const GraphicDiv = styled.div`
+display: flex;
+justify-content: space-between;
 margin-bottom: 30px;
 
 
