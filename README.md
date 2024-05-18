@@ -32,9 +32,8 @@ Inspirado pelo funcionamento da renomada rede social LinkedIn, nosso projeto esc
 o projeto Meta vagas é um projeto fullstack e conta com uma api rodando em nest js com type orm, projetada especialmente para construção sólida dessa aplicação.
 
 <div>
-   ![1715870061811](https://github.com/Team-Tech-School/front-end-metavagas/assets/127049907/528c0149-1106-4f66-984c-15b965561778)
-   ![1715870061974](https://github.com/Team-Tech-School/front-end-metavagas/assets/127049907/dce73518-4089-4cb1-9700-34f7533dbf12)
-   ![1715870061859](https://github.com/Team-Tech-School/front-end-metavagas/assets/127049907/e203e32f-feeb-4b52-b338-ede5a1b41595)
+   ![1715870061974](https://github.com/Team-Tech-School/front-end-metavagas/assets/127049907/cd1ed0c6-4a04-4a15-b060-4d9975103e4d)
+
 </div>
 
 ## Tecnologias Utilizadas
