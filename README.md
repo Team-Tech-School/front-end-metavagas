@@ -148,7 +148,7 @@ Distribuído sob a licença MIT. Veja `LICENSE` para mais informações.
 - [Isa Moura B. Bentes](https://www.linkedin.com/in/isa-moura/)
 - [Bruno Wener](https://www.linkedin.com/in/bruno-wener-656686285/)
 
-Link do Front-end: [Front-end](https://meta-vagas-final-project.netlify.app/)
-Link do projeto final fullstack integrado a Api: [FullStack](https://github.com/)
+- Link do Front-end: [Front-end](https://meta-vagas-final-project.netlify.app/)
+- Link do projeto final fullstack integrado a Api: [FullStack](https://github.com/)
 
 <h3 style="color:#7f5cd1; font-size:22px;">back-end-metavagas</h3>
