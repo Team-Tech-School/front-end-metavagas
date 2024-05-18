@@ -14,6 +14,7 @@
 - [Como Usar](#como-usar)
 - [Estrutura de Pastas](#estrutura-de-pastas)
 - [Exemplos de Imagens](#exemplos-de-imagens)
+- [Links Úteis](#Links-Uteis)
 - [Contribuição](#contribuição)
 - [Licença](#licença)
 - [Contato](#contato)
@@ -40,6 +41,9 @@ o projeto Meta vagas é um projeto fullstack e conta com uma api rodando em nest
   <img src="https://github.com/Team-Tech-School/front-end-metavagas/assets/127049907/a9f96810-4ff7-4635-98d1-891c2fda01d1" width="200" alt="Terceira Imagem">
 </p>
 
+## Links Úteis
+- [Figma](https://www.figma.com/file/e5ZMebVtKR779ghEQEU0wL/Buscar-Vagas?type=design&node-id=3-6&mode=design&t=KocNICORYN5CI7KQ-0)
+  
 ## Tecnologias Utilizadas
 
 - [React](https://reactjs.org/)
