@@ -1,11 +1,17 @@
 import styled from "styled-components";
 
 export const CardBackground = styled.div`
-   background-color: ${({ theme }) => theme.colors.white};
-   width: 260px;
-   padding: 26px 25px;
+   background-color: #fff;
+   width: 255px;
+   padding: 25px 20px;
    border-radius: 10px;
    margin: 15px;
+   cursor: pointer;
+   transition: transform 0.3s ease;
+
+   &:hover {
+      transform: scale(1.05);
+   }
 `;
 
 export const CardContainer = styled.div`
@@ -16,7 +22,7 @@ export const CardContainer = styled.div`
 
 export const CardTitle = styled.div`
    color: ${({ theme }) => theme.colors.midGray};
-   font-size: 13px;
+   font-size: 12px;
 `;
 
 export const CardInfo = styled.div`

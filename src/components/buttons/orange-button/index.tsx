@@ -1,14 +1,16 @@
 import { useNavigate } from "react-router-dom";
 import * as S from "./style";
+import { ButtonHTMLAttributes } from "react";
 
-type Props = {
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
    title: string;
    link?: string;
-   width?: "large" | "small";
-   
-};
 
-export const OrangeButton = ({ title, link, width = "large" }: Props) => {
+   width?: "large" | "medium" | "small";
+}
+
+
+export const OrangeButton = ({ title, link, width }: ButtonProps) => {
    const navigate = useNavigate();
 
    const handleClick = () => {

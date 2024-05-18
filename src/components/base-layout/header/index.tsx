@@ -12,13 +12,15 @@ export const Header = ({ isLoggedIn }: HeaderProps) => {
       <>
          <S.PurpleBackground>
             <S.ContentWrapper>
-               <S.Logo src={Logo} />
+               <S.StyledLink to="/">
+                  <S.Logo src={Logo} />
+               </S.StyledLink>
                {isLoggedIn ? (
-                  <UserProfile username="Isa Moura" />
+                  <UserProfile username="Isa Moura" email="mourabisabelle@gmail.com" />
                ) : (
                   <S.ButtonsWrapper>
                      <SmallButton title="Entrar" link="/fazer-login" />
-                     <OrangeButton title="Cadastre-se gratuitamente" link="/fazer-cadastro" width="large" />
+                     <OrangeButton title="Cadastre-se gratuitamente" link="/fazer-cadastro" width="medium" />
                   </S.ButtonsWrapper>
                )}
             </S.ContentWrapper>

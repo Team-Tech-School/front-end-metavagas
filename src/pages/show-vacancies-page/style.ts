@@ -11,6 +11,11 @@ export const DivButton = styled.div`
     gap: 5px;
     margin-left: 150px;    
 `
+export const SaveSearchComponent = styled.div`
+    margin-top: -20px;
+    margin-left: 150px;
+    padding-bottom: 20px;
+`
 
 //Corpo da pagina
 
@@ -21,7 +26,7 @@ margin-right: 40px;
 margin-bottom: 30px;
 `
 export const ContainerFilterResult = styled.div`
- border: 2px solid ${({ theme }) => theme.colors.darkPurple};
+
  display: flex;
  gap: 5px;
 
@@ -63,7 +68,6 @@ cursor: pointer;
 margin-top: 4px;
 `;
 export const ResultDiv = styled.div`
-border: 2px solid ${({ theme }) => theme.colors.darkPurple};
 width: 100%;
 margin-top: 30px;
 margin-bottom: 30px;
@@ -81,11 +85,15 @@ export const ButtonAboveImages = styled.div`
     top:87%; 
     left: 80%; 
   }
-
 `;
 export const GraphicDiv = styled.div`
 display: flex;
 justify-content: space-between;
 margin-bottom: 30px;
+`
+export const ContainerInfoJobs = styled.div`
+display: flex;
+flex-direction: column;
+gap: 10px;
 `
 

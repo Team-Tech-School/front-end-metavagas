@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Button } from "./style";
 
@@ -22,3 +23,4 @@ export const CustomButton = ({title, updateSearchPlaceholder, selectedButton, se
         
     )
 }
+

@@ -1,32 +1,39 @@
 import * as S from "./style";
 import AddUserIcon from "../../assets/icons/user-add-line.png";
 import EmailIcon from "../../assets/icons/mail-line.png";
-import { Title } from "../../components/index";
+import { Form, Title } from "../../components/index";
 
 export const SignUpPage = () => {
    return (
       <>
          <S.PurpleBackgroundDiv>
+            <Form buttonTitle="Cadastrar" isSignup={true} formTitle="Faça seu cadastro" linkText="Já é cadastrado? Faça o login" linkHref="/fazer-login" />
             <S.ContentDiv>
-               <Title color="#f1f1f1" fontWeight="400" fontSize="18px">
-                  CADASTRE-SE
-               </Title>
-               <div style={{ marginTop: "-15px", marginBottom: "13px" }}>
-                  <Title color="#fbb04d" fontWeight="600" fontSize="48px">
+               <S.TitleContainer marginTop="-5px">
+                  <Title color="#f1f1f1" fontWeight="400" fontSize="17px">
+                     CADASTRE-SE
+                  </Title>
+               </S.TitleContainer>
+               <S.TitleContainer marginTop="5px" marginBottom="13px">
+                  <Title color="#fbb04d" fontWeight="600" fontSize="45px">
                      Fique por dentro
                   </Title>
-                  <div style={{ marginTop: "-30px" }}>
-                     <Title color="#fbb04d" fontWeight="600" fontSize="48px">
+                  <S.TitleContainer marginTop="-14px">
+                     <Title color="#fbb04d" fontWeight="600" fontSize="45px">
                         de todas as vagas
                      </Title>
-                  </div>
-               </div>
-               <Title iconSrc={AddUserIcon} iconSize="25px" color="#f1f1f1" fontWeight="300" fontSize="16px">
-                  Com um único cadastro você consegue encontrar a sua vaga
-               </Title>
-               <Title iconSrc={EmailIcon} iconSize="25px" color="#f1f1f1" fontWeight="300" fontSize="16px">
-                  Receba alertas sobre as vagas que você procura
-               </Title>
+                  </S.TitleContainer>
+               </S.TitleContainer>
+               <S.TitleContainer marginTop="10px" marginBottom="13px">
+                  <Title iconSrc={AddUserIcon} iconSize="25px" color="#f1f1f1" fontWeight="300" fontSize="15px">
+                     Com um único cadastro você consegue encontrar a sua vaga
+                  </Title>
+               </S.TitleContainer>
+               <S.TitleContainer marginTop="5px" marginBottom="13px">
+                  <Title iconSrc={EmailIcon} iconSize="25px" color="#f1f1f1" fontWeight="300" fontSize="15px">
+                     Receba alertas sobre as vagas que você procura
+                  </Title>
+               </S.TitleContainer>
             </S.ContentDiv>
          </S.PurpleBackgroundDiv>
       </>
