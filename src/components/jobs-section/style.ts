@@ -8,7 +8,7 @@ export const PurpleBackground = styled.div`
    flex-direction: column;
    justify-content: space-around;
    align-items: flex-start;
-   padding: 7%;
+   padding: 100px 100px 50px 100px;
 `;
 
 export const Title = styled.div`
@@ -24,15 +24,21 @@ export const CategoryContainer = styled.div<{ isSelected: boolean }>`
    align-items: center;
    color: ${({ theme, isSelected }) => (isSelected ? theme.colors.orange : theme.colors.white)};
    cursor: pointer;
-   font-size: 18px;
+   font-size: 17px;
    font-weight: 400;
-   padding: 25px 50px;
-   margin-left: 25px;
+   padding: 5px 70px;
+
+   &:hover {
+      background-color: ${({ theme }) => theme.colors.purple};
+      color: ${({ theme, isSelected }) => (isSelected ? theme.colors.orange : theme.colors.white)};
+   }
 `;
 
 export const CategoriesWrapper = styled.div`
    display: flex;
    justify-content: space-between;
    align-items: center;
-   width: 400px;
+   border-bottom: 1px solid ${({ theme }) => theme.colors.white};
+   width: fit-content;
+   margin: 10px 0px 15px 22px;
 `;

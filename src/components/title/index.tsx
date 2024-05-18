@@ -1,15 +1,15 @@
 import * as S from "./style";
 
-type Props = {
+interface TitleProps {
    iconSrc?: string;
    iconSize?: string;
    color?: string;
    fontWeight?: string;
    fontSize?: string;
    children: React.ReactNode;
-};
+}
 
-export const Title = ({ iconSrc, iconSize, color, fontWeight, fontSize, children }: Props) => {
+export const Title = ({ iconSrc, iconSize, color, fontWeight, fontSize, children }: TitleProps) => {
    return (
       <>
          <S.StyledTitle color={color} fontWeight={fontWeight} fontSize={fontSize}>

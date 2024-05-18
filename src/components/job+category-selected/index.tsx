@@ -2,11 +2,11 @@ import { IconContext } from "react-icons";
 import { BiRightArrowAlt } from "react-icons/bi";
 import * as S from "./style";
 
-type Props = {
+interface JobAndCategoryProps {
    info: string;
-};
+}
 
-export const JobAndCategorySelected = ({ info }: Props) => {
+export const JobAndCategorySelected = ({ info }: JobAndCategoryProps) => {
    return (
       <>
          <S.CardBackground>
@@ -16,7 +16,7 @@ export const JobAndCategorySelected = ({ info }: Props) => {
                   <S.CardInfo>{info}</S.CardInfo>
                </div>
                <div>
-                  <IconContext.Provider value={{ color: "#1a1033", size: "28px" }}>{<BiRightArrowAlt />}</IconContext.Provider>
+                  <IconContext.Provider value={{ color: "#1a1033", size: "22px" }}>{<BiRightArrowAlt />}</IconContext.Provider>
                </div>
             </S.CardContainer>
          </S.CardBackground>
