@@ -2,11 +2,11 @@ import styled from "styled-components";
 
 export const Container = styled.div`
    background-color: white;
-   padding: 35px 10px 12px 10px;
-   border-radius: 10px;
+   padding: 35px 11px 12px 11px;
+   border-radius: 8px;
    position: absolute;
-   right: 107px;
-   margin-top: -25em;
+   right: 120px;
+   margin-top: -32.1em;
    height: fit-content;
 `;
 
@@ -36,10 +36,15 @@ export const InnerContainer = styled.div`
 `;
 
 export const CircleImage = styled.img`
-   width: 65px;
+   width: 62px;
 `;
 
 export const IconWrapper = styled.div`
    position: absolute;
    margin-left: 6px;
+   margin-top: 6px;
+`;
+
+export const InfoDiv = styled.div`
+   margin-bottom: 4px;
 `;

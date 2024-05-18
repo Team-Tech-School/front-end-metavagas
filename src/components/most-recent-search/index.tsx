@@ -12,7 +12,7 @@ const RecentSearchButton = ({ title }: ButtonProps) => {
 export const MostRecentSearch = () => {
    return (
       <S.Container>
-         <Title color="#1a1033" fontWeight="500" fontSize="14px">
+         <Title color="#1a1033" fontWeight="400" fontSize="14px">
             Buscas mais recentes:
          </Title>
          <S.ContentDiv>

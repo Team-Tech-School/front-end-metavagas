@@ -25,9 +25,8 @@ export const PurpleBackground = styled.div`
 
 export const ButtonsDiv = styled.div`
    display: flex;
-
    justify-content: space-between;
-   padding-right: 30px;
+   margin-right: 80px;
 
    button {
       margin-right: 20px;
@@ -44,8 +43,8 @@ export const ContactAndAddressDiv = styled.div`
    display: flex;
    flex-direction: column;
    align-items: start;
-   justify-content: start;
-   margin-left: 110px;
+   justify-content: space-between;
+   margin-left: 85px;
 `;
 
 export const Title = styled.div`
@@ -55,6 +54,12 @@ export const Title = styled.div`
 
 export const Information = styled.div`
    color: ${({ theme }) => theme.colors.white};
-   font-size: 16.5px;
    font-weight: ${({ theme }) => theme.fontWeight.middle};
+   font-size: 16.5px;
+`;
+
+export const TitleContainer = styled.div<{ marginTop?: string; marginBottom?: string; marginLeft?: string }>`
+   margin-top: ${(props) => props.marginTop || "0"};
+   margin-bottom: ${(props) => props.marginBottom || "0"};
+   margin-left: ${(props) => props.marginLeft || "0"};
 `;

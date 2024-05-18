@@ -6,28 +6,28 @@ import { CgScreen } from "react-icons/cg";
 import { GrLocation } from "react-icons/gr";
 import { FaBriefcase } from "react-icons/fa";
 
-type Props = {
+interface JobSectionProps {
    children: React.ReactNode;
    onClick: () => void;
    isSelected: boolean;
    icon?: JSX.Element;
-};
+}
 
-const jobs: any[] = ["React", "Javascript", ".Net", "PHP", "Python", "Java", "NodeJS", "Slack", "Redux", "NestJS", "PostgreSQL", "TypeORM"];
+const jobs: any[] = ["React", "Javascript", ".Net", "PHP", "Python", "Java", "NodeJS", "Slack", "Redux", "NestJS", "PostgreSQL", "TypeORM", "NextJS", "Ruby On Rails", "C#", "Kotlin"];
 
-const Category = ({ onClick, isSelected, children, icon }: Props) => {
+const Category = ({ onClick, isSelected, children, icon }: JobSectionProps) => {
    return (
       <>
          {isSelected ? (
-            <S.CategoryContainer isSelected={isSelected} onClick={onClick} style={{ borderBottom: "3px solid #fbb04d" }}>
-               <div style={{ margin: "18px 8px 10px 0px" }}>
+            <S.CategoryContainer isSelected={isSelected} onClick={onClick} style={{ borderBottom: "2px solid #e18309" }}>
+               <div style={{ margin: "18px 10px 10px -1px" }}>
                   <IconContext.Provider value={{ color: "#fbb04d", size: "22px" }}>{icon}</IconContext.Provider>
                </div>
                {children}
             </S.CategoryContainer>
          ) : (
             <S.CategoryContainer isSelected={isSelected} onClick={onClick}>
-               <div style={{ margin: "18px 8px 10px 0px" }}>
+               <div style={{ margin: "18px 10px 10px -1px" }}>
                   <IconContext.Provider value={{ color: "#f1f1f1", size: "22px" }}>{icon}</IconContext.Provider>
                </div>
                {children}
@@ -38,7 +38,7 @@ const Category = ({ onClick, isSelected, children, icon }: Props) => {
 };
 
 export const JobsSection = () => {
-   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+   const [selectedCategory, setSelectedCategory] = useState<string | null>("Tecnologia");
 
    const handleCategoryClick = (category: string) => {
       setSelectedCategory(category);
