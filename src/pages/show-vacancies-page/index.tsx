@@ -18,6 +18,7 @@ import { Checkbox } from "../../components/checkbox's/chekbox";
 import { SalaryRangeCheckbox } from "../../components/checkbox's/checkbox-ranger";
 import { NumberVacancies } from "../../components/number-vacancies";
 import { BlurredImageWith } from "../../components/table-search";
+import { InfoJobs } from "../../components/info-jobs";
 
 export const ShowVacanciesPage = () => {
   // State para os filtros de busca
@@ -192,23 +193,24 @@ export const ShowVacanciesPage = () => {
 
           <S.ResultDiv>
             <S.ButtonAboveImages>
-               <OrangeButton title={"Cadastre-se para visualizar"} link="/fazer-cadastro"/>
+              <OrangeButton
+                title={"Cadastre-se para visualizar"}
+                link="/fazer-cadastro"
+              />
             </S.ButtonAboveImages>
             <S.ButtonAboveImages>
-               <OrangeButton title={"Cadastre-se para visualizar"} link="/fazer-cadastro"/>
+              <OrangeButton
+                title={"Cadastre-se para visualizar"}
+                link="/fazer-cadastro"
+              />
             </S.ButtonAboveImages>
-           
+
             <S.GraphicDiv>
-              <BlurredImageWith blurred={false} src={tableBrazil} />
-              <BlurredImageWith blurred={false} src={tableReact} />
+              <BlurredImageWith blurred={true} src={tableBrazil} />
+              <BlurredImageWith blurred={true} src={tableReact} />
             </S.GraphicDiv>
             <div>
-              <h1>Resultado da Pesquisa</h1>
-              <ul>
-                {apiResults.map((result, index) => (
-                  <li key={index}>{result}</li>
-                ))}
-              </ul>
+              <InfoJobs />
             </div>
           </S.ResultDiv>
         </S.ContainerFilterResult>

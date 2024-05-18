@@ -1,3 +1,4 @@
+
 import styled from "styled-components";
 
 export const PurpleBackgroundDiv = styled.div`
@@ -15,8 +16,8 @@ export const DivButton = styled.div`
 
 export const ContainerBodyPageDIV = styled.div`
 margin-top: 30px;
-margin-left: 140px;
-margin-right: 50px;
+margin-left: 110px;
+margin-right: 40px;
 margin-bottom: 30px;
 `
 export const ContainerFilterResult = styled.div`
@@ -42,6 +43,7 @@ box-shadow: 0px 15px 35px 0px rgba(208, 208, 208, 0.2); /* Sombra definida com a
 export const HeadDivisionDiv = styled.div`
 display: flex;
 justify-content: space-between;
+margin-right: 20px;
 `
 export const FilterTitle = styled.div`
 font-family: 'Poppins', sans-serif;
@@ -56,29 +58,28 @@ font-family: 'Poppins', sans-serif;
 font-weight: 400;
 font-size: 12px;
 line-height: 16.8px;
-color: #6950A1;
- 
-  cursor: pointer;
+color: #6950A1; 
+cursor: pointer;
+margin-top: 4px;
 `;
 export const ResultDiv = styled.div`
 border: 2px solid ${({ theme }) => theme.colors.darkPurple};
 width: 100%;
 margin-top: 30px;
-margin-left: 8px;
 margin-bottom: 30px;
 `
 export const ButtonAboveImages = styled.div`
   position: absolute;
-  top:87%; /* Ajuste conforme necessário */
-  left: 48%; /* Ajuste conforme necessário */
+  top:87%; 
+  left: 45%; 
   transform: translateX(-50%);
   z-index: 1; /* Para ficar acima das imagens */
   &:nth-child(1) {
     top:87%;
   }
   &:nth-child(2) {
-    top:87%; /* Ajuste conforme necessário */
-    left: 81%; /* Ajuste conforme possível */
+    top:87%; 
+    left: 80%; 
   }
 
 `;
@@ -86,6 +87,5 @@ export const GraphicDiv = styled.div`
 display: flex;
 justify-content: space-between;
 margin-bottom: 30px;
-
-
 `
+

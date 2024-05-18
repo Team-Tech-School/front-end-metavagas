@@ -6,7 +6,7 @@ export const blurredStyle = css`
 `;
 export const Container = styled.div<{ blurred?: boolean }>`
 position: relative;
-width: 425px;
+width: 440px;
 height: 280px;
 display: flex;
 align-items: center;
