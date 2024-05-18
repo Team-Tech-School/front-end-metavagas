@@ -5,7 +5,7 @@ interface ButtonProps {
    title: string;
 }
 
-const RecentSearchButton = ({ title }: ButtonProps) => {
+export const RecentSearchButton = ({ title }: ButtonProps) => {
    return <S.Button>{title}</S.Button>;
 };
 

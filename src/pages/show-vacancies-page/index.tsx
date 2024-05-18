@@ -18,7 +18,8 @@ import { Checkbox } from "../../components/checkbox's/chekbox";
 import { SalaryRangeCheckbox } from "../../components/checkbox's/checkbox-ranger";
 import { NumberVacancies } from "../../components/number-vacancies";
 import { BlurredImageWith } from "../../components/table-search";
-import { InfoJobs } from "../../components/info-jobs";
+import { InfoJobs } from "../../components/info-jobs-vacancy";
+import { SaveSearch } from "../../components/save-search";
 
 export const ShowVacanciesPage = () => {
   // State para os filtros de busca
@@ -140,6 +141,11 @@ export const ShowVacanciesPage = () => {
               updateSearchPlaceholder={updateSearchPlaceholder}
             />
           </S.DivButton>
+
+          <S.SaveSearchComponent>
+             <SaveSearch/>
+          </S.SaveSearchComponent>
+
         </S.PurpleBackgroundDiv>
       </div>
 
@@ -209,9 +215,10 @@ export const ShowVacanciesPage = () => {
               <BlurredImageWith blurred={true} src={tableBrazil} />
               <BlurredImageWith blurred={true} src={tableReact} />
             </S.GraphicDiv>
-            <div>
-              <InfoJobs />
-            </div>
+            <S.ContainerInfoJobs>
+              <InfoJobs page={true} newVacancy={true} />
+              <InfoJobs page={true} newVacancy={false} />
+            </S.ContainerInfoJobs>
           </S.ResultDiv>
         </S.ContainerFilterResult>
       </S.ContainerBodyPageDIV>
