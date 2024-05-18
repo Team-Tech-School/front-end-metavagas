@@ -3,14 +3,14 @@ import Phone from "../../../assets/icons/telefone.png";
 import Email from "../../../assets/icons/email.png";
 import Location from "../../../assets/icons/local.png";
 import { OrangeButton, SmallButton, Title } from "../../index";
-import * as S from "./style";
 import { useState, useEffect } from "react";
+import * as S from "./style";
 
-type Props = {
+interface FooterProps {
    showButton: boolean;
-};
+}
 
-export const Footer = ({ showButton }: Props) => {
+export const Footer = ({ showButton }: FooterProps) => {
    const [isShowButton, setIsShowButton] = useState(showButton);
 
    useEffect(() => {
@@ -24,24 +24,37 @@ export const Footer = ({ showButton }: Props) => {
                <S.LogoAndContactDiv>
                   <S.Logo src={Logo} />
                   <S.ContactAndAddressDiv>
-                     <Title color="#fbb04d" fontWeight="400" fontSize="16px">
-                        Contato e Endereço
-                     </Title>
-                     <Title iconSrc={Phone} iconSize="28px" color="#f1f1f1" fontWeight="300" fontSize="16px">
-                        4003-5442
-                     </Title>
-                     <Title iconSrc={Email} iconSize="28px" color="#f1f1f1" fontWeight="300" fontSize="16px">
-                        contato@arnia.com.br
-                     </Title>
-                     <Title iconSrc={Location} iconSize="28px" color="#f1f1f1" fontWeight="300" fontSize="16px">
-                        Av. do Contorno, 2905 Santa Efigênia, <br /> Belo Horizonte - MG, 30110-080
-                     </Title>
+                     <S.TitleContainer marginBottom="10px">
+                        <Title color="#fbb04d" fontWeight="500" fontSize="15px">
+                           Contato e Endereço
+                        </Title>
+                     </S.TitleContainer>
+                     <S.TitleContainer marginBottom="13px">
+                        <Title iconSrc={Phone} iconSize="23px" color="#f1f1f1" fontWeight="300" fontSize="15px">
+                           4003-5442
+                        </Title>
+                     </S.TitleContainer>
+                     <S.TitleContainer marginBottom="13px">
+                        <Title iconSrc={Email} iconSize="23px" color="#f1f1f1" fontWeight="300" fontSize="15px">
+                           contato@arnia.com.br
+                        </Title>
+                     </S.TitleContainer>
+                     <S.TitleContainer marginBottom="13px">
+                        <Title iconSrc={Location} iconSize="23px" color="#f1f1f1" fontWeight="300" fontSize="15px">
+                           Av. do Contorno, 2905 Santa Efigênia,
+                        </Title>
+                        <S.TitleContainer marginTop="8px" marginLeft="30px">
+                           <Title color="#f1f1f1" fontWeight="300" fontSize="15px">
+                              Belo Horizonte - MG, 30110-080
+                           </Title>
+                        </S.TitleContainer>
+                     </S.TitleContainer>
                   </S.ContactAndAddressDiv>
                </S.LogoAndContactDiv>
                {isShowButton ? (
                   <S.ButtonsDiv>
                      <SmallButton title="Entrar" link="/fazer-login" />
-                     <OrangeButton title="Cadastre-se gratuitamente" link="/fazer-cadastro" />
+                     <OrangeButton title="Cadastre-se gratuitamente" link="/fazer-cadastro" width="medium" />
                   </S.ButtonsDiv>
                ) : null}
             </S.ContentDiv>

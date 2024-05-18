@@ -1,56 +1,36 @@
-import { Input } from "../index";
-import styled from "styled-components";
+import { Input, OrangeButton } from "../index";
+import * as S from "./style";
 
 type FormProps = {
    isSignup: boolean;
    formTitle: string;
    linkText: string;
    linkHref: string;
+   buttonTitle: string;
 };
 
-const FormWrapper = styled.div`
-   background-color: white;
-   padding: 20px;
-   border-radius: 10px;
-   height: fit-content;
-   width: 480px;
-   margin: auto;
-   position: absolute;
-   top: 30%;
-`;
-
-const FormTitle = styled.h2`
-   text-align: center;
-   color: ${({ theme }) => theme.colors.darkPurple};
-`;
-
-const LinkWrapper = styled.div`
-   margin-top: 20px;
-   text-align: center;
-`;
-
-const FormLink = styled.a`
-   color: ${({ theme }) => theme.colors.blue};
-   text-decoration: none;
-
-   &:hover {
-      text-decoration: underline;
-   }
-`;
-
-export const Form = ({ isSignup, formTitle, linkText, linkHref }: FormProps) => {
+export const Form = ({ isSignup, formTitle, linkText, linkHref, buttonTitle }: FormProps) => {
    return (
-      <FormWrapper>
-         <FormTitle>{formTitle}</FormTitle>
+      <S.FormWrapper>
+         <S.FormTitle>{formTitle}</S.FormTitle>
          <form>
-            {isSignup && <Input id="name" placeholder="Digite seu nome" label="Nome" size="20px" />}
-            <Input id="email" placeholder="Digite seu email" label="Email" size="20px" />
-            <Input id="password" placeholder="Digite sua senha" label="Senha" size="20px" isForPasswordShow />
-            {isSignup && <Input id="confirmPassword" placeholder="Confirme sua senha" label="Confirmar Senha" size="20px" isForPasswordShow />}
+            <S.DivForMargin marginBottom="65px">{isSignup && <Input id="name" placeholder="Digite seu nome" label="Seu nome" padding="20px 55px 20px 17px" />}</S.DivForMargin>
+            <S.DivForMargin marginTop="-25px" marginBottom="45px">
+               <Input id="email" placeholder="Digite seu email" label="Seu e-mail" padding="20px 55px 20px 17px" />
+            </S.DivForMargin>
+            <S.DivForMargin marginBottom="45px">
+               <Input id="password" placeholder="Digite sua senha" label="Senha" isForPasswordShow={true} iconColor="gray" size="20px" padding="20px 55px 20px 17px" />
+            </S.DivForMargin>
+            <S.DivForMargin marginBottom="45px">
+               {isSignup && <Input id="confirmPassword" placeholder="Confirme sua senha" label="Confirmar senha" isForPasswordShow={true} iconColor="gray" size="20px" padding="20px 55px 20px 17px" />}
+            </S.DivForMargin>
          </form>
-         <LinkWrapper>
-            <FormLink href={linkHref}>{linkText}</FormLink>
-         </LinkWrapper>
-      </FormWrapper>
+         <S.DivForMargin marginTop="-15px">
+            <OrangeButton title={buttonTitle} link="/buscar-vagas" width="large" />
+         </S.DivForMargin>
+         <S.LinkWrapper>
+            <S.FormLink href={linkHref}>{linkText}</S.FormLink>
+         </S.LinkWrapper>
+      </S.FormWrapper>
    );
 };

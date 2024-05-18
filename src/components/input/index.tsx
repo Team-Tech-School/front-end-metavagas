@@ -1,19 +1,21 @@
-import { useState } from "react";
+import { DetailedHTMLProps, InputHTMLAttributes, useState } from "react";
 import * as S from "./style";
 import { IconContext } from "react-icons";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
-type InputProps = {
+interface InputProps extends DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> {
    id: string;
    placeholder: string;
    icon?: any;
    iconColor?: string;
-   size: string;
+   size?: any;
    label: string;
    whiteLabel?: boolean;
    isForPasswordShow?: boolean;
-};
+   padding?: string;
+}
 
-export const Input = ({ id, placeholder, icon, iconColor, size, label, whiteLabel = false, isForPasswordShow = false }: InputProps) => {
+export const Input = ({ id, placeholder, icon, iconColor, size, label, whiteLabel = false, isForPasswordShow = false, padding = "20px 10px 20px 50px" }: InputProps) => {
    const [showPassword, setShowPassword] = useState(false);
 
    const toggleShowPassword = () => {
@@ -31,12 +33,12 @@ export const Input = ({ id, placeholder, icon, iconColor, size, label, whiteLabe
                   {icon && !isForPasswordShow && <S.Icon left>{icon}</S.Icon>}
                   {isForPasswordShow && (
                      <S.Icon right onClick={toggleShowPassword}>
-                        {showPassword ? "🙈" : "👁️"}
+                        {showPassword ? <FaEyeSlash /> : <FaEye />}
                      </S.Icon>
                   )}
                </div>
             </IconContext.Provider>
-            <S.Input id={id} type={isForPasswordShow && showPassword ? "text" : "password"} placeholder={placeholder} />
+            <S.Input id={id} type={isForPasswordShow ? (showPassword ? "text" : "password") : "text"} placeholder={placeholder} padding={padding} />
          </S.IconAndInput>
       </S.InputWrapper>
    );

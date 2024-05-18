@@ -8,7 +8,7 @@ export const PurpleBackground = styled.div`
    flex-direction: column;
    justify-content: space-around;
    align-items: flex-start;
-   padding: 7%;
+   padding: 100px 100px 50px 100px;
 `;
 
 export const Title = styled.div`
@@ -26,7 +26,7 @@ export const CategoryContainer = styled.div<{ isSelected: boolean }>`
    cursor: pointer;
    font-size: 17px;
    font-weight: 400;
-   padding: 5px 75px;
+   padding: 5px 70px;
 
    &:hover {
       background-color: ${({ theme }) => theme.colors.purple};
@@ -40,7 +40,5 @@ export const CategoriesWrapper = styled.div`
    align-items: center;
    border-bottom: 1px solid ${({ theme }) => theme.colors.white};
    width: fit-content;
-   margin-top: 10px;
-   margin-left: 30px;
-   margin-bottom: 20px;
+   margin: 10px 0px 15px 22px;
 `;

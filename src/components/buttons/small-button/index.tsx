@@ -1,12 +1,13 @@
 import { useNavigate } from "react-router-dom";
 import * as S from "./style";
+import { ButtonHTMLAttributes } from "react";
 
-type Props = {
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
    title: string;
    link?: string;
-};
+}
 
-export const SmallButton = ({ title, link }: Props) => {
+export const SmallButton = ({ title, link }: ButtonProps) => {
    const navigate = useNavigate();
 
    const handleClick = () => {

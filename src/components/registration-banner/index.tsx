@@ -16,17 +16,17 @@ export const RegistrationBanner = () => {
             </S.IconWrapper>
          </S.InnerContainer>
          <S.TextContainer>
-            <div style={{ marginBottom: "4px" }}>
-               <Title color="#1a1033" fontSize="16px" fontWeight="400">
+            <S.InfoDiv>
+               <Title color="#1a1033" fontSize="15px" fontWeight="400">
                   Faça seu <S.Underline>cadastro gratuito</S.Underline> e
                </Title>
-            </div>
-            <div style={{ marginBottom: "4px" }}>
-               <Title color="#1a1033" fontSize="16px" fontWeight="400">
+            </S.InfoDiv>
+            <S.InfoDiv>
+               <Title color="#1a1033" fontSize="15px" fontWeight="400">
                   encontre vagas de acordo
                </Title>
-            </div>
-            <Title color="#1a1033" fontSize="16px" fontWeight="400">
+            </S.InfoDiv>
+            <Title color="#1a1033" fontSize="15px" fontWeight="400">
                com o seu perfil.
             </Title>
          </S.TextContainer>

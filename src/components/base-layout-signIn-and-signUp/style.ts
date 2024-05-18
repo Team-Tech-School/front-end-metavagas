@@ -1,11 +1,11 @@
 import styled from "styled-components";
 
 export const ContentDiv = styled.div`
-   height: 75vh;
+   height: 80vh;
    display: flex;
    justify-content: center;
    align-items: center;
-   margin: 20px 50px;
+   margin: 50px 50px 0px 50px;
 `;
 
 export const TitleDiv = styled.div`
@@ -14,8 +14,8 @@ export const TitleDiv = styled.div`
 
 export const Img = styled.img`
    position: absolute;
-   left: 19%;
-   margin-top: -45px;
+   left: 18.8%;
+   margin-top: -54px;
 `;
 
 export const TitleAndCardsWrapper = styled.div`
