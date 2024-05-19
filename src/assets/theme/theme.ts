@@ -4,6 +4,7 @@ export const theme = {
       purple: "#271d3e",
       darkPurple: "#1a1033",
       lightPurple: "#6950a1",
+      xtLightPurple: "#b2a1d9",
       black: "#000",
       white: "#f1f1f1",
       darkGray: "#4a4a68",

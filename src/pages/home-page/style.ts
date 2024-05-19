@@ -1,33 +1,26 @@
 import styled from "styled-components";
 
 export const WhiteBackgroundToInputs = styled.div`
-   width: 86vw;
-   height: 30vh;
-   margin-top: -6em;
+   width: 82.5%;
+   height: fit-content;
+   top: 73%;
+   margin: 0 8.8% 0 9%;
    position: absolute;
    border-radius: 15px;
-   right: 5em;
-   background-color: #ffffff;
-   box-shadow: 0 2px 14px rgba(0, 0, 0, 0.1);
-`;
-
-export const WhiteBackground = styled.div`
-   width: 100%;
-   height: fit-content;
-   background-color: white;
-   margin-top: 125px;
+   background-color: #fff;
+   box-shadow: 0 1px 3px rgba(211, 211, 211, 0.4), 0 1px 12px rgba(211, 211, 211, 0.4);
 `;
 
 export const PurpleBackgroundDiv = styled.div`
-   margin-top: -5px;
+   margin-top: -1.6%;
    background-color: ${({ theme }) => theme.colors.darkPurple};
    width: 100%;
-   height: 77vh;
+   height: 75vh;
 `;
 
 export const ContentDiv = styled.div`
-   padding: 120px 50px 100px 25px;
-   margin-left: 100px;
+   padding: 9.6% 4% 8% 1%;
+   margin-left: 8.5%;
    display: flex;
    flex-direction: column;
    align-items: start;
@@ -35,12 +28,12 @@ export const ContentDiv = styled.div`
 `;
 
 export const ForMainTitleDiv = styled.div`
-   margin-top: -15px;
-   margin-bottom: 13px;
+   margin-top: -1px;
+   margin-bottom: 10.4%;
 `;
 
 export const ForWhiteTitleDiv = styled.div`
-   margin-top: -30px;
+   margin-top: -5%;
 `;
 
 export const StyledSpan = styled.span`
@@ -49,7 +42,33 @@ export const StyledSpan = styled.span`
 `;
 
 export const StyledImg = styled.img`
-   right: 40px;
-   top: 115px;
+   right: 8.8%;
+   top: 16%;
+   width: 50%;
+   position: absolute;
+`;
+
+export const RecentJobsTitleDiv = styled.div`
+   margin: 11.5% 6.5% 2% 9.5%;
+`;
+
+export const VacancyCardsContainer = styled.div`
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   flex-wrap: wrap;
+   margin: 0.6% 2.2% 1% 3%;
+`;
+
+export const OrangeButtonContainer = styled.div`
+   margin: 2% 0;
+`;
+
+export const StyledHr = styled.hr`
+   border-color: orange;
+   border-style: solid;
+   border-width: 1px 0 0;
+   width: 83%;
+   margin: 0% 8.6%;
    position: absolute;
 `;

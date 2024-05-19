@@ -1,21 +1,33 @@
 import styled from "styled-components";
 
 interface ButtonProps {
-   width?: "large" | "small";
+   width?: "large" | "medium" | "small";
 }
 
+const getWidth = (width?: "large" | "medium" | "small") => {
+   switch (width) {
+      case "large":
+         return "430px";
+      case "medium":
+         return "290px";
+      case "small":
+         return "150px";
+      default:
+         return "fit-content";
+   }
+};
+
 export const Button = styled.button<ButtonProps>`
-   ${({ width }) => (width === "large" ? "width: 290px;" : width === "small" ? "width: 170px;" : "")};
-   padding: 15px 20px;
+   width: ${({ width }) => getWidth(width)};
+   padding: 12px;
    border: none;
    border-radius: ${({ theme }) => theme.borderRadius.md};
    background-color: ${({ theme }) => theme.colors.orange};
-   font-size: 17px;
+   font-size: 16px;
    font-weight: ${({ theme }) => theme.fontWeight.midMedium};
    color: ${({ theme }) => theme.colors.darkPurple};
    letter-spacing: 0.2px;
    cursor: pointer;
-   width: fit-content;
 
    &:hover {
       color: ${({ theme }) => theme.colors.darkPurple};

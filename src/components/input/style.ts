@@ -1,11 +1,35 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
-export const Icon = styled.div`
+interface IconProps {
+   left?: boolean;
+   right?: boolean;
+}
+
+interface LabelProps {
+   whiteLabel?: boolean;
+}
+
+interface InputProps {
+   padding?: string;
+}
+
+export const Icon = styled.div<IconProps>`
    position: absolute;
-   left: 30px;
-   top: 55%;
+   top: 65%;
    transform: translateY(-50%);
    cursor: pointer;
+
+   ${({ left }) =>
+      left &&
+      css`
+         left: 25px;
+      `}
+
+   ${({ right }) =>
+      right &&
+      css`
+         right: 30px;
+      `}
 `;
 
 export const IconAndInput = styled.div`
@@ -34,34 +58,40 @@ export const InputWrapper = styled.div`
    }
 `;
 
-export const Label = styled.label`
-   font-size: 17px;
-   color: ${({ theme }) => theme.colors.darkPurple};
-   font-weight: ${({ theme }) => theme.fontWeight.midMedium};
+export const Label = styled.label<LabelProps>`
+   font-size: 15px;
+   font-weight: 500;
    letter-spacing: 0.1px;
    position: absolute;
    margin-top: -20px;
-   left: 10px;
+   left: 7px;
    padding: 0px 5px;
+   color: ${({ theme }) => theme.colors.darkPurple};
+
+   ${({ whiteLabel, theme }) =>
+      whiteLabel &&
+      css`
+         color: ${theme.colors.white};
+      `}
 `;
 
-export const Input = styled.input`
-   font-size: 17px;
+export const Input = styled.input<InputProps>`
+   font-size: 15px;
    border: 1px solid ${({ theme }) => theme.colors.lightGray};
-   height: 55px;
+   height: 50px;
    background-color: "#f1f1f1";
    border-radius: 9px;
-   padding: 27px 10px 27px 50px;
+   padding: ${({ padding }) => padding};
    outline: none;
    color: ${({ theme }) => theme.colors.darkPurple};
-   width: 450px;
-   margin: 12px;
+   width: 430px;
+   margin: 10px 7px 0px 7px;
 
    &::placeholder {
       color: ${({ theme }) => theme.colors.midGray};
       font-style: italic;
-      font-size: 17px;
-      padding: 0px 3px;
+      font-size: 14px;
+      padding: 0px -1px;
    }
 
    &:focus {

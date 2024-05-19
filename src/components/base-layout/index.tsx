@@ -6,7 +6,7 @@ export const BaseLayout = () => {
    return (
       <>
          <S.HeaderWrapper>
-            <Header />
+            <Header isLoggedIn={true} />
          </S.HeaderWrapper>
          <S.MainContent>
             <Outlet />

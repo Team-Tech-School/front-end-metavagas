@@ -6,8 +6,6 @@ export const StyledTitle = styled.h1<{ color?: string; fontSize?: string; fontWe
    font-weight: ${(props) => props.fontWeight || "normal"};
    display: flex;
    align-items: center;
-   letter-spacing: 0.1px;
-   padding: 8px;
 `;
 
 export const IconImage = styled.img<{ iconSize?: string }>`
