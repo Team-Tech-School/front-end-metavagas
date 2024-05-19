@@ -5,8 +5,10 @@ import { ButtonHTMLAttributes } from "react";
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
    title: string;
    link?: string;
+
    width?: "large" | "medium" | "small";
 }
+
 
 export const OrangeButton = ({ title, link, width }: ButtonProps) => {
    const navigate = useNavigate();
