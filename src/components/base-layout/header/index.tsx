@@ -20,7 +20,7 @@ export const Header = ({ isLoggedIn }: HeaderProps) => {
                ) : (
                   <S.ButtonsWrapper>
                      <SmallButton title="Entrar" link="/fazer-login" />
-                     <OrangeButton title="Cadastre-se gratuitamente" link="/fazer-cadastro" width="medium" />
+                     <OrangeButton title="Cadastre-se gratuitamente" link="/fazer-cadastro" width="large" />
                   </S.ButtonsWrapper>
                )}
             </S.ContentWrapper>

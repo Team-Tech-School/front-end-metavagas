@@ -54,7 +54,7 @@ export const Footer = ({ showButton }: FooterProps) => {
                {isShowButton ? (
                   <S.ButtonsDiv>
                      <SmallButton title="Entrar" link="/fazer-login" />
-                     <OrangeButton title="Cadastre-se gratuitamente" link="/fazer-cadastro" width="medium" />
+                     <OrangeButton title="Cadastre-se gratuitamente" link="/fazer-cadastro" width="medium"  />
                   </S.ButtonsDiv>
                ) : null}
             </S.ContentDiv>
