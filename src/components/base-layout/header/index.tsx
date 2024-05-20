@@ -1,6 +1,6 @@
 import Logo from "../../../assets/images/metavagas.png";
-import { OrangeButton, SmallButton } from "../../buttons/index";
-import { UserProfile } from "../index1";
+import { OrangeButton, SmallButton } from "../../index";
+import { UserProfile } from "..";
 import * as S from "./style";
 
 interface HeaderProps {
