@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom";
 import * as S from "./style";
-import { Header, Footer } from "./index1";
+import { Header, Footer } from "../index";
 
 export const BaseLayout = () => {
    return (
