@@ -18,7 +18,7 @@ export const FormWrapper = styled.div`
 `;
 
 export const FormTitle = styled.div`
-   margin-bottom: 10px;
+   margin-bottom: 15px;
    margin-top: -10px;
    font-size: 22px;
    font-weight: 700;
@@ -43,7 +43,9 @@ export const FormLink = styled.a`
    }
 `;
 
-export const DivForMargin = styled.div<{ marginTop?: string; marginBottom?: string }>`
+export const DivForMargin = styled.div<{ marginTop?: string; marginBottom?: string; marginLeft?: string; marginRight?: string }>`
    margin-top: ${(props) => props.marginTop || "0"};
    margin-bottom: ${(props) => props.marginBottom || "0"};
+   margin-left: ${(props) => props.marginLeft || "0"};
+   margin-right: ${(props) => props.marginRight || "0"};
 `;
