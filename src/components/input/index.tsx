@@ -1,4 +1,4 @@
-import { DetailedHTMLProps, InputHTMLAttributes, useState } from "react";
+import { ChangeEvent, DetailedHTMLProps, InputHTMLAttributes, useState } from "react";
 import * as S from "./style";
 import { IconContext } from "react-icons";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
@@ -13,9 +13,23 @@ interface InputProps extends DetailedHTMLProps<InputHTMLAttributes<HTMLInputElem
    whiteLabel?: boolean;
    isForPasswordShow?: boolean;
    padding?: string;
+   value: string;
+   onChange: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 
-export const Input = ({ id, placeholder, icon, iconColor, size, label, whiteLabel = false, isForPasswordShow = false, padding = "20px 10px 20px 50px" }: InputProps) => {
+export const Input = ({
+   id,
+   placeholder,
+   icon,
+   iconColor,
+   size,
+   label,
+   whiteLabel = false,
+   isForPasswordShow = false,
+   padding = "20px 10px 20px 50px",
+   value, // Destructure value prop
+   onChange, // Destructure onChange prop
+}: InputProps) => {
    const [showPassword, setShowPassword] = useState(false);
 
    const toggleShowPassword = () => {
@@ -38,7 +52,14 @@ export const Input = ({ id, placeholder, icon, iconColor, size, label, whiteLabe
                   )}
                </div>
             </IconContext.Provider>
-            <S.Input id={id} type={isForPasswordShow ? (showPassword ? "text" : "password") : "text"} placeholder={placeholder} padding={padding} />
+            <S.Input
+               id={id}
+               type={isForPasswordShow ? (showPassword ? "text" : "password") : "text"}
+               placeholder={placeholder}
+               padding={padding}
+               value={value} // Pass value to input
+               onChange={onChange} // Pass onChange to input
+            />
          </S.IconAndInput>
       </S.InputWrapper>
    );
