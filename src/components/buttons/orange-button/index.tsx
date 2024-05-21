@@ -4,24 +4,19 @@ import { ButtonHTMLAttributes } from "react";
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
    title: string;
-   link?: string;
+   // link?: string;
 
    width?: "large" | "medium" | "small";
 }
 
+export const OrangeButton = ({ title, width }: ButtonProps) => {
+   // const navigate = useNavigate();
 
-export const OrangeButton = ({ title, link, width }: ButtonProps) => {
-   const navigate = useNavigate();
+   // const handleClick = () => {
+   //    if (link) {
+   //       navigate(link);
+   //    }
+   // }; onClick={handleClick}
 
-   const handleClick = () => {
-      if (link) {
-         navigate(link);
-      }
-   };
-
-   return (
-      <S.Button onClick={handleClick} width={width}>
-         {title}
-      </S.Button>
-   );
+   return <S.Button width={width}>{title}</S.Button>;
 };
