@@ -1,6 +1,9 @@
+//import style
 import * as S from "./style";
+//import assets
 import AddUserIcon from "../../assets/icons/user-add-line.png";
 import EmailIcon from "../../assets/icons/mail-line.png";
+//import components
 import { Form, Title } from "../../components/index";
 
 export const SignUpPage = () => {

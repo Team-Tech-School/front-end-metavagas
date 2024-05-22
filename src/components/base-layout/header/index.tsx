@@ -1,8 +1,11 @@
+//import assets
 import Logo from "../../../assets/images/metavagas.png";
-import { OrangeButton, SmallButton } from "../../index";
-import { UserProfile } from "..";
+//import components
+import { OrangeButton, SmallButton, UserProfile } from "../../index";
+//import style
 import * as S from "./style";
 
+// tipagem
 interface HeaderProps {
    isLoggedIn: boolean;
 }

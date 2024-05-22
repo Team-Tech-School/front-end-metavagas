@@ -1,24 +1,32 @@
-import { FormEvent, useState } from "react";
+//import special components
+import { DetailedHTMLProps, FormEvent, FormHTMLAttributes, useState } from "react";
+//import components
 import { Input, OrangeButton } from "../index";
+//import style
 import * as S from "./style";
+//import toast
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+//import contexts
 import { useAuthContext } from "../../providers/auth-provider";
 
-type FormProps = {
+// tipagem
+interface FormProps extends DetailedHTMLProps<FormHTMLAttributes<HTMLFormElement>, HTMLFormElement> {
    isSignup: boolean;
    formTitle: string;
    linkText: string;
    linkHref: string;
    buttonTitle: string;
-};
+}
 
 export const Form = ({ isSignup, formTitle, linkText, linkHref, buttonTitle }: FormProps) => {
+   // States for each input of form.
    const [name, setName] = useState("");
    const [email, setEmail] = useState("");
    const [password, setPassword] = useState("");
    const [confirmPassword, setConfirmPassword] = useState("");
 
+   // Grabbing functions needed inside of context.
    const { register, login } = useAuthContext();
 
    const handleSubmit = async (e: FormEvent) => {

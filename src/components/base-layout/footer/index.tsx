@@ -1,16 +1,22 @@
+//import assets
 import Logo from "../../../assets/images/metavagas.png";
 import Phone from "../../../assets/icons/telefone.png";
 import Email from "../../../assets/icons/email.png";
 import Location from "../../../assets/icons/local.png";
+//import components
 import { OrangeButton, SmallButton, Title } from "../../index";
+// import hooks
 import { useState, useEffect } from "react";
+//import style
 import * as S from "./style";
 
+// tipagem
 interface FooterProps {
    showButton: boolean;
 }
 
 export const Footer = ({ showButton }: FooterProps) => {
+   // State made to show buttons if the user isn't logged in.
    const [isShowButton, setIsShowButton] = useState(showButton);
 
    useEffect(() => {
@@ -54,7 +60,7 @@ export const Footer = ({ showButton }: FooterProps) => {
                {isShowButton ? (
                   <S.ButtonsDiv>
                      <SmallButton title="Entrar" link="/fazer-login" />
-                     <OrangeButton title="Cadastre-se gratuitamente" link="/fazer-cadastro" width="medium"  />
+                     <OrangeButton title="Cadastre-se gratuitamente" link="/fazer-cadastro" width="medium" />
                   </S.ButtonsDiv>
                ) : null}
             </S.ContentDiv>

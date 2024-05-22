@@ -1,7 +1,10 @@
+//import assets
 import { IconContext } from "react-icons";
 import { BiRightArrowAlt } from "react-icons/bi";
+//import style
 import * as S from "./style";
 
+//tipagem
 interface JobAndCategoryProps {
    info: string;
 }

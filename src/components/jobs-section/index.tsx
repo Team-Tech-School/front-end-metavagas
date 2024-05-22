@@ -1,11 +1,16 @@
+//import assets
 import { IconContext } from "react-icons";
-import { JobAndCategorySelected, RegistrationBanner } from "../index";
-import * as S from "./style";
-import { useState } from "react";
 import { CgScreen } from "react-icons/cg";
 import { GrLocation } from "react-icons/gr";
 import { FaBriefcase } from "react-icons/fa";
+//import components
+import { JobAndCategorySelected, RegistrationBanner } from "../index";
+//import style
+import * as S from "./style";
+// import hooks
+import { useState } from "react";
 
+//tipagem
 interface JobSectionProps {
    children: React.ReactNode;
    onClick: () => void;
