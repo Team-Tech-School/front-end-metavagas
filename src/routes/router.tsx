@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { HomePage, SignUpPage, ShowVacanciesPage, SignInPage } from "../pages/index";
 import { BaseLayoutSignInSignUp, BaseLayout } from "../components/index";
+import { ShowVacanciesLogged } from "../pages/show-vacancies-logged";
 
 export default function Router() {
    return (
@@ -12,6 +13,7 @@ export default function Router() {
                   <Route path="fazer-login" element={<SignInPage />} />
                   <Route path="fazer-cadastro" element={<SignUpPage />} />
                </Route>
+               <Route path="buscar-vagas-logged" element={<ShowVacanciesLogged />} />
                <Route path="buscar-vagas" element={<ShowVacanciesPage />} />
             </Route>
          </Routes>

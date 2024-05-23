@@ -1,13 +1,15 @@
-import { useState } from "react";
+
 import * as S from "./style";
 
 interface CheckboxProps {
     title: string;
     opstions: string[];
     onFilterChange: (selectedFilters: string[]) => void;
+    selectedFilters: string[]
+    
 }
-export const Checkbox = ({title, opstions, onFilterChange}: CheckboxProps) => {
-    const [selectedFilters, setSelectedFilters] = useState<string[]>([]);
+export const Checkbox = ({title, opstions, onFilterChange, selectedFilters}: CheckboxProps) => {
+    
 
     const handleCheckboxChange = (option: string) => {
         const newFilters = selectedFilters.includes(option)
@@ -17,7 +19,7 @@ export const Checkbox = ({title, opstions, onFilterChange}: CheckboxProps) => {
         } else {
             newSelectedFilters.splice(newSelectedFilters.indexOf(option), 1);
         }
-        setSelectedFilters(newSelectedFilters);
+    
         onFilterChange(newSelectedFilters);
     }
 

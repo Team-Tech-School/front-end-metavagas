@@ -13,8 +13,8 @@ interface InputProps extends DetailedHTMLProps<InputHTMLAttributes<HTMLInputElem
    whiteLabel?: boolean;
    isForPasswordShow?: boolean;
    padding?: string;
-   value: string;
-   onChange: (e: ChangeEvent<HTMLInputElement>) => void;
+   value?: string;
+   onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 
 export const Input = ({

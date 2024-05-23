@@ -21,7 +21,7 @@ export const InfoJobs = ({page, newVacancy}: InfoJobsProps) => {
         
         <S.ContainerTitle>
            <div>
-                {newVacancy?<NewCard />:null}
+           {newVacancy && <NewCard />}
            </div>
          <div>
           <S.H1InfoJobs>Desenvolvedor de Sistemas Pleno</S.H1InfoJobs>
