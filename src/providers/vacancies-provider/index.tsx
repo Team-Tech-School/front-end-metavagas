@@ -40,7 +40,6 @@ export const VacanciesProvider = ({ children }: VacanciesProps) => {
    const fetchVacanciesForSelectedCategory = async (categoryType: string) => {
       try {
          const response = await api.get(`/vacancy?limit=12&${categoryType}=`);
-         console.log(response.data.vacancies);
          setVacancies(response.data.vacancies);
       } catch (error: any) {
          console.error("Something went wrong at fetchVacancies: ", error);
