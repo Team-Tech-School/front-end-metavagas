@@ -1,10 +1,28 @@
+//import assets
 import { IconContext } from "react-icons";
 import { FiUserPlus } from "react-icons/fi";
 import PurpleCircle from "../../assets/images/purple-circle.png";
+//import components
 import { Title } from "../index";
+//import style
 import * as S from "./style";
+// import special components
+import { useNavigate } from "react-router-dom";
 
-export const RegistrationBanner = () => {
+// tipagem
+interface RegistrationBannerProps {
+   link: string;
+}
+
+export const RegistrationBanner = ({ link }: RegistrationBannerProps) => {
+   const navigate = useNavigate();
+
+   const handleNavigate = () => {
+      if (link) {
+         navigate(link);
+      }
+   };
+
    return (
       <S.Container>
          <S.InnerContainer>
@@ -18,7 +36,7 @@ export const RegistrationBanner = () => {
          <S.TextContainer>
             <S.InfoDiv>
                <Title color="#1a1033" fontSize="15px" fontWeight="400">
-                  Faça seu <S.Underline>cadastro gratuito</S.Underline> e
+                  Faça seu <S.Underline onClick={handleNavigate}>cadastro gratuito</S.Underline> e
                </Title>
             </S.InfoDiv>
             <S.InfoDiv>

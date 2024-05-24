@@ -1,7 +1,11 @@
+//import style
 import * as S from "./style";
+
+//tipagem
 interface ButtonProps {
-    title: string;
+   title: string;
 }
+
 export const RecentSearchButton = ({ title }: ButtonProps) => {
-    return <S.Button>{title}</S.Button>;
- };
+   return <S.Button>{title}</S.Button>;
+};

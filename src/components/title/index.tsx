@@ -1,5 +1,7 @@
+//import style
 import * as S from "./style";
 
+//tipagem
 interface TitleProps {
    iconSrc?: string;
    iconSize?: string;

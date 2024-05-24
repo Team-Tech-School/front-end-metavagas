@@ -32,10 +32,11 @@ export const LinkWrapper = styled.div`
    text-align: center;
 `;
 
-export const FormLink = styled.a`
+export const FormLink = styled.div`
    color: ${({ theme }) => theme.colors.darkPurple};
    font-size: 15px;
    text-decoration: none;
+   cursor: pointer;
 
    &:hover {
       color: ${({ theme }) => theme.colors.blue};

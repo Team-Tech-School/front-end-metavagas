@@ -13,8 +13,11 @@ interface InputProps extends DetailedHTMLProps<InputHTMLAttributes<HTMLInputElem
    whiteLabel?: boolean;
    isForPasswordShow?: boolean;
    padding?: string;
-   value: string;
-   onChange: (e: ChangeEvent<HTMLInputElement>) => void;
+   value?: string;
+   onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
+   hasError?: boolean;
+   isActive?: boolean;
+   isSuccess?: boolean;
 }
 
 export const Input = ({
@@ -27,8 +30,11 @@ export const Input = ({
    whiteLabel = false,
    isForPasswordShow = false,
    padding = "20px 10px 20px 50px",
-   value, // Destructure value prop
-   onChange, // Destructure onChange prop
+   value,
+   onChange,
+   hasError,
+   isActive,
+   isSuccess,
 }: InputProps) => {
    const [showPassword, setShowPassword] = useState(false);
 
@@ -37,7 +43,7 @@ export const Input = ({
    };
 
    return (
-      <S.InputWrapper>
+      <S.InputWrapper className={`${hasError ? "error" : ""} ${isActive ? "active" : ""} ${isSuccess ? "success" : ""}`}>
          <S.Label htmlFor={id} whiteLabel={whiteLabel}>
             {label}
          </S.Label>
@@ -52,14 +58,7 @@ export const Input = ({
                   )}
                </div>
             </IconContext.Provider>
-            <S.Input
-               id={id}
-               type={isForPasswordShow ? (showPassword ? "text" : "password") : "text"}
-               placeholder={placeholder}
-               padding={padding}
-               value={value} // Pass value to input
-               onChange={onChange} // Pass onChange to input
-            />
+            <S.Input id={id} type={isForPasswordShow ? (showPassword ? "text" : "password") : "text"} placeholder={placeholder} padding={padding} value={value} onChange={onChange} />
          </S.IconAndInput>
       </S.InputWrapper>
    );

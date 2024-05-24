@@ -40,5 +40,5 @@ export const CategoriesWrapper = styled.div`
    align-items: center;
    border-bottom: 1px solid ${({ theme }) => theme.colors.white};
    width: fit-content;
-   margin: 10px 0px 15px 22px;
+   margin: 10px 0px 20px 22px;
 `;
