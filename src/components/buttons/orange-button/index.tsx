@@ -1,7 +1,10 @@
+//import special components
 import { useNavigate } from "react-router-dom";
-import * as S from "./style";
 import { ButtonHTMLAttributes } from "react";
+//import style
+import * as S from "./style";
 
+// tipagem
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
    title: string;
    link?: string;
@@ -21,4 +24,4 @@ export const OrangeButton = ({ title, width, link, onClick }: ButtonProps) => {
    }; 
 
    return <S.Button onClick={handleClick} width={width}>{title}</S.Button>;
-};
+}

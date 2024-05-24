@@ -1,24 +1,36 @@
+// import hooks
 import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
+//import assets
 import { IconContext } from "react-icons";
 import { BiChevronDown, BiChevronRight } from "react-icons/bi";
+//import style
 import * as S from "./style";
+import { useAuthContext } from "../../../providers/auth-provider";
 
+// tipagem
 interface UserProfileProps {
    username: string;
    email: string;
 }
 
 export const UserProfile = ({ username, email }: UserProfileProps) => {
+   // State made to make the tooltip visible or not if clicked on.
    const [tooltipVisible, setTooltipVisible] = useState(false);
+
+   const { logout } = useAuthContext();
+
+   // To make the navigation
    const navigate = useNavigate();
+   // To use the reference at the div: DivForTooltip.
    const tooltipRef = useRef<HTMLDivElement>(null);
 
    const handleIconClick = () => {
       setTooltipVisible(!tooltipVisible);
    };
 
-   const handleLogout = () => {
+   const handleLogout = async () => {
+      await logout();
       navigate("/fazer-login");
       setTooltipVisible(false);
    };
@@ -36,6 +48,7 @@ export const UserProfile = ({ username, email }: UserProfileProps) => {
       };
    }, []);
 
+   // Made to grab initials of username.
    const getInitials = (name: string): string => {
       const names = name.split(" ");
       const initials = names.map((name) => name.charAt(0));

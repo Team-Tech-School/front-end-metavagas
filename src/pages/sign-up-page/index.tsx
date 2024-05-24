@@ -1,13 +1,16 @@
+//import style
 import * as S from "./style";
+//import assets
 import AddUserIcon from "../../assets/icons/user-add-line.png";
 import EmailIcon from "../../assets/icons/mail-line.png";
+//import components
 import { Form, Title } from "../../components/index";
 
 export const SignUpPage = () => {
    return (
       <>
          <S.PurpleBackgroundDiv>
-            <Form buttonTitle="Cadastrar" isSignup={true} formTitle="Faça seu cadastro" linkText="Já é cadastrado? Faça o login" linkHref="/fazer-login" />
+            <Form buttonTitle="Cadastrar" isSignup={true} formTitle="Faça seu cadastro" linkText="Já é cadastrado? Faça o login" link="/fazer-login" />
             <S.ContentDiv>
                <S.TitleContainer marginTop="-5px">
                   <Title color="#f1f1f1" fontWeight="400" fontSize="17px">

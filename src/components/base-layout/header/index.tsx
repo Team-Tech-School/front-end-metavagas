@@ -1,13 +1,16 @@
+// import assets
 import Logo from "../../../assets/images/metavagas.png";
-import { OrangeButton, SmallButton } from "../../index";
-import { UserProfile } from "..";
+// import context
+import { useAuthContext } from "../../../providers/auth-provider";
+// import components
+import { OrangeButton, SmallButton, UserProfile } from "../../index";
+// import style
 import * as S from "./style";
 
-interface HeaderProps {
-   isLoggedIn: boolean;
-}
+export const Header = () => {
+   const { user, isLoggedIn } = useAuthContext();
+   console.log(user);
 
-export const Header = ({ isLoggedIn }: HeaderProps) => {
    return (
       <>
          <S.PurpleBackground>
@@ -16,11 +19,11 @@ export const Header = ({ isLoggedIn }: HeaderProps) => {
                   <S.Logo src={Logo} />
                </S.StyledLink>
                {isLoggedIn ? (
-                  <UserProfile username="Isa Moura" email="mourabisabelle@gmail.com" />
+                  <UserProfile username={user?.name} email={user?.email} />
                ) : (
                   <S.ButtonsWrapper>
                      <SmallButton title="Entrar" link="/fazer-login" />
-                     <OrangeButton title="Cadastre-se gratuitamente" link="/fazer-cadastro" width="large" />
+                     <OrangeButton title="Cadastre-se gratuitamente" link="/fazer-cadastro" width="medium" />
                   </S.ButtonsWrapper>
                )}
             </S.ContentWrapper>

@@ -1,25 +1,46 @@
+// import assets
 import { IconContext } from "react-icons";
 import { BiRightArrowAlt } from "react-icons/bi";
+// import style
 import * as S from "./style";
+import { Vacancy } from "../../@types";
 
+// tipagem
 interface JobAndCategoryProps {
-   info: string;
+   info: Vacancy;
+   category: string;
 }
 
-export const JobAndCategorySelected = ({ info }: JobAndCategoryProps) => {
+export const JobAndCategorySelected: any = ({ info, category }: JobAndCategoryProps) => {
+   let displayText: string;
+
+   switch (category) {
+      case "Tecnologia":
+         displayText = info.technologies.map((tech) => tech.tecName).join(", ");
+         break;
+      case "Cidades":
+         displayText = info.location;
+         break;
+      case "Cargos":
+         displayText = info.vacancyRole;
+         break;
+      default:
+         displayText = info.technologies.map((tech) => tech.tecName).join(", ");
+   }
+
    return (
-      <>
-         <S.CardBackground>
-            <S.CardContainer>
-               <div>
-                  <S.CardTitle>Vagas</S.CardTitle>
-                  <S.CardInfo>{info}</S.CardInfo>
-               </div>
-               <div>
-                  <IconContext.Provider value={{ color: "#1a1033", size: "22px" }}>{<BiRightArrowAlt />}</IconContext.Provider>
-               </div>
-            </S.CardContainer>
-         </S.CardBackground>
-      </>
+      <S.CardBackground>
+         <S.CardContainer>
+            <div>
+               <S.CardTitle>Vagas</S.CardTitle>
+               <S.CardInfo>{displayText}</S.CardInfo>
+            </div>
+            <div>
+               <IconContext.Provider value={{ color: "#1a1033", size: "22px" }}>
+                  <BiRightArrowAlt />
+               </IconContext.Provider>
+            </div>
+         </S.CardContainer>
+      </S.CardBackground>
    );
 };
