@@ -1,6 +1,10 @@
+//import special components
 import { Outlet } from "react-router-dom";
+//import components
 import { Title, PurpleCard } from "../index";
+//import assets
 import Emoji from "../../assets/icons/emoji.png";
+//import style
 import * as S from "./style";
 
 export const BaseLayoutSignInSignUp = () => {

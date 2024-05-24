@@ -8,11 +8,9 @@ import tableBrazil from "../../assets/images/table-brazil.png";
 import tableReact from "../../assets/images/table-react.png";
 
 // import components
-import { InputsAndButton, CustomButton, FilterButton, OrangeButton, Checkbox, SalaryRangeCheckbox, NumberVacancies, BlurredImageWith, InfoJobs, SaveSearch } from "../../components/index";
-// import context
-import { useVacancyFilterContext } from "../../providers/search-vacanci-filter";
+import { InputsAndButton, CustomButton, FilterButton, Checkbox, SalaryRangeCheckbox, NumberVacancies, BlurredImageWith, InfoJobs, SaveSearch } from "../../components/index";
 
-export const ShowVacanciesPage = () => {
+export const ShowVacanciesLogged = () => {
    // State para os filtros de busca
    const [searchPlaceholder, setSearchPlaceholder] = useState("React");
    const [selectedButton, setSelectedButton] = useState("React");
@@ -23,23 +21,19 @@ export const ShowVacanciesPage = () => {
    };
    //-----------------------------Filters Checkboxes-----------------------------
    // State para os filtros dos Chekboxes
-   const [tecName, setTecName] = useState<string[]>([]);
-   const [vacancyType, setVacancyType] = useState<string[]>([]);
-   const [level, setLevel] = useState<string[]>([]);
-   //const [minSalary, setMinSalary] = useState<number>(0);
-   //const [maxSalary, setMaxSalary] = useState<number>(0);
-
-   //STATE'S DE PESQUISA QUE NÃO FAZEM REQUISIÇÃO A API
+   const [seletedTechnologies, setSeletedTechnologies] = useState<string[]>([]);
+   const [selectedTypeOfVacancy, setSelectedTypeOfVacancy] = useState<string[]>([]);
    const [selectedWorkRegime, setSelectedWorkRegime] = useState<string[]>([]);
    const [selectedCompanySize, setSelectedCompanySize] = useState<string[]>([]);
+   const [selectedExperienceLevel, setSelectedExperienceLevel] = useState<string[]>([]);
 
    // Funções para os filtros de chekboxes
    const handleCheckboxTechnologyChange = (optionsSelected: string[]) => {
-      setTecName(optionsSelected);
+      setSeletedTechnologies(optionsSelected);
       // Chama a função para fazer a requisição à API
    };
    const handleCheckboxTypeOfVacancyChange = (optionsSelected: string[]) => {
-      setVacancyType(optionsSelected);
+      setSelectedTypeOfVacancy(optionsSelected);
       // Chama a função para fazer a requisição à API
    };
    const handleCheckboxWorkRegimeChange = (optionsSelected: string[]) => {
@@ -51,45 +45,40 @@ export const ShowVacanciesPage = () => {
       // Chama a função para fazer a requisição à API
    };
    const handleCheckboxExperienceLevelChange = (optionsSelected: string[]) => {
-      setLevel(optionsSelected);
+      setSelectedExperienceLevel(optionsSelected);
       // Chama a função para fazer a requisição à API
    };
 
    // Função para limpar todos os filtros
    const clearAllFilters = () => {
-      console.log("click")
-      setTecName([]);
-      setVacancyType([]);
+      setSeletedTechnologies([]);
+      setSelectedTypeOfVacancy([]);
       setSelectedWorkRegime([]);
       setSelectedCompanySize([]);
-      setLevel([]);
-      
+      setSelectedExperienceLevel([]);
    };
-   console.log("click", tecName)
 
    //Arrays de options de chekboxes
-   const TecName = ["React", "PHP", "Java", "Phyton", ".Net", "CSS", "HTML", "Ruby"];
-   const VacancyType = ["Remoto", "Presencial", "Hibrido"];
+   const technologies = ["React", "PHP", "Java", "Phyton", ".Net", "CSS", "HTML", "Ruby"];
+   const typeOfVacancies = ["Remoto", "Presencial", "Hibrido"];
    const workRegime = ["CLT", "PJ"];
    const companySize = ["Pequena", "Media", "Grande"];
-   const Level = ["Júnior", "Pleno", "Senior"];
+   const experienceLevel = ["Júnior", "Pleno", "Senior"];
 
-   // Chama o Context Provider que faz a requisição da Api e retorna os dados
-   const {fetchVacancies, vacancies, loading, error} = useVacancyFilterContext();
-   // Função para executar a busca de filtros na API
+   // State para armazenar os resultados da API
+   // const [apiResults, setApiResults] = useState<any[]>([]);
+
    const executeSearch = async () => {
       const filters = {
-         tecName: tecName.join(","),
-         vacancyType: vacancyType.join(","),
-         level: level.join(","),
-         //minSalary: number;
-         //maxSalary: number;
-                 
+         technologies: seletedTechnologies,
+         typeOfVacancies: selectedTypeOfVacancy,
+         workRegime: selectedWorkRegime,
+         companySize: selectedCompanySize,
+         experienceLevel: selectedExperienceLevel,
       };
-      console.log("Executing search with filters:", filters); // Log para depuração
+      console.log(filters);
+
       // Chama a função para fazer a requisição à API
-      fetchVacancies(filters);
-      console.log(vacancies)
    };
 
    return (
@@ -105,6 +94,9 @@ export const ShowVacanciesPage = () => {
                   <CustomButton title={"React"} selectedButton={selectedButton} setSelectedButton={setSelectedButton} updateSearchPlaceholder={updateSearchPlaceholder} />
                </S.DivButton>
 
+               <S.SaveSearchComponent>
+                  <SaveSearch />
+               </S.SaveSearchComponent>
             </S.PurpleBackgroundDiv>
          </div>
 
@@ -121,53 +113,26 @@ export const ShowVacanciesPage = () => {
                   </S.HeadDivisionDiv>
                   <div>
                      <div>
-                        <Checkbox title={"Tecnologias"} 
-                        opstions={TecName} 
-                        onFilterChange={handleCheckboxTechnologyChange} 
-                        selectedFilters={tecName} />
+                        <Checkbox title={"Tecnologias"} opstions={technologies} onFilterChange={handleCheckboxTechnologyChange} selectedFilters={seletedTechnologies} />
                         <Link to="/fazer-cadastro">Ver mais...</Link>
                      </div>
-
-                     <Checkbox title={"Tipo de vaga"} 
-                     opstions={VacancyType} 
-                     onFilterChange={handleCheckboxTypeOfVacancyChange} 
-                     selectedFilters={vacancyType} />
-
-                     <Checkbox title={"Regime de trabalho"} 
-                     opstions={workRegime} 
-                     onFilterChange={handleCheckboxWorkRegimeChange} 
-                     selectedFilters={selectedWorkRegime} />
-
-                     <Checkbox title={"Tamanho da empresa"} 
-                     opstions={companySize} 
-                     onFilterChange={handleCheckboxCompanySizeChange} 
-                     selectedFilters={selectedCompanySize} />
-
+                     <Checkbox title={"Tipo de vaga"} opstions={typeOfVacancies} onFilterChange={handleCheckboxTypeOfVacancyChange} selectedFilters={selectedTypeOfVacancy} />
+                     <Checkbox title={"Regime de trabalho"} opstions={workRegime} onFilterChange={handleCheckboxWorkRegimeChange} selectedFilters={selectedWorkRegime} />
+                     <Checkbox title={"Tamanho da empresa"} opstions={companySize} onFilterChange={handleCheckboxCompanySizeChange} selectedFilters={selectedCompanySize} />
                      <SalaryRangeCheckbox />
-
-                     <Checkbox title={"Nivel de experiencia"} 
-                     opstions={Level} 
-                     onFilterChange={handleCheckboxExperienceLevelChange}  
-                     selectedFilters={level} />
+                     <Checkbox title={"Nivel de experiencia"} opstions={experienceLevel} onFilterChange={handleCheckboxExperienceLevelChange} selectedFilters={selectedExperienceLevel} />
                   </div>
                   <FilterButton onClickExecuteSearch={executeSearch} />
                </S.FilterDiv>
 
                <S.ResultDiv>
-                  <S.ButtonAboveImages>
-                     <OrangeButton title={"Cadastre-se para visualizar"} link="/fazer-cadastro" />
-                  </S.ButtonAboveImages>
-                  <S.ButtonAboveImages>
-                     <OrangeButton title={"Cadastre-se para visualizar"} link="/fazer-cadastro" />
-                  </S.ButtonAboveImages>
-
                   <S.GraphicDiv>
-                     <BlurredImageWith blurred={true} src={tableBrazil} />
-                     <BlurredImageWith blurred={true} src={tableReact} />
+                     <BlurredImageWith blurred={false} src={tableBrazil} />
+                     <BlurredImageWith blurred={false} src={tableReact} />
                   </S.GraphicDiv>
                   <S.ContainerInfoJobs>
-                     <InfoJobs page={true} newVacancy={true} />
-                     <InfoJobs page={true} newVacancy={false} />
+                     <InfoJobs page={false} newVacancy={true} />
+                     <InfoJobs page={false} newVacancy={false} />
                   </S.ContainerInfoJobs>
                </S.ResultDiv>
             </S.ContainerFilterResult>

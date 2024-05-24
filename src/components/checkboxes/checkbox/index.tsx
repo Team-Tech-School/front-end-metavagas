@@ -1,14 +1,18 @@
+// import hooks
 import { useState } from "react";
+//import style
 import * as S from "./style";
 
+// tipagem
 interface CheckboxProps {
     title: string;
     opstions: string[];
     onFilterChange: (selectedFilters: string[]) => void;
+    selectedFilters: string[]
+    
 }
-export const Checkbox = ({title, opstions, onFilterChange}: CheckboxProps) => {
-    const [selectedFilters, setSelectedFilters] = useState<string[]>([]);
 
+export const Checkbox = ({title, opstions, onFilterChange, selectedFilters}: CheckboxProps) => {
     const handleCheckboxChange = (option: string) => {
         const newFilters = selectedFilters.includes(option)
         const newSelectedFilters = [...selectedFilters];
@@ -17,26 +21,20 @@ export const Checkbox = ({title, opstions, onFilterChange}: CheckboxProps) => {
         } else {
             newSelectedFilters.splice(newSelectedFilters.indexOf(option), 1);
         }
-        setSelectedFilters(newSelectedFilters);
+    
         onFilterChange(newSelectedFilters);
     }
 
-    return (
-        <S.CheckboxFilterContainer> 
-            <br />           
-            <S.H4Title>{title}</S.H4Title>
-            {opstions.map(option => (
-                <S.CheckboxLabel key={option}>
-                    <S.CheckboxInput
-                        type="checkbox"
-                        name={option}
-                        checked={selectedFilters.includes(option)}
-                        onChange={() => handleCheckboxChange(option)}
-                    />
-                    <S.CheckboxOption checked={selectedFilters.includes(option)}>{option}</S.CheckboxOption>
-                </S.CheckboxLabel>
-            ))}
-        
-        </S.CheckboxFilterContainer>
-    );
-}
+   return (
+      <S.CheckboxFilterContainer>
+         <br />
+         <S.H4Title>{title}</S.H4Title>
+         {options.map((option) => (
+            <S.CheckboxLabel key={option}>
+               <S.CheckboxInput type="checkbox" name={option} checked={selectedFilters.includes(option)} onChange={() => handleCheckboxChange(option)} />
+               <S.CheckboxOption checked={selectedFilters.includes(option)}>{option}</S.CheckboxOption>
+            </S.CheckboxLabel>
+         ))}
+      </S.CheckboxFilterContainer>
+   );
+};

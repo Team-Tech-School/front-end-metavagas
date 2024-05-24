@@ -1,6 +1,9 @@
+//import style
 import * as S from "./style";
+//import components
 import { Title } from "../../index";
 
+// tipagem
 interface CardProps {
    cardNumber: string;
    title: string;

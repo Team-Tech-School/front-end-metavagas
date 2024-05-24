@@ -6,7 +6,7 @@ export const Container = styled.div`
    border-radius: 8px;
    position: absolute;
    right: 120px;
-   margin-top: -32.1em;
+   top: 88.5em;
    height: fit-content;
 `;
 
@@ -18,7 +18,7 @@ export const TextContainer = styled.div`
    padding: 5px;
 `;
 
-export const Underline = styled.text`
+export const Underline = styled.div`
    text-decoration: underline;
    color: ${({ theme }) => theme.colors.lightPurple};
    font-weight: ${({ theme }) => theme.fontWeight.midMedium};

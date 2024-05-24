@@ -3,14 +3,27 @@ import styled, { css } from "styled-components"
 export const blurredStyle = css`
   filter: blur(5px);
 `;
+interface ResultInfoJobsDivProps {
+  newVacancy?: boolean
+}
 
-export const ResultInfoJobsDiv = styled.div`    
+export const ResultInfoJobsDiv = styled.div<ResultInfoJobsDivProps>`    
 width: 100%;
 height: 300px;
 border-radius: 16px;
 border: 1px solid #ECF1F4; /* cinza 4 */
 background-color: #FFFFFF; /* Branco */
 box-shadow: 0 15px 35px rgba(208, 208, 208, 0.2); /* sombra 1 */
+${({ newVacancy }) => 
+  newVacancy && css`
+    border: 2px solid #6950A1;
+    box-shadow: 0 15px 35px rgba(208, 208, 208, 0.2), 
+                0 0 0 2px #6950A1; /* Adiciona a borda colorida */
+  `
+}
+
+
+}
 `
 export const Container = styled.div`
  display: flex;

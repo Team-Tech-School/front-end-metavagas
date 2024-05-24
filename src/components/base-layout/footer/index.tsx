@@ -1,21 +1,17 @@
+//import assets
 import Logo from "../../../assets/images/metavagas.png";
 import Phone from "../../../assets/icons/telefone.png";
 import Email from "../../../assets/icons/email.png";
 import Location from "../../../assets/icons/local.png";
+//import components
 import { OrangeButton, SmallButton, Title } from "../../index";
-import { useState, useEffect } from "react";
+//import style
 import * as S from "./style";
+// import context
+import { useAuthContext } from "../../../providers/auth-provider";
 
-interface FooterProps {
-   showButton: boolean;
-}
-
-export const Footer = ({ showButton }: FooterProps) => {
-   const [isShowButton, setIsShowButton] = useState(showButton);
-
-   useEffect(() => {
-      setIsShowButton(showButton);
-   }, [showButton]);
+export const Footer = () => {
+   const { isLoggedIn } = useAuthContext();
 
    return (
       <S.FooterWrapper>
@@ -51,12 +47,12 @@ export const Footer = ({ showButton }: FooterProps) => {
                      </S.TitleContainer>
                   </S.ContactAndAddressDiv>
                </S.LogoAndContactDiv>
-               {isShowButton ? (
+               {!isLoggedIn && (
                   <S.ButtonsDiv>
                      <SmallButton title="Entrar" link="/fazer-login" />
-                     <OrangeButton title="Cadastre-se gratuitamente" link="/fazer-cadastro" width="medium"  />
+                     <OrangeButton title="Cadastre-se gratuitamente" link="/fazer-cadastro" width="medium" />
                   </S.ButtonsDiv>
-               ) : null}
+               )}
             </S.ContentDiv>
          </S.PurpleBackground>
       </S.FooterWrapper>

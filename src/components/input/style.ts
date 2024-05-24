@@ -48,12 +48,32 @@ export const InputWrapper = styled.div`
          border-color: ${({ theme }) => theme.colors.red};
          outline-color: ${({ theme }) => theme.colors.red};
       }
+      label {
+         color: ${({ theme }) => theme.colors.red};
+      }
    }
 
    &.active {
       input {
          border-color: ${({ theme }) => theme.colors.green};
          outline-color: ${({ theme }) => theme.colors.green};
+      }
+      label {
+         color: ${({ theme }) => theme.colors.green};
+      }
+      label {
+         color: ${({ theme }) => theme.colors.green};
+      }
+   }
+
+   &.success {
+      input {
+         border-color: ${({ theme }) => theme.colors.green};
+         outline-color: ${({ theme }) => theme.colors.green};
+      }
+
+      label {
+         color: ${({ theme }) => theme.colors.green};
       }
    }
 `;
