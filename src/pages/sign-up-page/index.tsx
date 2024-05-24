@@ -10,7 +10,7 @@ export const SignUpPage = () => {
    return (
       <>
          <S.PurpleBackgroundDiv>
-            <Form buttonTitle="Cadastrar" isSignup={true} formTitle="Faça seu cadastro" linkText="Já é cadastrado? Faça o login" linkHref="/fazer-login" />
+            <Form buttonTitle="Cadastrar" isSignup={true} formTitle="Faça seu cadastro" linkText="Já é cadastrado? Faça o login" link="/fazer-login" />
             <S.ContentDiv>
                <S.TitleContainer marginTop="-5px">
                   <Title color="#f1f1f1" fontWeight="400" fontSize="17px">
