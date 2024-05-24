@@ -86,7 +86,7 @@ export const ShowVacanciesPage = () => {
          //maxSalary: number;
                  
       };
-      console.log(filters);
+      console.log("Executing search with filters:", filters); // Log para depuração
       // Chama a função para fazer a requisição à API
       fetchVacancies(filters);
       console.log(vacancies)

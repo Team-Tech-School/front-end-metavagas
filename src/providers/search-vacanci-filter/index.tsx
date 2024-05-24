@@ -27,7 +27,8 @@ export const SearchVacanciesFilterProvider = ({children}: VacancyProviderProps) 
         setLoading(true);
         setError(null);
         try {
-            const response = await axios.get<Vacancy[]>(`${BASE_URL}/vacancy/vacancies`, {
+            console.log("Fetching vacancies with filters:", filters);
+            const response = await axios.get<Vacancy[]>(`${BASE_URL}/vacancy`, {
                 params: {
                     tecName: filters.tecName,
                     vvacancyType: filters.vacancyType,
