@@ -1,15 +1,10 @@
-//import Styled
 import * as S from "./style";
-//import components
 import { RecentSearchButton } from "../most-recent-search/language-card";
-//import icons
 import Cifrao from "../../assets/images/cifrao.png";
 import Local from "../../assets/images/local-mini.png";
 import Computer from "../../assets/images/computer-line.png";
-// import component
 import { NewCard } from "../index";
 
-//tipagem
 interface InfoJobsProps {
    page?: boolean;
    newVacancy?: boolean;

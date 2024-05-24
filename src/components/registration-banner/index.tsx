@@ -1,15 +1,10 @@
-//import assets
 import { IconContext } from "react-icons";
 import { FiUserPlus } from "react-icons/fi";
 import PurpleCircle from "../../assets/images/purple-circle.png";
-//import components
 import { Title } from "../index";
-//import style
 import * as S from "./style";
-// import special components
 import { useNavigate } from "react-router-dom";
 
-// tipagem
 interface RegistrationBannerProps {
    link: string;
 }

@@ -47,7 +47,7 @@ export const Form = ({ isSignup, formTitle, linkText, link, buttonTitle }: FormP
       let hasError = false;
 
       if (isSignup && password !== confirmPassword) {
-         toast.error("Senhas não estão iguais.");
+         toast.warn("Senhas não estão iguais.");
          setPasswordError(true);
          setConfirmPasswordError(true);
          hasError = true;
@@ -90,7 +90,7 @@ export const Form = ({ isSignup, formTitle, linkText, link, buttonTitle }: FormP
             setFormSuccess(true);
             setTimeout(() => {
                navigate("/fazer-login");
-            }, 2000); // Redirecionar após 2 segundos
+            }, 2000);
          } catch (error) {
             setNameError(true);
             setEmailError(true);
@@ -122,8 +122,8 @@ export const Form = ({ isSignup, formTitle, linkText, link, buttonTitle }: FormP
             toast.success("Login realizado com sucesso.");
             setFormSuccess(true);
             setTimeout(() => {
-               navigate("/login");
-            }, 2000); // Redirecionar após 2 segundos
+               navigate("/");
+            }, 2000);
          } catch (error) {
             setEmailError(true);
             setPasswordError(true);
