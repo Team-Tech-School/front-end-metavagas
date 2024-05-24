@@ -1,12 +1,8 @@
-//import special components
 import { ChangeEvent, DetailedHTMLProps, InputHTMLAttributes, useState } from "react";
-//import style
 import * as S from "./style";
-//import assets
 import { IconContext } from "react-icons";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 
-//tipagem
 interface InputProps extends DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> {
    id: string;
    placeholder: string;
@@ -17,11 +13,29 @@ interface InputProps extends DetailedHTMLProps<InputHTMLAttributes<HTMLInputElem
    whiteLabel?: boolean;
    isForPasswordShow?: boolean;
    padding?: string;
-   value: string;
-   onChange: (e: ChangeEvent<HTMLInputElement>) => void;
+   value?: string;
+   onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
+   hasError?: boolean;
+   isActive?: boolean;
+   isSuccess?: boolean;
 }
 
-export const Input = ({ id, placeholder, icon, iconColor, size, label, whiteLabel = false, isForPasswordShow = false, padding = "20px 10px 20px 50px", value, onChange }: InputProps) => {
+export const Input = ({
+   id,
+   placeholder,
+   icon,
+   iconColor,
+   size,
+   label,
+   whiteLabel = false,
+   isForPasswordShow = false,
+   padding = "20px 10px 20px 50px",
+   value,
+   onChange,
+   hasError,
+   isActive,
+   isSuccess,
+}: InputProps) => {
    const [showPassword, setShowPassword] = useState(false);
 
    const toggleShowPassword = () => {
@@ -29,7 +43,7 @@ export const Input = ({ id, placeholder, icon, iconColor, size, label, whiteLabe
    };
 
    return (
-      <S.InputWrapper>
+      <S.InputWrapper className={`${hasError ? "error" : ""} ${isActive ? "active" : ""} ${isSuccess ? "success" : ""}`}>
          <S.Label htmlFor={id} whiteLabel={whiteLabel}>
             {label}
          </S.Label>
