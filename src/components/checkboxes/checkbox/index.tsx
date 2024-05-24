@@ -5,26 +5,25 @@ import * as S from "./style";
 
 // tipagem
 interface CheckboxProps {
-   title: string;
-   options: string[];
-   onFilterChange: (selectedFilters: string[]) => void;
+    title: string;
+    opstions: string[];
+    onFilterChange: (selectedFilters: string[]) => void;
+    selectedFilters: string[]
+    
 }
 
-export const Checkbox = ({ title, options, onFilterChange }: CheckboxProps) => {
-   const [selectedFilters, setSelectedFilters] = useState<string[]>([]);
-
-   const handleCheckboxChange = (option: string) => {
-      const newFilters = selectedFilters.includes(option);
-      const newSelectedFilters = [...selectedFilters];
-
-      if (!newFilters) {
-         newSelectedFilters.push(option);
-      } else {
-         newSelectedFilters.splice(newSelectedFilters.indexOf(option), 1);
-      }
-      setSelectedFilters(newSelectedFilters);
-      onFilterChange(newSelectedFilters);
-   };
+export const Checkbox = ({title, opstions, onFilterChange, selectedFilters}: CheckboxProps) => {
+    const handleCheckboxChange = (option: string) => {
+        const newFilters = selectedFilters.includes(option)
+        const newSelectedFilters = [...selectedFilters];
+        if(!newFilters) {
+            newSelectedFilters.push(option);
+        } else {
+            newSelectedFilters.splice(newSelectedFilters.indexOf(option), 1);
+        }
+    
+        onFilterChange(newSelectedFilters);
+    }
 
    return (
       <S.CheckboxFilterContainer>

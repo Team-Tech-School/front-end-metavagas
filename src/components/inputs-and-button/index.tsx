@@ -5,7 +5,10 @@ import { PiMagnifyingGlassBold } from "react-icons/pi";
 import { GrLocation } from "react-icons/gr";
 //import style
 import * as S from "./style";
-import { useState } from "react";
+import { ChangeEvent, useState } from "react";
+
+//import context
+import { useVacancyFilterContext } from "../../providers/search-vacanci-filter/index";
 
 //tipagem
 interface InputsAndButtonProps {
@@ -15,45 +18,55 @@ interface InputsAndButtonProps {
 }
 
 export const InputsAndButton = ({ searchPlaceholder, cityPlaceholder, colorWhiteLabel }: InputsAndButtonProps) => {
-   // States for each input of form.
-   const [search, setSearch] = useState("");
-   const [city, setCity] = useState("");
+   const [value, setValue] = useState<string>("");
+   const [city, setCity] = useState<string>("");
+   
+   const handleValueChange = (e: ChangeEvent<HTMLInputElement>) => {
+      setValue(e.target.value);
+   }
+   const handleCityChange = (e: ChangeEvent<HTMLInputElement>) => {
+      setCity(e.target.value);
+   }
 
-   const handleSubmit = () => {};
-
+   // Chama o Context Provider que faz a requisição da Api e retorna os dados
+   const {fetchVacancies, vacancies, loading, error} = useVacancyFilterContext();
+   const handleSearch = () =>{
+      const filter = {
+         tecName: value,
+         location: city
+      }
+      console.log(filter)
+      fetchVacancies(filter)
+   }
    return (
       <>
-         <form onSubmit={handleSubmit}>
-            <S.ContentDiv>
-               <S.DivForInputs>
-                  <Input
-                     onChange={(e) => setSearch(e.target.value)}
-                     value={search}
-                     label="O quê você procura?"
-                     whiteLabel={colorWhiteLabel}
-                     id="search"
-                     placeholder={searchPlaceholder}
-                     icon={<PiMagnifyingGlassBold />}
-                     iconColor="gray"
-                     size="22px"
+         <S.ContentDiv>
+            <S.DivForInputs>
+               <Input 
+               label="O quê você procura?" 
+               whiteLabel={colorWhiteLabel} 
+               id="search" placeholder={searchPlaceholder} 
+               icon={<PiMagnifyingGlassBold />} 
+               iconColor="gray" size="22px" 
+               value={value} 
+               onChange={handleValueChange}
+               />
+               <Input 
+                  label="Onde?"
+                  whiteLabel={colorWhiteLabel}
+                  id="city"
+                  placeholder={cityPlaceholder}
+                  icon={<GrLocation />}
+                  iconColor="gray"
+                  size="22px" 
+                  value={city}
+                  onChange={handleCityChange}
                   />
-                  <Input
-                     onChange={(e) => setCity(e.target.value)}
-                     value={city}
-                     label="Onde?"
-                     whiteLabel={colorWhiteLabel}
-                     id="city"
-                     placeholder={cityPlaceholder}
-                     icon={<GrLocation />}
-                     iconColor="gray"
-                     size="22px"
-                  />
-               </S.DivForInputs>
-               <S.ButtonDiv>
-                  <OrangeButton title="Buscar vagas" link="/buscar-vagas" width="small" type="submit" />
-               </S.ButtonDiv>
-            </S.ContentDiv>
-         </form>
+            </S.DivForInputs>
+            <S.ButtonDiv>
+               <OrangeButton title="Buscar vagas" width="small" onClick={handleSearch} />
+            </S.ButtonDiv>
+         </S.ContentDiv>
       </>
    );
 };
