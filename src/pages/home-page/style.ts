@@ -68,7 +68,7 @@ export const StyledHr = styled.hr`
    border-color: orange;
    border-style: solid;
    border-width: 1px 0 0;
-   width: 83%;
+   width: 82.5%;
    margin: 0% 8.6%;
    position: absolute;
 `;

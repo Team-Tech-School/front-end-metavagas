@@ -1,8 +1,19 @@
+//import style
 import * as S from "./style";
+//import assets
 import ManWithLaptop from "../../assets/images/man-with-laptop.png";
+//import components
 import { Title, InputsAndButton, VacancyHomePageCard, OrangeButton, JobsSection, MostRecentSearch } from "../../components";
+import { useVacanciesContext } from "../../providers/vacancies-provider";
+import { useEffect } from "react";
 
 export const HomePage = () => {
+   const { mostRecentVacancies, fetchMostRecentVacancies } = useVacanciesContext();
+
+   useEffect(() => {
+      fetchMostRecentVacancies();
+   }, []);
+
    return (
       <>
          <S.PurpleBackgroundDiv>
@@ -36,12 +47,12 @@ export const HomePage = () => {
             </Title>
          </S.RecentJobsTitleDiv>
          <S.VacancyCardsContainer>
-            <VacancyHomePageCard local="Betim - MG" tecnology="Python" title="Desenvolvedor de Sistemas Pleno" />
-            <VacancyHomePageCard local="Contagem - MG" tecnology="PHP" title="Desenvolvedor Full-Stack Pleno" />
-            <VacancyHomePageCard local="São Paulo - SP" tecnology="JavaScript" title="Desenvolvedor de Sistemas Pleno" />
-            <VacancyHomePageCard local="Montes Claros - MG" tecnology="NodeJS" title="Desenvolvedor de Sistemas Pleno" />
+            {mostRecentVacancies.map((item: any) => (
+               <VacancyHomePageCard key={item.id} local={item.location} tecnology={item.technologies.map((tech: any) => tech?.tecName, [])} title={item.vacancyRole} />
+            ))}
             <S.OrangeButtonContainer>
-               <OrangeButton title="Cadastre-se para ver mais vagas" />
+               {/* WIP: Parei na criação de vagas, com as tecnologias nas descrições. Colocar apenas 1 tecnologia, para a listagem.*/}
+               <OrangeButton title="Cadastre-se para mais vagas" width="medium" link="/fazer-cadastro" />
             </S.OrangeButtonContainer>
          </S.VacancyCardsContainer>
          <div>

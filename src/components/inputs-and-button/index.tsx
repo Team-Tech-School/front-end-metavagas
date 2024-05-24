@@ -1,11 +1,16 @@
+//import components
 import { Input, OrangeButton } from "../../components/index";
+//import assets
 import { PiMagnifyingGlassBold } from "react-icons/pi";
 import { GrLocation } from "react-icons/gr";
+//import style
 import * as S from "./style";
 import { ChangeEvent, useState } from "react";
 
-//import constext
+//import context
 import { useVacancyFilterContext } from "../../providers/search-vacanci-filter/index";
+
+//tipagem
 interface InputsAndButtonProps {
    searchPlaceholder: string;
    cityPlaceholder: string;

@@ -6,13 +6,14 @@ import { RecentSearchButton } from "../most-recent-search/language-card";
 import Cifrao from "../../assets/images/cifrao.png";
 import Local from "../../assets/images/local-mini.png";
 import Computer from "../../assets/images/computer-line.png";
-import { NewCard } from "../most-recent-search/new-vacancy-card";
+// import component
+import { NewCard } from "../index";
 
 //tipagem
 interface InfoJobsProps {
-    page?: boolean;
-    newVacancy?: boolean;
-  };
+   page?: boolean;
+   newVacancy?: boolean;
+}
 
 export const InfoJobs = ({page, newVacancy}: InfoJobsProps) => {
   return (
