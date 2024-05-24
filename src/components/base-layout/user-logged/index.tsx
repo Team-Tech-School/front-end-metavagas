@@ -6,6 +6,7 @@ import { IconContext } from "react-icons";
 import { BiChevronDown, BiChevronRight } from "react-icons/bi";
 //import style
 import * as S from "./style";
+import { useAuthContext } from "../../../providers/auth-provider";
 
 // tipagem
 interface UserProfileProps {
@@ -17,6 +18,8 @@ export const UserProfile = ({ username, email }: UserProfileProps) => {
    // State made to make the tooltip visible or not if clicked on.
    const [tooltipVisible, setTooltipVisible] = useState(false);
 
+   const { logout } = useAuthContext();
+
    // To make the navigation
    const navigate = useNavigate();
    // To use the reference at the div: DivForTooltip.
@@ -26,7 +29,8 @@ export const UserProfile = ({ username, email }: UserProfileProps) => {
       setTooltipVisible(!tooltipVisible);
    };
 
-   const handleLogout = () => {
+   const handleLogout = async () => {
+      await logout();
       navigate("/fazer-login");
       setTooltipVisible(false);
    };

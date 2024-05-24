@@ -10,7 +10,7 @@ import * as S from "./style";
 interface CardProps {
    title: string;
    local: string;
-   tecnology: string;
+   tecnology: any;
 }
 
 export const VacancyHomePageCard = ({ title, local, tecnology }: CardProps) => {

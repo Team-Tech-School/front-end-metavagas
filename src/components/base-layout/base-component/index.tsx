@@ -9,12 +9,12 @@ export const BaseLayout = () => {
    return (
       <>
          <S.HeaderWrapper>
-            <Header isLoggedIn={true} />
+            <Header />
          </S.HeaderWrapper>
          <S.MainContent>
             <Outlet />
          </S.MainContent>
-         <Footer showButton={true} />
+         <Footer />
       </>
    );
 };

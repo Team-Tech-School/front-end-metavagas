@@ -5,23 +5,13 @@ import Email from "../../../assets/icons/email.png";
 import Location from "../../../assets/icons/local.png";
 //import components
 import { OrangeButton, SmallButton, Title } from "../../index";
-// import hooks
-import { useState, useEffect } from "react";
 //import style
 import * as S from "./style";
+// import context
+import { useAuthContext } from "../../../providers/auth-provider";
 
-// tipagem
-interface FooterProps {
-   showButton: boolean;
-}
-
-export const Footer = ({ showButton }: FooterProps) => {
-   // State made to show buttons if the user isn't logged in.
-   const [isShowButton, setIsShowButton] = useState(showButton);
-
-   useEffect(() => {
-      setIsShowButton(showButton);
-   }, [showButton]);
+export const Footer = () => {
+   const { isLoggedIn } = useAuthContext();
 
    return (
       <S.FooterWrapper>
@@ -57,12 +47,12 @@ export const Footer = ({ showButton }: FooterProps) => {
                      </S.TitleContainer>
                   </S.ContactAndAddressDiv>
                </S.LogoAndContactDiv>
-               {isShowButton ? (
+               {!isLoggedIn && (
                   <S.ButtonsDiv>
                      <SmallButton title="Entrar" link="/fazer-login" />
                      <OrangeButton title="Cadastre-se gratuitamente" link="/fazer-cadastro" width="medium" />
                   </S.ButtonsDiv>
-               ) : null}
+               )}
             </S.ContentDiv>
          </S.PurpleBackground>
       </S.FooterWrapper>
