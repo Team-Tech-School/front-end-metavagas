@@ -1,13 +1,9 @@
-//import assets
 import Logo from "../../../assets/images/metavagas.png";
 import Phone from "../../../assets/icons/telefone.png";
 import Email from "../../../assets/icons/email.png";
 import Location from "../../../assets/icons/local.png";
-//import components
 import { OrangeButton, SmallButton, Title } from "../../index";
-//import style
 import * as S from "./style";
-// import context
 import { useAuthContext } from "../../../providers/auth-provider";
 
 export const Footer = () => {

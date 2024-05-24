@@ -1,10 +1,6 @@
-// import assets
 import Logo from "../../../assets/images/metavagas.png";
-// import context
 import { useAuthContext } from "../../../providers/auth-provider";
-// import components
 import { OrangeButton, SmallButton, UserProfile } from "../../index";
-// import style
 import * as S from "./style";
 
 export const Header = () => {
