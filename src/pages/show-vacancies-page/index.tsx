@@ -89,7 +89,7 @@ export const ShowVacanciesPage = () => {
       console.log("Executing search with filters:", filters); // Log para depuração
       // Chama a função para fazer a requisição à API
       fetchVacancies(filters);
-      console.log(vacancies)
+      console.log("REsults:", vacancies)
    };
 
    return (

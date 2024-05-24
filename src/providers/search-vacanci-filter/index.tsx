@@ -1,12 +1,9 @@
-//import biblioteca Axios
-import axios from "axios";
+
 //import react
 import { createContext, useContext, useState } from "react";
 //import types
 import { Vacancy, VacancyContextProps, VacancyFilters, VacancyProviderProps } from "../../@types";
-
-//url base (link de requisição a API)
-const BASE_URL = "https://back-end-metavagas-production.up.railway.app";
+import { api } from "../../api/api";
 
 const VacancyFilterContext = createContext<VacancyContextProps | undefined>(undefined);  
 
@@ -28,7 +25,7 @@ export const SearchVacanciesFilterProvider = ({children}: VacancyProviderProps) 
         setError(null);
         try {
             console.log("Fetching vacancies with filters:", filters);
-            const response = await axios.get<Vacancy[]>(`${BASE_URL}/vacancy`, {
+            const response = await api.get<Vacancy[]>(`/vacancy`, {
                 params: {
                     tecName: filters.tecName,
                     vvacancyType: filters.vacancyType,

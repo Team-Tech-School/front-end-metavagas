@@ -32,6 +32,7 @@ export const InputsAndButton = ({ searchPlaceholder, cityPlaceholder, colorWhite
       }
       console.log(filter)
       fetchVacancies(filter)
+      console.log("Result:", vacancies)
    }
    return (
       <>
