@@ -13,3 +13,8 @@ export interface LoginApiResponse {
    accessToken: string;
    data?: any;
 }
+
+export interface UserType {
+   name: string;
+   email: string;
+}
