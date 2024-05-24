@@ -5,6 +5,7 @@ export const CardBackground = styled.div`
    width: 255px;
    padding: 25px 20px;
    border-radius: 10px;
+   text-size-adjust: initial;
    margin: 15px;
    cursor: pointer;
    transition: transform 0.3s ease;
