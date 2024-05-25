@@ -1,5 +1,6 @@
 import { createContext, ReactNode, useContext, useState } from "react";
 import { api } from "../../api/api";
+import { useAuthContext } from "../auth-provider";
 
 interface Vacancy {
    id: number;
@@ -25,7 +26,7 @@ export const VacanciesProvider = ({ children }: VacanciesProps) => {
 
    const fetchMostRecentVacancies = async () => {
       try {
-         const response = await api.get(`/vacancy?limit=4`);
+         const response = await api.get(`/vacancy/public?limit=4`);
          console.log(response.data.vacancies);
          setMostRecentVacancies(response.data.vacancies);
       } catch (error: any) {
@@ -37,7 +38,7 @@ export const VacanciesProvider = ({ children }: VacanciesProps) => {
 
    const fetchVacanciesForSelectedCategory = async (categoryType: string) => {
       try {
-         const response = await api.get(`/vacancy?limit=12&${categoryType}=`);
+         const response = await api.get(`/vacancy/public?limit=12&${categoryType}=`);
          setVacancies(response.data.vacancies);
       } catch (error: any) {
          console.error("Something went wrong at fetchVacanciesForSelectedCategory: ", error);
