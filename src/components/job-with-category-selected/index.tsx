@@ -1,11 +1,8 @@
-// import assets
 import { IconContext } from "react-icons";
 import { BiRightArrowAlt } from "react-icons/bi";
-// import style
 import * as S from "./style";
 import { Vacancy } from "../../@types";
 
-// tipagem
 interface JobAndCategoryProps {
    info: Vacancy;
    category: string;

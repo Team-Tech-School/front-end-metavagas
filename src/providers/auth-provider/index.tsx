@@ -40,6 +40,7 @@ export const AuthProvider = ({ children }: AuthProps) => {
    const register = async (data: RegisterType) => {
       try {
          const response = await api.post("/auth/register", data);
+
          return;
       } catch (error: any) {
          console.error("Failed to register: ", error);
@@ -58,7 +59,6 @@ export const AuthProvider = ({ children }: AuthProps) => {
          const userProfile = await profile(token);
 
          setUser(userProfile);
-
          setIsLoggedIn(true);
       } catch (error: any) {
          console.error("Failed to login: ", error);
@@ -68,9 +68,7 @@ export const AuthProvider = ({ children }: AuthProps) => {
 
    const logout = async () => {
       setUser({});
-
       setIsLoggedIn(false);
-
       localStorage.removeItem("accessToken");
    };
 

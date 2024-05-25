@@ -1,10 +1,7 @@
-// import hooks
 import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-//import assets
 import { IconContext } from "react-icons";
 import { BiChevronDown, BiChevronRight } from "react-icons/bi";
-//import style
 import * as S from "./style";
 import { useAuthContext } from "../../../providers/auth-provider";
 
@@ -15,14 +12,11 @@ interface UserProfileProps {
 }
 
 export const UserProfile = ({ username, email }: UserProfileProps) => {
-   // State made to make the tooltip visible or not if clicked on.
    const [tooltipVisible, setTooltipVisible] = useState(false);
 
    const { logout } = useAuthContext();
 
-   // To make the navigation
    const navigate = useNavigate();
-   // To use the reference at the div: DivForTooltip.
    const tooltipRef = useRef<HTMLDivElement>(null);
 
    const handleIconClick = () => {
@@ -30,7 +24,9 @@ export const UserProfile = ({ username, email }: UserProfileProps) => {
    };
 
    const handleLogout = async () => {
-      await logout();
+      setTimeout(async () => {
+         await logout();
+      }, 3000);
       navigate("/fazer-login");
       setTooltipVisible(false);
    };

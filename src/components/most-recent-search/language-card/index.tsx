@@ -1,7 +1,5 @@
-//import style
 import * as S from "./style";
 
-//tipagem
 interface ButtonProps {
    title: string;
 }

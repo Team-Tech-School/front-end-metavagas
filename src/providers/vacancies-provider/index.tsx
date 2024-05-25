@@ -1,11 +1,10 @@
 import { createContext, ReactNode, useContext, useState } from "react";
 import { api } from "../../api/api";
+import { useAuthContext } from "../auth-provider";
 
-// Tipagem para as vagas
 interface Vacancy {
    id: number;
    title: string;
-   // Outros campos relevantes podem ser adicionados aqui
 }
 
 interface VacanciesProps {
@@ -27,11 +26,11 @@ export const VacanciesProvider = ({ children }: VacanciesProps) => {
 
    const fetchMostRecentVacancies = async () => {
       try {
-         const response = await api.get(`/vacancy?limit=4`);
+         const response = await api.get(`/vacancy/public?limit=4`);
          console.log(response.data.vacancies);
          setMostRecentVacancies(response.data.vacancies);
       } catch (error: any) {
-         console.error("Something went wrong at fetchVacancies: ", error);
+         console.error("Something went wrong at fetchMostRecentVacancies: ", error);
          setVacancies([]);
          throw new Error(error);
       }
@@ -39,10 +38,10 @@ export const VacanciesProvider = ({ children }: VacanciesProps) => {
 
    const fetchVacanciesForSelectedCategory = async (categoryType: string) => {
       try {
-         const response = await api.get(`/vacancy?limit=12&${categoryType}=`);
+         const response = await api.get(`/vacancy/public?limit=12&${categoryType}=`);
          setVacancies(response.data.vacancies);
       } catch (error: any) {
-         console.error("Something went wrong at fetchVacancies: ", error);
+         console.error("Something went wrong at fetchVacanciesForSelectedCategory: ", error);
          setVacancies([]);
          throw new Error(error);
       }

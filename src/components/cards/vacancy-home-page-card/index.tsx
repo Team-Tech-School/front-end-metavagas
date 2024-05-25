@@ -1,12 +1,9 @@
-//import assets
 import { FaAngleRight } from "react-icons/fa6";
 import { IconContext } from "react-icons";
 import { GrLocation } from "react-icons/gr";
 import { CgScreen } from "react-icons/cg";
-//import style
 import * as S from "./style";
 
-// tipagem
 interface CardProps {
    title: string;
    local: string;
