@@ -124,6 +124,13 @@ export const ShowVacanciesPage = () => {
                   {!isLoggedIn && (
                      <S.ButtonAboveImages>
                         <OrangeButton title={"Cadastre-se para visualizar"} link="/fazer-cadastro" />
+                        
+                     </S.ButtonAboveImages>
+                  )}
+                  {!isLoggedIn && (
+                     <S.ButtonAboveImages>
+                        <OrangeButton title={"Cadastre-se para visualizar"} link="/fazer-cadastro" />
+                        
                      </S.ButtonAboveImages>
                   )}
                   <S.GraphicDiv>
@@ -133,6 +140,7 @@ export const ShowVacanciesPage = () => {
                   <S.ContainerInfoJobs>
                      <InfoJobs page={true} newVacancy={true} />
                      <InfoJobs page={true} newVacancy={false} />
+                     
                   </S.ContainerInfoJobs>
                </S.ResultDiv>
             </S.ContainerFilterResult>
