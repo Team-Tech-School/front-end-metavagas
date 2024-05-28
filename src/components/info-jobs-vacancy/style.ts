@@ -10,7 +10,7 @@ interface ResultInfoJobsDivProps {
 
 export const ResultInfoJobsDiv = styled.div<ResultInfoJobsDivProps>`
    width: 100%;
-   height: 300px;
+   height: 350px;
    border-radius: 16px;
    border: 1px solid #ecf1f4;
    background-color: #ffffff;

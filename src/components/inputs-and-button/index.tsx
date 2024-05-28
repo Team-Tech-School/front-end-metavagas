@@ -37,6 +37,7 @@ export const InputsAndButton = ({ searchPlaceholder, cityPlaceholder, colorWhite
       }
    };
 
+
    return (
       <S.ContentDiv>
          <S.DivForInputs>

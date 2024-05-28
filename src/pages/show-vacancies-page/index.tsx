@@ -3,12 +3,24 @@ import { Link } from "react-router-dom";
 import * as S from "./style";
 import tableBrazil from "../../assets/images/table-brazil.png";
 import tableReact from "../../assets/images/table-react.png";
+import {
+  InputsAndButton,
+  CustomButton,
+  FilterButton,
+  OrangeButton,
+  Checkbox,
+  SalaryRangeCheckbox,
+  NumberVacancies,
+  BlurredImageWith,
+  InfoJobs,
+  SaveSearch,
+} from "../../components/index";
 import { InputsAndButton, CustomButton, FilterButton, OrangeButton, Checkbox, SalaryRangeCheckbox, NumberVacancies, BlurredImageWith, InfoJobs, SaveSearch } from "../../components/index";
 import { useVacanciesContext } from "../../providers/vacancies-provider";
 import { useAuthContext } from "../../providers/auth-provider";
 
 export const ShowVacanciesPage = () => {
-   const { isLoggedIn } = useAuthContext();
+  const { isLoggedIn } = useAuthContext();
 
    const [searchPlaceholder, setSearchPlaceholder] = useState("React");
    const [selectedButton, setSelectedButton] = useState("React");
