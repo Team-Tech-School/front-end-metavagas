@@ -26,11 +26,13 @@ export const InputsAndButton = ({ searchPlaceholder, cityPlaceholder, colorWhite
    const handleSearch = () => {
       const filter = {
          tecName: value,
-         location: city,
-      };
-      console.log(filter);
-      fetchVacancies(filter);
-   };
+         location: city
+      }
+      console.log(filter)
+      fetchVacancies(filter)
+     
+   }
+
    return (
       <>
          <S.ContentDiv>

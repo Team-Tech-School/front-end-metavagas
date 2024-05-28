@@ -1,12 +1,11 @@
-//import biblioteca Axios
-import axios from "axios";
 //import react
-import { createContext, useContext, useState } from "react";
+import { createContext, useCallback, useContext, useState } from "react";
 //import types
 import { Vacancy, VacancyContextProps, VacancyFilters, VacancyProviderProps } from "../../@types";
+import { api } from "../../api/api";
+//import components
+import { SalaryRangeCheckbox } from "../../components";
 
-//url base (link de requisição a API)
-const BASE_URL = "https://back-end-metavagas-production.up.railway.app";
 
 const VacancyFilterContext = createContext<VacancyContextProps | undefined>(undefined);  
 
@@ -20,6 +19,7 @@ export const useVacancyFilterContext = (): VacancyContextProps  => {
 
 export const SearchVacanciesFilterProvider = ({children}: VacancyProviderProps) => {
     const [vacancies, setVacancies] = useState<Vacancy[]>([]); 
+    const [salaryRange, setSalaryRange] = useState<{ min: number; max: number }>({ min: 0, max: 10000 });
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
     
@@ -28,14 +28,15 @@ export const SearchVacanciesFilterProvider = ({children}: VacancyProviderProps) 
         setError(null);
         try {
             console.log("Fetching vacancies with filters:", filters);
-            const response = await axios.get<Vacancy[]>(`${BASE_URL}/vacancy`, {
+
+            const response = await api.get<Vacancy[]>(`/vacancy/public`, {
+
                 params: {
                     tecName: filters.tecName,
-                    vvacancyType: filters.vacancyType,
+                    vacancyType: filters.vacancyType,
                     level: filters.level,
-                    //minSalary: filters.minSalary,
-                    //maxSalary: filters.maxSalary,
-                    //location: filters.location,
+                    wageMin: salaryRange.min,
+                    wageMax: salaryRange.max,
                 }
             })            
             setVacancies(response.data);             
@@ -46,9 +47,13 @@ export const SearchVacanciesFilterProvider = ({children}: VacancyProviderProps) 
             setLoading(false);
           }
     }
+    const handleSalaryRangeChange = useCallback((range: { min: number; max: number }) => {
+        setSalaryRange(range);
+    }, []);
 
     return (
         <VacancyFilterContext.Provider value={{vacancies, fetchVacancies, loading, error}}>
+            <SalaryRangeCheckbox min={0} max={10000} onChange={handleSalaryRangeChange} />
             {children}
         </VacancyFilterContext.Provider>
     );

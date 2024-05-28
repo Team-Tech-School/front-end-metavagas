@@ -40,20 +40,25 @@ export const InfoJobs = ({ page, newVacancy }: InfoJobsProps) => {
          </S.CardResultInfoJobs>
          <S.ContainerFooter>
             <S.Container>
-               <S.StyledText page={page} blurred={blurred}>
-                  <img src={Cifrao} alt="cifrão" /> Faixa Salarial: <S.BoldText>R$ 4.000,00</S.BoldText>
-               </S.StyledText>
-               <S.StyledText page={page} blurred={blurred}>
-                  <img src={Local} alt="Localização" /> Localização: <S.BoldText>Belo Horizonte</S.BoldText>
-               </S.StyledText>
-               <S.StyledText page={page} blurred={blurred}>
-                  <img src={Computer} alt="Tipo de vaga" /> Tipo de vaga: <S.BoldText>Home office</S.BoldText>
-               </S.StyledText>
+            <span><img src={Cifrao} alt="cifrão" /><S.StyledText page={page} blurred={blurred}>
+                   Faixa Salarial: <S.BoldText>R$ 4.000,00</S.BoldText>
+               </S.StyledText></span>
+               <span> <img src={Local} alt="Localização" /><S.StyledText page={page} blurred={blurred}>
+                  Localização: <S.BoldText>Belo Horizonte</S.BoldText>
+               </S.StyledText></span>
+               
+               <span> <img src={Computer} alt="Tipo de vaga" />  <S.StyledText page={page} blurred={blurred}>
+                Tipo de vaga: <S.BoldText>Home office</S.BoldText>
+               </S.StyledText></span>
+              
             </S.Container>
-            <S.Paragraph blurred={blurred}>
+            <S.Paragraph >
                Oferecemos um ambiente em que todos são protagonistas e agentes de transformação. Temos um excelente clima organizacional com pessoas engajadas em entregar os melhores resultados, assim
                como grandes oportunidades...
             </S.Paragraph>
+            <S.MaisDetalhes>
+               Ver mais detalhes {">"}
+            </S.MaisDetalhes>            
          </S.ContainerFooter>
       </S.ResultInfoJobsDiv>
    );

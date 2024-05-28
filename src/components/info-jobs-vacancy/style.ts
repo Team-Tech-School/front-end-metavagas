@@ -10,7 +10,7 @@ interface ResultInfoJobsDivProps {
 
 export const ResultInfoJobsDiv = styled.div<ResultInfoJobsDivProps>`
    width: 100%;
-   height: 300px;
+   height: 350px;
    border-radius: 16px;
    border: 1px solid #ecf1f4; /* cinza 4 */
    background-color: #ffffff; /* Branco */
@@ -103,4 +103,9 @@ export const StyledText = styled.span<{ page?: boolean; blurred?: boolean }>`
 
 export const BoldText = styled.span`
    font-weight: 700;
+`;
+
+export const MaisDetalhes = styled.span`
+   font-weight: 700;
+   color: #6950a1;
 `;
