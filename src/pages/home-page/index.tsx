@@ -37,7 +37,7 @@ export const HomePage = () => {
                </S.ForMainTitleDiv>
             </S.ContentDiv>
             <S.WhiteBackgroundToInputs>
-               <InputsAndButton searchPlaceholder={"Cargo, tecnologia ou palavra-chave"} cityPlaceholder={"Localização"} />
+               <InputsAndButton searchPlaceholder={"Cargo, tecnologia ou palavra-chave"} cityPlaceholder={"Localização"} link="/buscar-vagas" />
                <MostRecentSearch />
             </S.WhiteBackgroundToInputs>
          </S.PurpleBackgroundDiv>
@@ -51,7 +51,6 @@ export const HomePage = () => {
                <VacancyHomePageCard key={item.id} local={item.location} tecnology={item.technologies.map((tech: any) => tech?.tecName, [])} title={item.vacancyRole} />
             ))}
             <S.OrangeButtonContainer>
-               {/* WIP: Parei na criação de vagas, com as tecnologias nas descrições. Colocar apenas 1 tecnologia, para a listagem.*/}
                <OrangeButton title="Cadastre-se para mais vagas" width="medium" link="/fazer-cadastro" />
             </S.OrangeButtonContainer>
          </S.VacancyCardsContainer>

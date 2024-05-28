@@ -122,7 +122,7 @@ export const Form = ({ isSignup, formTitle, linkText, link, buttonTitle }: FormP
             toast.success("Login realizado com sucesso.");
             setFormSuccess(true);
             setTimeout(() => {
-               navigate("/");
+               navigate("/buscar-vagas");
             }, 2000);
          } catch (error) {
             setEmailError(true);

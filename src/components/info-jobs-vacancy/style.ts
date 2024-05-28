@@ -12,22 +12,22 @@ export const ResultInfoJobsDiv = styled.div<ResultInfoJobsDivProps>`
    width: 100%;
    height: 300px;
    border-radius: 16px;
-   border: 1px solid #ecf1f4; /* cinza 4 */
-   background-color: #ffffff; /* Branco */
-   box-shadow: 0 15px 35px rgba(208, 208, 208, 0.2); /* sombra 1 */
+   border: 1px solid #ecf1f4;
+   background-color: #ffffff;
+   box-shadow: 0 15px 35px rgba(208, 208, 208, 0.2);
    ${({ newVacancy }) =>
       newVacancy &&
       css`
          border: 2px solid #6950a1;
-         box-shadow: 0 15px 35px rgba(208, 208, 208, 0.2), 0 0 0 2px #6950a1; /* Adiciona a borda colorida */
+         box-shadow: 0 15px 35px rgba(208, 208, 208, 0.2), 0 0 0 2px #6950a1;
       `}
 `;
 
 export const Container = styled.div`
    display: flex;
    justify-content: space-between;
-   margin-top: 10px; /* Espaçamento superior */
-   margin-right: 24px; /* Espaçamento à esquerda */
+   margin-top: 10px;
+   margin-right: 24px;
 `;
 
 export const ContainerTitle = styled.div`
@@ -38,11 +38,11 @@ export const ContainerTitle = styled.div`
 `;
 
 export const H1InfoJobs = styled.h1`
-   margin-left: 24px; /* Espaçamento à esquerda */
-   font-weight: 500; /* Weight médio */
+   margin-left: 24px;
+   font-weight: 500;
    font-size: 20px;
    line-height: 24.57px;
-   color: #1a1033; /* Preto */
+   color: #1a1033;
 `;
 
 export const SpanInfoJobs = styled.span<{ page?: boolean; blurred?: boolean }>`
@@ -103,4 +103,22 @@ export const StyledText = styled.span<{ page?: boolean; blurred?: boolean }>`
 
 export const BoldText = styled.span`
    font-weight: 700;
+`;
+
+export const StyledLink = styled.div`
+   color: #5d5fef;
+   font-size: 14px;
+   font-weight: 700;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   margin-left: 5px;
+
+   &:hover {
+      cursor: pointer;
+   }
+`;
+
+export const IconStyledLink = styled.div`
+   margin: 3px 0px 0px 5px;
 `;

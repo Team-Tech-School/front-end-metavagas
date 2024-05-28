@@ -1,32 +1,28 @@
-import { useState, useEffect } from "react";
+import { useState, KeyboardEvent, useEffect } from "react";
 import { Link } from "react-router-dom";
 import * as S from "./style";
 import tableBrazil from "../../assets/images/table-brazil.png";
 import tableReact from "../../assets/images/table-react.png";
 import { InputsAndButton, CustomButton, FilterButton, OrangeButton, Checkbox, SalaryRangeCheckbox, NumberVacancies, BlurredImageWith, InfoJobs, SaveSearch } from "../../components/index";
-import { useVacancyFilterContext } from "../../providers/search-vacanci-filter";
+import { useVacanciesContext } from "../../providers/vacancies-provider";
 import { useAuthContext } from "../../providers/auth-provider";
 
 export const ShowVacanciesPage = () => {
    const { isLoggedIn } = useAuthContext();
 
-   // State para os filtros de busca
    const [searchPlaceholder, setSearchPlaceholder] = useState("React");
    const [selectedButton, setSelectedButton] = useState("React");
 
-   // Função para os filtros de busca
    const updateSearchPlaceholder = (text: string) => {
       setSearchPlaceholder(text);
    };
 
-   // State para os filtros dos Chekboxes
    const [tecName, setTecName] = useState<string[]>([]);
    const [vacancyType, setVacancyType] = useState<string[]>([]);
    const [level, setLevel] = useState<string[]>([]);
    const [selectedWorkRegime, setSelectedWorkRegime] = useState<string[]>([]);
    const [selectedCompanySize, setSelectedCompanySize] = useState<string[]>([]);
 
-   // Funções para os filtros de chekboxes
    const handleCheckboxTechnologyChange = (optionsSelected: string[]) => {
       setTecName(optionsSelected);
    };
@@ -43,7 +39,6 @@ export const ShowVacanciesPage = () => {
       setLevel(optionsSelected);
    };
 
-   // Função para limpar todos os filtros
    const clearAllFilters = () => {
       setTecName([]);
       setVacancyType([]);
@@ -52,37 +47,54 @@ export const ShowVacanciesPage = () => {
       setLevel([]);
    };
 
-   // Chama o Context Provider que faz a requisição da Api e retorna os dados
-   const { fetchVacancies, vacancies } = useVacancyFilterContext();
+   const { fetchVacanciesByFilters, fetchAllVacancies, vacancies } = useVacanciesContext();
 
-   // Função para executar a busca de filtros na API
    const executeSearch = async () => {
       const filters = {
          tecName: tecName.join(","),
          vacancyType: vacancyType.join(","),
          level: level.join(","),
       };
-      fetchVacancies(filters);
+      if (!filters.tecName && !filters.vacancyType && !filters.level) {
+         await fetchAllVacancies();
+      } else {
+         await fetchVacanciesByFilters(filters);
+      }
    };
 
-   // Arrays de options de chekboxes
-   const TecName = ["React", "PHP", "Java", "Phyton", ".Net", "CSS", "HTML", "Ruby"];
-   const VacancyType = ["Remoto", "Presencial", "Hibrido"];
+   const TecName = ["React", "PHP", "Java", "Python", ".Net", "CSS", "HTML", "Ruby"];
+   const VacancyType = ["Remoto", "Presencial", "Híbrido"];
    const workRegime = ["CLT", "PJ"];
-   const companySize = ["Pequena", "Media", "Grande"];
-   const Level = ["Júnior", "Pleno", "Senior"];
+   const companySize = ["Pequena", "Média", "Grande"];
+   const Level = ["Júnior", "Pleno", "Sênior"];
+
+   const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Enter") {
+         executeSearch();
+      }
+   };
+
+   useEffect(() => {
+      fetchAllVacancies();
+   }, []);
+
+   useEffect(() => {
+      executeSearch();
+   }, [tecName, vacancyType, level]);
 
    return (
       <>
          <div>
             <S.PurpleBackgroundDiv>
-               <InputsAndButton searchPlaceholder={searchPlaceholder} cityPlaceholder={"Localização"} colorWhiteLabel={true} />
-               <S.DivButton>
-                  <CustomButton title={"Java"} selectedButton={selectedButton} setSelectedButton={setSelectedButton} updateSearchPlaceholder={updateSearchPlaceholder} />
-                  <CustomButton title={"PHP"} selectedButton={selectedButton} setSelectedButton={setSelectedButton} updateSearchPlaceholder={updateSearchPlaceholder} />
-                  <CustomButton title={"Phyton"} selectedButton={selectedButton} setSelectedButton={setSelectedButton} updateSearchPlaceholder={updateSearchPlaceholder} />
-                  <CustomButton title={"React"} selectedButton={selectedButton} setSelectedButton={setSelectedButton} updateSearchPlaceholder={updateSearchPlaceholder} />
-               </S.DivButton>
+               <InputsAndButton searchPlaceholder={searchPlaceholder} cityPlaceholder={"Localização"} colorWhiteLabel={true} onKeyDown={handleKeyDown} />
+               {isLoggedIn && (
+                  <S.DivButton>
+                     <CustomButton title={"Java"} selectedButton={selectedButton} setSelectedButton={setSelectedButton} updateSearchPlaceholder={updateSearchPlaceholder} />
+                     <CustomButton title={"PHP"} selectedButton={selectedButton} setSelectedButton={setSelectedButton} updateSearchPlaceholder={updateSearchPlaceholder} />
+                     <CustomButton title={"Python"} selectedButton={selectedButton} setSelectedButton={setSelectedButton} updateSearchPlaceholder={updateSearchPlaceholder} />
+                     <CustomButton title={"React"} selectedButton={selectedButton} setSelectedButton={setSelectedButton} updateSearchPlaceholder={updateSearchPlaceholder} />
+                  </S.DivButton>
+               )}
                {isLoggedIn && (
                   <S.SaveSearchComponent>
                      <SaveSearch />
@@ -92,7 +104,7 @@ export const ShowVacanciesPage = () => {
          </div>
 
          <S.ContainerBodyPageDIV>
-            <NumberVacancies searchPlaceholder={searchPlaceholder} vacanciesFound={255} />
+            <NumberVacancies searchPlaceholder={searchPlaceholder} vacanciesFound={vacancies.length} />
 
             <S.ContainerFilterResult>
                <S.FilterDiv>
@@ -111,7 +123,7 @@ export const ShowVacanciesPage = () => {
                      <Checkbox title={"Regime de trabalho"} opstions={workRegime} onFilterChange={handleCheckboxWorkRegimeChange} selectedFilters={selectedWorkRegime} />
                      <Checkbox title={"Tamanho da empresa"} opstions={companySize} onFilterChange={handleCheckboxCompanySizeChange} selectedFilters={selectedCompanySize} />
                      <SalaryRangeCheckbox />
-                     <Checkbox title={"Nivel de experiencia"} opstions={Level} onFilterChange={handleCheckboxExperienceLevelChange} selectedFilters={level} />
+                     <Checkbox title={"Nível de experiência"} opstions={Level} onFilterChange={handleCheckboxExperienceLevelChange} selectedFilters={level} />
                   </div>
                   <FilterButton onClickExecuteSearch={executeSearch} />
                </S.FilterDiv>
@@ -127,8 +139,9 @@ export const ShowVacanciesPage = () => {
                      <BlurredImageWith blurred={!isLoggedIn} src={tableReact} />
                   </S.GraphicDiv>
                   <S.ContainerInfoJobs>
-                     <InfoJobs page={true} newVacancy={true} />
-                     <InfoJobs page={true} newVacancy={false} />
+                     {vacancies.map((vacancy: any) => (
+                        <InfoJobs key={vacancy.id} vacancy={vacancy} page={true} />
+                     ))}
                   </S.ContainerInfoJobs>
                </S.ResultDiv>
             </S.ContainerFilterResult>
