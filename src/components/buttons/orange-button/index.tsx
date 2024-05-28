@@ -1,15 +1,12 @@
-//import special components
 import { useNavigate } from "react-router-dom";
 import { ButtonHTMLAttributes } from "react";
-//import style
 import * as S from "./style";
 
-// tipagem
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
    title: string;
    link?: string;
    width?: "large" | "medium" | "small";
-   onClick?: () => void; // Adicionando onClick opcional
+   onClick?: () => void;
 }
 
 export const OrangeButton = ({ title, width, link, onClick }: ButtonProps) => {
@@ -17,11 +14,15 @@ export const OrangeButton = ({ title, width, link, onClick }: ButtonProps) => {
 
    const handleClick = () => {
       if (onClick) {
-         onClick(); // Chama o callback onClick se fornecido
+         onClick();
       } else if (link) {
-          navigate(link);
-       }
-   }; 
+         navigate(link);
+      }
+   };
 
-   return <S.Button onClick={handleClick} width={width}>{title}</S.Button>;
-}
+   return (
+      <S.Button onClick={handleClick} width={width}>
+         {title}
+      </S.Button>
+   );
+};

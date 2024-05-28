@@ -1,17 +1,17 @@
 import { Outlet } from "react-router-dom";
 import * as S from "./style";
-import { Header, Footer } from "../index";
+import { Header, Footer } from "./index1";
 
 export const BaseLayout = () => {
    return (
       <>
          <S.HeaderWrapper>
-            <Header />
+            <Header isLoggedIn={true} />
          </S.HeaderWrapper>
          <S.MainContent>
             <Outlet />
          </S.MainContent>
-         <Footer />
+         <Footer showButton={true} />
       </>
    );
 };

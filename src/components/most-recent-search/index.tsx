@@ -1,11 +1,11 @@
 import * as S from "./style";
-import { Title } from "../../index";
+import { Title } from "../index";
 
 interface ButtonProps {
    title: string;
 }
 
-export const SearchButton = ({ title }: ButtonProps) => {
+export const RecentSearchButton = ({ title }: ButtonProps) => {
    return <S.Button>{title}</S.Button>;
 };
 
@@ -16,10 +16,10 @@ export const MostRecentSearch = () => {
             Buscas mais recentes:
          </Title>
          <S.ContentDiv>
-            <SearchButton title="Java" />
-            <SearchButton title="PHP" />
-            <SearchButton title="Python" />
-            <SearchButton title="React" />
+            <RecentSearchButton title="Java" />
+            <RecentSearchButton title="PHP" />
+            <RecentSearchButton title="Python" />
+            <RecentSearchButton title="React" />
          </S.ContentDiv>
       </S.Container>
    );

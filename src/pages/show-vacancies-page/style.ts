@@ -97,3 +97,17 @@ flex-direction: column;
 gap: 10px;
 `
 
+export const LabelTitle = styled.label`
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  color: #1A1033;
+`;
+export const SalaryRangeSpan = styled.span`
+font-family: 'Poppins', sans-serif;
+font-weight: 400;
+font-size: 14px;
+line-height: 19.6px;
+color: #8C8CA1;
+`;
