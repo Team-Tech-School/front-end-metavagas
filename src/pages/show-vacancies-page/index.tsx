@@ -1,12 +1,8 @@
-//import hooks React
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 import { Link } from "react-router-dom";
-//import style
 import * as S from "./style";
-//import images
 import tableBrazil from "../../assets/images/table-brazil.png";
 import tableReact from "../../assets/images/table-react.png";
-//import components
 import {
   InputsAndButton,
   CustomButton,
@@ -19,7 +15,7 @@ import {
   InfoJobs,
   SaveSearch,
 } from "../../components/index";
-//import context
+import { InputsAndButton, CustomButton, FilterButton, OrangeButton, Checkbox, SalaryRangeCheckbox, NumberVacancies, BlurredImageWith, InfoJobs, SaveSearch } from "../../components/index";
 import { useVacancyFilterContext } from "../../providers/search-vacanci-filter";
 import { useAuthContext } from "../../providers/auth-provider";
 
@@ -242,4 +238,4 @@ export const ShowVacanciesPage = () => {
       </S.ContainerBodyPageDIV>
     </>
   );
-};
+}
