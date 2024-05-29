@@ -6,6 +6,7 @@ import { FaBriefcase } from "react-icons/fa";
 import { JobAndCategorySelected, RegistrationBanner } from "../index";
 import * as S from "./style";
 import { useVacanciesContext } from "../../providers/vacancies-provider";
+import { useAuthContext } from "../../providers/auth-provider";
 
 interface JobSectionProps {
    children: React.ReactNode;
@@ -38,6 +39,7 @@ const Category = ({ onClick, isSelected, children, icon }: JobSectionProps) => {
 
 export const JobsSection = () => {
    const { vacancies, fetchVacanciesForSelectedCategory } = useVacanciesContext();
+   const { isLoggedIn } = useAuthContext();
    const [selectedCategory, setSelectedCategory] = useState<string>("Tecnologia");
 
    useEffect(() => {
@@ -66,7 +68,7 @@ export const JobsSection = () => {
    return (
       <S.PurpleBackground>
          <S.Title>Vagas de emprego em todo Brasil</S.Title>
-         <RegistrationBanner link="/fazer-cadastro" />
+         {!isLoggedIn && <RegistrationBanner link="/fazer-cadastro" />}
          <S.CategoriesWrapper>
             <Category icon={<CgScreen />} onClick={() => handleCategoryClick("Tecnologia")} isSelected={selectedCategory === "Tecnologia"}>
                Tecnologia

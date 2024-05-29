@@ -90,7 +90,7 @@ export const InfoJobs = ({ vacancy, page }: InfoJobsProps) => {
 
    return (
       <S.ResultInfoJobsDiv newVacancy={newVacancy}>
-         <S.Container>
+         <S.ContainerForTitle>
             <S.ContainerTitle>
                <div>{newVacancy && <NewCard />}</div>
                <div>
@@ -102,10 +102,10 @@ export const InfoJobs = ({ vacancy, page }: InfoJobsProps) => {
             </S.ContainerTitle>
             <div>
                <S.BoldText>
-                  InfoJobs<S.StyledText blurred={blurred}> • {new Date(vacancy.createAt).toLocaleDateString()}</S.StyledText>
+                  InfoJobs<S.InfoJobsText blurred={blurred}> • {new Date(vacancy.createAt).toLocaleDateString()}</S.InfoJobsText>
                </S.BoldText>
             </div>
-         </S.Container>
+         </S.ContainerForTitle>
          <S.CardResultInfoJobs>
             {vacancy.technologies.map((tech) => (
                <RecentSearchButton key={tech.id} title={tech.tecName} />

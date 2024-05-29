@@ -43,3 +43,12 @@ export interface Vacancy {
       deleteAt: string | null;
    };
 }
+
+export interface VacancyFilters {
+   tecName?: string;
+   vacancyType?: string;
+   level?: string;
+   minSalary?: number;
+   maxSalary?: number;
+   location?: string;
+}

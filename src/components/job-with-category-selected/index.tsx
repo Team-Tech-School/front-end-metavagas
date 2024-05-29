@@ -13,7 +13,7 @@ export const JobAndCategorySelected: any = ({ info, category }: JobAndCategoryPr
 
    switch (category) {
       case "Tecnologia":
-         displayText = info.technologies.map((tech) => tech.tecName).join(", ");
+         displayText = info.technologies.map((tech: any) => tech.tecName).join(", ");
          break;
       case "Cidades":
          displayText = info.location;
@@ -22,7 +22,7 @@ export const JobAndCategorySelected: any = ({ info, category }: JobAndCategoryPr
          displayText = info.vacancyRole;
          break;
       default:
-         displayText = info.technologies.map((tech) => tech.tecName).join(", ");
+         displayText = info.technologies.map((tech: any) => tech.tecName).join(", ");
    }
 
    return (

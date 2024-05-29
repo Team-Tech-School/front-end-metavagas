@@ -16,7 +16,6 @@ interface InputProps extends DetailedHTMLProps<InputHTMLAttributes<HTMLInputElem
    value?: string;
    onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
    hasError?: boolean;
-   isActive?: boolean;
    isSuccess?: boolean;
 }
 
@@ -33,7 +32,6 @@ export const Input = ({
    value,
    onChange,
    hasError,
-   isActive,
    isSuccess,
 }: InputProps) => {
    const [showPassword, setShowPassword] = useState(false);
@@ -43,7 +41,7 @@ export const Input = ({
    };
 
    return (
-      <S.InputWrapper className={`${hasError ? "error" : ""} ${isActive ? "active" : ""} ${isSuccess ? "success" : ""}`}>
+      <S.InputWrapper className={`${hasError ? "error" : ""} ${isSuccess ? "success" : ""}`}>
          <S.Label htmlFor={id} whiteLabel={whiteLabel}>
             {label}
          </S.Label>

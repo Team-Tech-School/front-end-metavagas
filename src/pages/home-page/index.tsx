@@ -1,8 +1,5 @@
-//import style
 import * as S from "./style";
-//import assets
 import ManWithLaptop from "../../assets/images/man-with-laptop.png";
-//import components
 import { Title, InputsAndButton, VacancyHomePageCard, OrangeButton, JobsSection, MostRecentSearch } from "../../components";
 import { useVacanciesContext } from "../../providers/vacancies-provider";
 import { useEffect } from "react";
