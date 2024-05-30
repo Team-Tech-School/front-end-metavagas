@@ -1,5 +1,5 @@
 //import hooks React
-import { useState, useCallback } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 //import style
 import * as S from "./style";
@@ -13,11 +13,11 @@ import {
   FilterButton,
   OrangeButton,
   Checkbox,
-  SalaryRangeCheckbox,
   NumberVacancies,
   BlurredImageWith,
   InfoJobs,
   SaveSearch,
+  SalaryRangerSlider,
 } from "../../components/index";
 //import context
 import { useVacancyFilterContext } from "../../providers/search-vacanci-filter";
@@ -25,6 +25,7 @@ import { useAuthContext } from "../../providers/auth-provider";
 
 export const ShowVacanciesPage = () => {
   const { isLoggedIn } = useAuthContext();
+
 
   // State para os filtros de busca
   const [searchPlaceholder, setSearchPlaceholder] = useState("React");
@@ -39,9 +40,12 @@ export const ShowVacanciesPage = () => {
   const [tecName, setTecName] = useState<string[]>([]);
   const [vacancyType, setVacancyType] = useState<string[]>([]);
   const [level, setLevel] = useState<string[]>([]);
-  const [salaryRange, setSalaryRange] = useState<{ min: number; max: number }>({ min: 0, max: 10000 });
   const [selectedWorkRegime, setSelectedWorkRegime] = useState<string[]>([]);
   const [selectedCompanySize, setSelectedCompanySize] = useState<string[]>([]);
+
+  // State para o slider de salários
+  const [minSalary, setMinSalary] = useState(0);
+  const [maxSalary, setMaxSalary] = useState(30000);
 
   // Funções para os filtros de chekboxes
   const handleCheckboxTechnologyChange = (optionsSelected: string[]) => {
@@ -59,9 +63,12 @@ export const ShowVacanciesPage = () => {
   const handleCheckboxExperienceLevelChange = (optionsSelected: string[]) => {
     setLevel(optionsSelected);
   };
-  const handleSalaryRangeChange = useCallback((range: { min: number; max: number }) => {
-   setSalaryRange(range);
- }, []);
+
+  const handleSalaryChange = (min: number, max: number) => {
+    setMinSalary(min);
+    setMaxSalary(max);
+  };
+  
 
   // Função para limpar todos os filtros
   const clearAllFilters = () => {
@@ -70,6 +77,8 @@ export const ShowVacanciesPage = () => {
     setSelectedWorkRegime([]);
     setSelectedCompanySize([]);
     setLevel([]);
+    setMinSalary(0);
+    setMaxSalary(10000);
   };
 
   // Chama o Context Provider que faz a requisição da Api e retorna os dados
@@ -81,7 +90,8 @@ export const ShowVacanciesPage = () => {
       tecName: tecName.join(","),
       vacancyType: vacancyType.join(","),
       level: level.join(","),
-      salaryRange: `${salaryRange.min}-${salaryRange.max}`,
+      minSalary: minSalary,
+      maxSalary: maxSalary,     
     };
     await fetchVacancies(filters);
   };
@@ -188,21 +198,10 @@ export const ShowVacanciesPage = () => {
                 onFilterChange={handleCheckboxCompanySizeChange}
                 selectedFilters={selectedCompanySize}
               />
-
-              <div>
-               <br />
-                <S.LabelTitle>Faixa salarial</S.LabelTitle>
-                <br />
-                <S.SalaryRangeSpan>
-                  R$ {salaryRange.min} - R$ {salaryRange.max}
-                </S.SalaryRangeSpan>
-                <SalaryRangeCheckbox
-                  min={0}
-                  max={10000}
-                  onChange={handleSalaryRangeChange}
-                />
-              </div>
-              <Checkbox
+              <br />
+              
+              <SalaryRangerSlider onSalaryChange={handleSalaryChange}/>
+              <Checkbox 
                 title={"Nivel de experiencia"}
                 opstions={Level}
                 onFilterChange={handleCheckboxExperienceLevelChange}
