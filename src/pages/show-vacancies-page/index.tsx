@@ -85,16 +85,11 @@ export const ShowVacanciesPage = () => {
          ...overrideFilters,
       };
 
-      const noFiltersApplied = !filters;
+      if (searchValue === "" || cityValue === "" || !filters) {
+         await fetchAllVacancies();
+      }
 
-      if (noFiltersApplied) {
-         await fetchAllVacancies();
-      }
-      if (searchValue === "" || cityValue === "") {
-         await fetchAllVacancies();
-      } else {
-         await fetchVacanciesByFilters(filters);
-      }
+      await fetchVacanciesByFilters(filters);
 
       setCurrentSearchTerm(filters.tecName);
    };
