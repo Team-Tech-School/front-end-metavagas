@@ -47,7 +47,7 @@ export const VacanciesProvider = ({ children }: VacanciesProps) => {
       }
    };
 
-   const fetchVacanciesByFilters = async (filters: { tecName?: string; location?: string; vacancyType?: string; level?: string; minSalary?: number; maxSalary?: number }) => {
+   const fetchVacanciesByFilters = async (filters: VacancyFilters) => {
       try {
          const endpoint = isLoggedIn ? `/vacancy/private` : `/vacancy/public`;
 
