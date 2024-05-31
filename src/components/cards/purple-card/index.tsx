@@ -12,17 +12,17 @@ export const PurpleCard = ({ cardNumber, title }: CardProps) => {
          <S.Number>{cardNumber}</S.Number>
          <S.Title>{title}</S.Title>
          <S.TitlesDiv>
-            <Title color="#f1f1f1" fontWeight="400" fontSize="15px">
+            <Title color="#f1f1f1" fontWeight="400" fontSize="0.94em">
                Lorem ipsum dolor sit amet <br />
             </Title>
          </S.TitlesDiv>
          <S.TitlesDiv>
-            <Title color="#f1f1f1" fontWeight="400" fontSize="15px">
+            <Title color="#f1f1f1" fontWeight="400" fontSize="0.94em">
                consectetur. Nec nunc
             </Title>
          </S.TitlesDiv>
          <S.TitlesDiv>
-            <Title color="#f1f1f1" fontWeight="400" fontSize="15px">
+            <Title color="#f1f1f1" fontWeight="400" fontSize="0.94em">
                scelerisque nulla mauris.
             </Title>
          </S.TitlesDiv>
