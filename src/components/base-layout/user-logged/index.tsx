@@ -3,9 +3,8 @@ import { useNavigate } from "react-router-dom";
 import { IconContext } from "react-icons";
 import { BiChevronDown, BiChevronRight } from "react-icons/bi";
 import * as S from "./style";
-import { useAuthContext } from "../../../providers/auth-provider";
+import { useAuthContext } from "../../../providers";
 
-// tipagem
 interface UserProfileProps {
    username: string;
    email: string;
@@ -44,7 +43,6 @@ export const UserProfile = ({ username, email }: UserProfileProps) => {
       };
    }, []);
 
-   // Made to grab initials of username.
    const getInitials = (name: string): string => {
       const names = name.split(" ");
       const initials = names.map((name) => name.charAt(0));
