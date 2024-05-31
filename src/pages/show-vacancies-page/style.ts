@@ -22,7 +22,7 @@ export const SaveSearchComponent = styled.div`
 
 export const DivForNumberVacancies = styled.div`
    margin-left: 1.25em;
-   padding-top: 1.88em;
+   padding: -1em 0.1em 0.2em 0em;
 `;
 
 export const DivForInputsAndButton = styled.div`
