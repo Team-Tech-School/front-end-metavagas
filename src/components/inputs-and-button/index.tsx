@@ -2,25 +2,49 @@ import { Input, OrangeButton } from "../../components/index";
 import { PiMagnifyingGlassBold } from "react-icons/pi";
 import { GrLocation } from "react-icons/gr";
 import * as S from "./style";
-import { ChangeEvent, useState, KeyboardEvent } from "react";
-import { useVacanciesContext } from "../../providers/vacancies-provider";
+import { ChangeEvent, useState, useEffect, KeyboardEvent } from "react";
+import { useVacanciesContext } from "../../providers";
 
 interface InputsAndButtonProps {
-   searchPlaceholder: string;
-   cityPlaceholder: string;
+   searchValue: string;
+   cityValue: string;
    colorWhiteLabel?: boolean;
    onKeyDown?: (event: KeyboardEvent) => void;
-   link?: string;
+   updateSearchTerm?: (searchTerm: string) => void | string;
+   updateCityTerm?: (cityTerm: string) => void | string;
+   onSearch?: () => void;
 }
 
-export const InputsAndButton = ({ searchPlaceholder, cityPlaceholder, colorWhiteLabel, onKeyDown, link }: InputsAndButtonProps) => {
-   const [value, setValue] = useState<string>("");
-   const [city, setCity] = useState<string>("");
+const updateRecentSearches = (newSearch: string) => {
+   if (!newSearch.trim()) return;
+
+   const storedSearches = JSON.parse(localStorage.getItem("recentSearches") || "[]");
+   const updatedSearches = [newSearch, ...storedSearches.filter((search: string) => search !== newSearch)];
+
+   if (updatedSearches.length > 4) {
+      updatedSearches.pop();
+   }
+
+   localStorage.setItem("recentSearches", JSON.stringify(updatedSearches));
+};
+
+export const InputsAndButton = ({ searchValue, cityValue, colorWhiteLabel, onKeyDown, updateSearchTerm, updateCityTerm, onSearch }: InputsAndButtonProps) => {
+   const [value, setValue] = useState<string>(searchValue);
+   const [city, setCity] = useState<string>(cityValue);
    const { fetchVacanciesByFilters } = useVacanciesContext();
+
+   useEffect(() => {
+      setValue(searchValue);
+   }, [searchValue]);
+
+   useEffect(() => {
+      setCity(cityValue);
+   }, [cityValue]);
 
    const handleValueChange = (e: ChangeEvent<HTMLInputElement>) => {
       setValue(e.target.value);
    };
+
    const handleCityChange = (e: ChangeEvent<HTMLInputElement>) => {
       setCity(e.target.value);
    };
@@ -32,11 +56,26 @@ export const InputsAndButton = ({ searchPlaceholder, cityPlaceholder, colorWhite
       };
       try {
          await fetchVacanciesByFilters(filter);
+         updateRecentSearches(value);
+
+         if (updateSearchTerm) {
+            updateSearchTerm(value);
+         }
+
+         if (updateCityTerm) {
+            updateCityTerm(city);
+         }
+
+         localStorage.setItem("searchValue", value);
+         localStorage.setItem("cityValue", city);
+
+         if (onSearch) {
+            onSearch();
+         }
       } catch (error) {
          console.error("Failed to fetch vacancies by filters:", error);
       }
    };
-
 
    return (
       <S.ContentDiv>
@@ -46,7 +85,7 @@ export const InputsAndButton = ({ searchPlaceholder, cityPlaceholder, colorWhite
                label="O quê você procura?"
                whiteLabel={colorWhiteLabel}
                id="search"
-               placeholder={searchPlaceholder}
+               placeholder={"Cargo, tecnologia ou palavra-chave"}
                icon={<PiMagnifyingGlassBold />}
                iconColor="gray"
                size="22px"
@@ -58,7 +97,7 @@ export const InputsAndButton = ({ searchPlaceholder, cityPlaceholder, colorWhite
                label="Onde?"
                whiteLabel={colorWhiteLabel}
                id="city"
-               placeholder={cityPlaceholder}
+               placeholder={"Localização"}
                icon={<GrLocation />}
                iconColor="gray"
                size="22px"
@@ -67,7 +106,7 @@ export const InputsAndButton = ({ searchPlaceholder, cityPlaceholder, colorWhite
             />
          </S.DivForInputs>
          <S.ButtonDiv>
-            <OrangeButton title="Buscar vagas" width="small" onClick={handleSearch} link={link} />
+            <OrangeButton title="Buscar vagas" width="small" onClick={handleSearch} />
          </S.ButtonDiv>
       </S.ContentDiv>
    );
