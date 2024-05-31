@@ -7,15 +7,9 @@ import { useNavigate } from "react-router-dom";
 
 export const HomePage = () => {
    const { mostRecentVacancies, fetchMostRecentVacancies, fetchVacanciesByFilters } = useVacanciesContext();
-
    const navigate = useNavigate();
-
-   const [searchValue, setSearchValue] = useState(localStorage.getItem("searchValue") || "");
-   const [cityValue, setCityValue] = useState(localStorage.getItem("cityValue") || "");
-
-   useEffect(() => {
-      fetchMostRecentVacancies();
-   }, []);
+   const [searchValue, setSearchValue] = useState("");
+   const [cityValue, setCityValue] = useState("");
 
    const handleSearch = async () => {
       const filter = {
@@ -29,6 +23,10 @@ export const HomePage = () => {
          console.error("Failed to fetch vacancies by filters:", error);
       }
    };
+
+   useEffect(() => {
+      fetchMostRecentVacancies();
+   }, []);
 
    return (
       <>
