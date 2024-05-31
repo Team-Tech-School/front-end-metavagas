@@ -19,7 +19,7 @@ const Category = ({ onClick, isSelected, children, icon }: JobSectionProps) => {
    return (
       <S.CategoryContainer isSelected={isSelected} onClick={onClick}>
          <S.DivForIcon>
-            <IconContext.Provider value={{ color: isSelected ? "#fbb04d" : "#f1f1f1", size: "22px" }}>{icon}</IconContext.Provider>
+            <IconContext.Provider value={{ color: isSelected ? "#fbb04d" : "#f1f1f1", size: "1.38em" }}>{icon}</IconContext.Provider>
          </S.DivForIcon>
          {children}
       </S.CategoryContainer>
