@@ -14,11 +14,6 @@ export const ShowVacanciesPage = () => {
    const [selectedButton, setSelectedButton] = useState(searchValue);
    const [currentSearchTerm, setCurrentSearchTerm] = useState(searchValue);
 
-   useEffect(() => {
-      setSearchValue(localStorage.getItem("searchValue") || "");
-      setCityValue(localStorage.getItem("cityValue") || "");
-   }, []);
-
    const updateSearchPlaceholder = (text: string) => {
       setSelectedButton(text);
       setCurrentSearchTerm(text);
@@ -61,6 +56,7 @@ export const ShowVacanciesPage = () => {
    };
 
    const clearAllFilters = async () => {
+      console.log("função clearAllFilters foi chamada");
       setTecName([]);
       setVacancyType([]);
       setSelectedWorkRegime([]);
@@ -72,10 +68,13 @@ export const ShowVacanciesPage = () => {
       setSelectedButton("");
       setMinSalary(0);
       setMaxSalary(10000);
+      localStorage.removeItem("searchValue");
+      localStorage.removeItem("cityValue");
       await fetchAllVacancies();
    };
 
    const executeSearch = async (overrideFilters = {}) => {
+      console.log("função executeSearch foi chamada");
       const filters = {
          tecName: tecName.join(", "),
          vacancyType: vacancyType.join(", "),
@@ -86,13 +85,17 @@ export const ShowVacanciesPage = () => {
          ...overrideFilters,
       };
 
-      const noFiltersApplied = !filters.tecName && !filters.vacancyType && !filters.level && filters.minSalary && filters.maxSalary && !filters.location;
+      const noFiltersApplied = !filters;
 
       if (noFiltersApplied) {
+         await fetchAllVacancies();
+      }
+      if (searchValue === "" || cityValue === "") {
          await fetchAllVacancies();
       } else {
          await fetchVacanciesByFilters(filters);
       }
+
       setCurrentSearchTerm(filters.tecName);
    };
 
@@ -108,15 +111,12 @@ export const ShowVacanciesPage = () => {
             tecName: searchValue,
             location: cityValue,
          };
-         try {
-            await fetchVacanciesByFilters(filter);
-         } catch (error) {
-            console.error("Failed to fetch vacancies by filters:", error);
-         }
+
+         await fetchVacanciesByFilters(filter);
       };
 
       fetchInitialVacancies();
-   }, [searchValue, cityValue]);
+   }, []);
 
    const TecName = ["React", "PHP", "Java", "Python", ".Net", "CSS", "HTML", "Ruby"];
    const VacancyType = ["Remoto", "Presencial", "Híbrido"];

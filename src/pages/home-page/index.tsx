@@ -24,8 +24,6 @@ export const HomePage = () => {
       };
       try {
          await fetchVacanciesByFilters(filter);
-         localStorage.setItem("searchValue", searchValue);
-         localStorage.setItem("cityValue", cityValue);
          navigate("/buscar-vagas");
       } catch (error) {
          console.error("Failed to fetch vacancies by filters:", error);

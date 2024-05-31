@@ -4,6 +4,7 @@ import { GrLocation } from "react-icons/gr";
 import { CgScreen } from "react-icons/cg";
 import { useNavigate } from "react-router-dom";
 import * as S from "./style";
+import { useAuthContext } from "../../../providers";
 
 interface CardProps {
    title: string;
@@ -12,6 +13,7 @@ interface CardProps {
 }
 
 export const VacancyHomePageCard = ({ title, local, tecnology }: CardProps) => {
+   const { isLoggedIn } = useAuthContext();
    const navigate = useNavigate();
 
    const handleClick = () => {
@@ -35,12 +37,14 @@ export const VacancyHomePageCard = ({ title, local, tecnology }: CardProps) => {
                Tecnologia: <S.InfoBoldSpan>{tecnology}</S.InfoBoldSpan>
             </S.InfoVacancy>
          </S.InfoDiv>
-         <S.StyledLink onClick={handleClick}>
-            Ver mais detalhes
-            <S.IconStyledLink>
-               <IconContext.Provider value={{ color: "#5d5fef", size: "0.81em" }}>{<FaAngleRight />}</IconContext.Provider>
-            </S.IconStyledLink>
-         </S.StyledLink>
+         {!isLoggedIn && (
+            <S.StyledLink onClick={handleClick}>
+               Ver mais detalhes
+               <S.IconStyledLink>
+                  <IconContext.Provider value={{ color: "#5d5fef", size: "0.81em" }}>{<FaAngleRight />}</IconContext.Provider>
+               </S.IconStyledLink>
+            </S.StyledLink>
+         )}
       </S.WhiteBackgroundForVacancies>
    );
 };
