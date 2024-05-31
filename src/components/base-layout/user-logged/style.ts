@@ -32,21 +32,22 @@ export const Username = styled.div`
 `;
 
 export const Tooltip = styled.div`
-   position: absolute;
-   background-color: #fff;
-   border-radius: 0.31em;
-   padding: 0.13em;
-   top: 2.5em;
-   right: -0.63em;
-   z-index: 999;
-   box-shadow: 0 0.13em 0.25em rgba(0, 0, 0, 0.15);
+    position: absolute;
+    background-color: rgb(255, 255, 255);
+    border-radius: 0.31em;
+    padding: 0.5em;
+    top: 2.2em;
+    width: 11.5em;
+    right: -0.63em;
+    z-index: 999;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 0.13em 0.25em;
 `;
 
 export const TooltipHr = styled.hr`
    border: none;
    border-top: 0.06em solid ${({ theme }) => theme.colors.blue};
    margin: -0.06em 0;
-   width: 87%;
+   width: 96%;
 `;
 
 export const TooltipContentDiv = styled.div`
@@ -59,7 +60,7 @@ export const TooltipContentDiv = styled.div`
 
 export const TooltipEmail = styled.div`
    color: ${({ theme }) => theme.colors.lightPurple};
-   font-size: 0.81em;
+   font-size: 0.8em;
    margin: 0.63em 0.94em;
 `;
 
@@ -68,15 +69,16 @@ export const TooltipSignOutButton = styled.button`
    display: flex;
    align-items: center;
    justify-content: center;
-   margin: 0.5em 0 0.06em 0;
+   margin: 0.6em 0 -0.4em 0;
    border: none;
-   width: 90%;
+   width: 96%;
    background-color: ${({ theme }) => theme.colors.gray};
    color: ${({ theme }) => theme.colors.darkPurple};
    padding: 0.31em 0.63em;
    border-radius: 0.31em;
 
    &:hover {
+      background-color: ${({ theme }) => theme.colors.midGray};
       color: ${({ theme }) => theme.colors.orange};
    }
 `;
