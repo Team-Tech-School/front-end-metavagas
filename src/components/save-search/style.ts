@@ -10,14 +10,15 @@ export const RegularText = styled.span`
    font-weight: 400;
    font-size: 1em;
    line-height: 1.88em;
-   color: #ffffff; /* Branco */
+   margin-top: 0.7em;
+   color: #ffffff;
 `;
 export const SpanBold = styled.span`
    font-weight: 600;
    font-size: 1em;
    line-height: 1.5em;
    font-style: italic;
-   color: #ffffff; /* Branco */
+   color: #ffffff; 
 `;
 export const ButtonSalved = styled.button`
    display: flex;
@@ -35,5 +36,5 @@ export const SpanButton = styled.span`
    font-weight: 31.25em;
    font-size: 1em;
    line-height: 1.5em;
-   color: #ffffff; /* Branco */
+   color: #ffffff;
 `;
