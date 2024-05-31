@@ -9,28 +9,28 @@ export const SignUpPage = () => {
          <S.PurpleBackgroundDiv>
             <Form buttonTitle="Cadastrar" isSignup={true} formTitle="Faça seu cadastro" linkText="Já é cadastrado? Faça o login" link="/fazer-login" />
             <S.ContentDiv>
-               <S.TitleContainer marginTop="-5px">
-                  <Title color="#f1f1f1" fontWeight="400" fontSize="17px">
+               <S.TitleContainer marginTop="-0.31em">
+                  <Title color="#f1f1f1" fontWeight="400" fontSize="1.06em">
                      CADASTRE-SE
                   </Title>
                </S.TitleContainer>
-               <S.TitleContainer marginTop="5px" marginBottom="13px">
-                  <Title color="#fbb04d" fontWeight="600" fontSize="45px">
+               <S.TitleContainer marginTop="0.31em" marginBottom="0.81em">
+                  <Title color="#fbb04d" fontWeight="600" fontSize="2.81em">
                      Fique por dentro
                   </Title>
-                  <S.TitleContainer marginTop="-14px">
-                     <Title color="#fbb04d" fontWeight="600" fontSize="45px">
+                  <S.TitleContainer marginTop="-0.88em">
+                     <Title color="#fbb04d" fontWeight="600" fontSize="2.81em">
                         de todas as vagas
                      </Title>
                   </S.TitleContainer>
                </S.TitleContainer>
-               <S.TitleContainer marginTop="10px" marginBottom="13px">
-                  <Title iconSrc={AddUserIcon} iconSize="25px" color="#f1f1f1" fontWeight="300" fontSize="15px">
+               <S.TitleContainer marginTop="0.63em" marginBottom="0.81em">
+                  <Title iconSrc={AddUserIcon} iconSize="1.56em" color="#f1f1f1" fontWeight="300" fontSize="0.94em">
                      Com um único cadastro você consegue encontrar a sua vaga
                   </Title>
                </S.TitleContainer>
-               <S.TitleContainer marginTop="5px" marginBottom="13px">
-                  <Title iconSrc={EmailIcon} iconSize="25px" color="#f1f1f1" fontWeight="300" fontSize="15px">
+               <S.TitleContainer marginTop="0.31em" marginBottom="0.81em">
+                  <Title iconSrc={EmailIcon} iconSize="1.56em" color="#f1f1f1" fontWeight="300" fontSize="0.94em">
                      Receba alertas sobre as vagas que você procura
                   </Title>
                </S.TitleContainer>

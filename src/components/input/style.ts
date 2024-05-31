@@ -22,13 +22,13 @@ export const Icon = styled.div<IconProps>`
    ${({ left }) =>
       left &&
       css`
-         left: 25px;
+         left: 1.5em;
       `}
 
    ${({ right }) =>
       right &&
       css`
-         right: 30px;
+         right: 2.3em;
       `}
 `;
 
@@ -41,7 +41,7 @@ export const IconAndInput = styled.div`
 
 export const InputWrapper = styled.div`
    position: relative;
-   margin-top: 30px;
+   margin-top: 1.88em;
 
    &.error {
       input {
@@ -66,13 +66,13 @@ export const InputWrapper = styled.div`
 `;
 
 export const Label = styled.label<LabelProps>`
-   font-size: 15px;
+   font-size: 0.9em;
    font-weight: 500;
-   letter-spacing: 0.1px;
+   letter-spacing: 0.01em;
    position: absolute;
-   margin-top: -20px;
-   left: 7px;
-   padding: 0px 5px;
+   margin-top: -1.25em;
+   left: 0.42em;
+   padding: 0em 0.31em;
    color: ${({ theme }) => theme.colors.darkPurple};
 
    ${({ whiteLabel, theme }) =>
@@ -83,22 +83,22 @@ export const Label = styled.label<LabelProps>`
 `;
 
 export const Input = styled.input<InputProps>`
-   font-size: 15px;
-   border: 1px solid ${({ theme }) => theme.colors.lightGray};
-   height: 50px;
+   font-size: 0.94em;
+   border: 0.06em solid ${({ theme }) => theme.colors.lightGray};
+   height: 3.5em;
    background-color: "#f1f1f1";
-   border-radius: 9px;
+   border-radius: 0.56em;
    padding: ${({ padding }) => padding};
    outline: none;
    color: ${({ theme }) => theme.colors.darkPurple};
-   width: 430px;
-   margin: 10px 7px 0px 7px;
+   width: 29em;
+   margin: 0.63em 0.44em 0em 0.44em;
 
    &::placeholder {
       color: ${({ theme }) => theme.colors.midGray};
       font-style: italic;
-      font-size: 14px;
-      padding: 0px -1px;
+      font-size: 0.88em;
+      padding: 0em -0.06em;
    }
 
    &:focus {

@@ -32,19 +32,19 @@ export const HomePage = () => {
       <>
          <S.PurpleBackgroundDiv>
             <S.ContentDiv>
-               <Title color="#f1f1f1" fontWeight="400" fontSize="17px">
+               <Title color="#f1f1f1" fontWeight="400" fontSize="1.06em">
                   MAIS DE 12.000 VAGAS DE TECNOLOGIA,
                   <br />
                   REUNIDAS EM UM SÓ LUGAR
                </Title>
                <S.StyledImg src={ManWithLaptop} />
                <S.ForMainTitleDiv>
-                  <Title color="#fbb04d" fontWeight="600" fontSize="45px">
+                  <Title color="#fbb04d" fontWeight="600" fontSize="2.81em">
                      Encontre a sua
                      <br />
                   </Title>
                   <S.ForWhiteTitleDiv>
-                     <Title color="#fbb04d" fontWeight="600" fontSize="45px">
+                     <Title color="#fbb04d" fontWeight="600" fontSize="2.81em">
                         vaga de <S.StyledSpan> react</S.StyledSpan>
                      </Title>
                   </S.ForWhiteTitleDiv>
@@ -62,7 +62,7 @@ export const HomePage = () => {
             </S.WhiteBackgroundToInputs>
          </S.PurpleBackgroundDiv>
          <S.RecentJobsTitleDiv>
-            <Title color="#1a1033" fontWeight="600" fontSize="30px">
+            <Title color="#1a1033" fontWeight="600" fontSize="1.88em">
                Vagas mais recentes
             </Title>
          </S.RecentJobsTitleDiv>

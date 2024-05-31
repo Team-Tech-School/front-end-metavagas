@@ -71,7 +71,7 @@ export const InfoJobs = ({ vacancy, page }: InfoJobsProps) => {
                </S.StyledText>
             </S.Container>
             <S.Paragraph>{vacancy.vacancyDescription}</S.Paragraph>
-            {!isLoggedIn && (
+            {isLoggedIn && (
                <>
                   <S.StyledLink onClick={handleClick}>
                      Ver mais detalhes

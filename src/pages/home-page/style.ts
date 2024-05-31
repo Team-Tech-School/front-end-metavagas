@@ -1,25 +1,25 @@
 import styled from "styled-components";
 
 export const WhiteBackgroundToInputs = styled.div`
-   width: 82.5%;
+   width: 81vw;
    height: fit-content;
-   top: 73%;
-   margin: 0 8.8% 0 9%;
+   top: 70vh;
+   margin: 0 11.25em 0 7.5em;
    position: absolute;
-   border-radius: 15px;
+   border-radius: 0.94em;
    background-color: #fff;
-   box-shadow: 0 1px 3px rgba(211, 211, 211, 0.4), 0 1px 12px rgba(211, 211, 211, 0.4);
+   box-shadow: 0 0.06em 0.19em rgba(211, 211, 211, 0.4), 0 0.06em 0.75em rgba(211, 211, 211, 0.4);
 `;
 
 export const PurpleBackgroundDiv = styled.div`
-   margin-top: 6%;
+   margin-top: 2%;
    background-color: ${({ theme }) => theme.colors.darkPurple};
-   width: 100%;
-   height: 75vh;
+   width: 100vw;
+   height: 78vh;
 `;
 
 export const ContentDiv = styled.div`
-   padding: 9.6% 4% 8% 1%;
+   padding: 12% 4% 8% 1%;
    margin-left: 8.5%;
    display: flex;
    flex-direction: column;
@@ -28,7 +28,7 @@ export const ContentDiv = styled.div`
 `;
 
 export const ForMainTitleDiv = styled.div`
-   margin-top: -1px;
+   margin-top: -0.06em;
    margin-bottom: 10.4%;
 `;
 
@@ -38,7 +38,7 @@ export const ForWhiteTitleDiv = styled.div`
 
 export const StyledSpan = styled.span`
    color: ${({ theme }) => theme.colors.white};
-   margin-left: 10px;
+   margin-left: 0.2em;
 `;
 
 export const StyledImg = styled.img`
@@ -67,8 +67,8 @@ export const OrangeButtonContainer = styled.div`
 export const StyledHr = styled.hr`
    border-color: orange;
    border-style: solid;
-   border-width: 1px 0 0;
-   width: 82.5%;
+   border-width: 0.06em 0 0;
+   width: 81.5vw;
    margin: 0% 8.6%;
    position: absolute;
 `;

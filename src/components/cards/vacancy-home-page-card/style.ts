@@ -3,11 +3,11 @@ import styled from "styled-components";
 export const WhiteBackgroundForVacancies = styled.div`
    width: 42.5%;
    height: fit-content;
-   margin: 18px;
-   border-radius: 15px;
+   margin: 1.13em;
+   border-radius: 0.94em;
    background-color: #ffffff;
-   padding: 25px;
-   box-shadow: 0 1px 3px rgba(211, 211, 211, 0.4), 0 1px 12px rgba(211, 211, 211, 0.4);
+   padding: 1.56em;
+   box-shadow: 0 0.06em 0.19em rgba(211, 211, 211, 0.4), 0 0.06em 0.75em rgba(211, 211, 211, 0.4);
    display: flex;
    align-items: start;
    justify-content: start;
@@ -16,32 +16,32 @@ export const WhiteBackgroundForVacancies = styled.div`
 
 export const VacancyTitle = styled.div`
    color: #1a1033;
-   font-size: 18px;
+   font-size: 1.13em;
    font-weight: 500;
-   margin: 1px 0px 10px 0px;
+   margin: 0.06em 0em 0.63em 0em;
 `;
 
 export const InfoVacancy = styled.div`
    color: #4a4a68;
-   font-size: 14px;
+   font-size: 0.88em;
    font-weight: 400;
-   margin: 1px 0px 10px 0px;
+   margin: 0.06em 0em 0.63em 0em;
 `;
 
 export const InfoBoldSpan = styled.span`
    color: #4a4a68;
    font-weight: 700;
-   font-size: 14px;
+   font-size: 0.88em;
 `;
 
 export const StyledLink = styled.div`
    color: #5d5fef;
-   font-size: 14px;
+   font-size: 0.88em;
    font-weight: 700;
    display: flex;
    align-items: center;
    justify-content: center;
-   margin-left: 5px;
+   margin-left: 0.31em;
 
    &:hover {
       cursor: pointer;
@@ -55,9 +55,9 @@ export const InfoDiv = styled.div`
 `;
 
 export const IconDiv = styled.div`
-   margin: -5px 7px 0px 2px;
+   margin: -0.31em 0.44em 0em 0.13em;
 `;
 
 export const IconStyledLink = styled.div`
-   margin: 3px 0px 0px 5px;
+   margin: 0.19em 0em 0em 0.31em;
 `;
