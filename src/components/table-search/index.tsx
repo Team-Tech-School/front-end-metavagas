@@ -1,4 +1,4 @@
-import { BackgroundImage, Container } from "./style";
+import * as S from "./style";
 
 interface BlurredImageWithButtonProps {
    src: string;
@@ -7,8 +7,8 @@ interface BlurredImageWithButtonProps {
 
 export const BlurredImageWith = ({ src, blurred }: BlurredImageWithButtonProps) => {
    return (
-      <Container blurred={blurred}>
-         <BackgroundImage src={src} alt="tableBrazil" />
-      </Container>
+      <S.Container blurred={blurred}>
+         <S.BackgroundImage src={src} />
+      </S.Container>
    );
 };
