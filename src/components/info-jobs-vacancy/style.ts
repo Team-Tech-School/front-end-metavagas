@@ -47,7 +47,7 @@ export const ContainerTitle = styled.div`
 `;
 
 export const H1InfoJobs = styled.h1`
-   margin-left: 1.5em;
+   margin-left: 1em;
    font-weight: 600;
    font-size: 1.19em;
    line-height: 1.54em;
