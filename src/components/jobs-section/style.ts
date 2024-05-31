@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { motion } from "framer-motion";
 
 export const PurpleBackground = styled.div`
    background-color: ${({ theme }) => theme.colors.darkPurple};
@@ -9,6 +10,10 @@ export const PurpleBackground = styled.div`
    justify-content: space-around;
    align-items: flex-start;
    padding: 100px 100px 50px 100px;
+`;
+
+export const DivForIcon = styled.div`
+   margin: 18px 10px 10px -1px;
 `;
 
 export const Title = styled.div`
@@ -27,6 +32,7 @@ export const CategoryContainer = styled.div<{ isSelected: boolean }>`
    font-size: 17px;
    font-weight: 400;
    padding: 5px 70px;
+   border-bottom: ${({ isSelected }) => (isSelected ? "2px solid #e18309" : "none")};
 
    &:hover {
       background-color: ${({ theme }) => theme.colors.purple};
@@ -41,4 +47,12 @@ export const CategoriesWrapper = styled.div`
    border-bottom: 1px solid ${({ theme }) => theme.colors.white};
    width: fit-content;
    margin: 10px 0px 20px 22px;
+`;
+
+export const VacanciesContainer = styled(motion.div)`
+   display: flex;
+   flex-wrap: wrap;
+   width: fit-content;
+   justify-content: center;
+   align-items: center;
 `;
