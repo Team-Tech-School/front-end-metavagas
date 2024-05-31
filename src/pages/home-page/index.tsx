@@ -1,14 +1,28 @@
-//import style
 import * as S from "./style";
-//import assets
 import ManWithLaptop from "../../assets/images/man-with-laptop.png";
-//import components
 import { Title, InputsAndButton, VacancyHomePageCard, OrangeButton, JobsSection, MostRecentSearch } from "../../components";
 import { useVacanciesContext } from "../../providers/vacancies-provider";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export const HomePage = () => {
-   const { mostRecentVacancies, fetchMostRecentVacancies } = useVacanciesContext();
+   const { mostRecentVacancies, fetchMostRecentVacancies, fetchVacanciesByFilters } = useVacanciesContext();
+   const navigate = useNavigate();
+   const [searchValue, setSearchValue] = useState("");
+   const [cityValue, setCityValue] = useState("");
+
+   const handleSearch = async () => {
+      const filter = {
+         tecName: searchValue,
+         location: cityValue,
+      };
+      try {
+         await fetchVacanciesByFilters(filter);
+         navigate("/buscar-vagas");
+      } catch (error) {
+         console.error("Failed to fetch vacancies by filters:", error);
+      }
+   };
 
    useEffect(() => {
       fetchMostRecentVacancies();
@@ -37,7 +51,13 @@ export const HomePage = () => {
                </S.ForMainTitleDiv>
             </S.ContentDiv>
             <S.WhiteBackgroundToInputs>
-               <InputsAndButton searchPlaceholder={"Cargo, tecnologia ou palavra-chave"} cityPlaceholder={"Localização"} link="/buscar-vagas" />
+               <InputsAndButton
+                  searchValue={searchValue}
+                  cityValue={cityValue}
+                  onSearch={handleSearch}
+                  updateSearchTerm={(searchTerm) => setSearchValue(searchTerm)}
+                  updateCityTerm={(cityTerm) => setCityValue(cityTerm)}
+               />
                <MostRecentSearch />
             </S.WhiteBackgroundToInputs>
          </S.PurpleBackgroundDiv>
