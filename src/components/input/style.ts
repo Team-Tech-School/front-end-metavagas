@@ -53,19 +53,6 @@ export const InputWrapper = styled.div`
       }
    }
 
-   &.active {
-      input {
-         border-color: ${({ theme }) => theme.colors.green};
-         outline-color: ${({ theme }) => theme.colors.green};
-      }
-      label {
-         color: ${({ theme }) => theme.colors.green};
-      }
-      label {
-         color: ${({ theme }) => theme.colors.green};
-      }
-   }
-
    &.success {
       input {
          border-color: ${({ theme }) => theme.colors.green};
@@ -115,11 +102,7 @@ export const Input = styled.input<InputProps>`
    }
 
    &:focus {
-      border-color: ${({ theme }) => theme.colors.green};
-      outline-color: ${({ theme }) => theme.colors.green};
-
-      ~ label {
-         color: ${({ theme }) => theme.colors.green};
-      }
+      border-color: ${({ theme }) => theme.colors.darkGray};
+      outline-color: ${({ theme }) => theme.colors.darkGray};
    }
 `;
