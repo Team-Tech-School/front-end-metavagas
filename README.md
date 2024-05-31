@@ -51,9 +51,9 @@ o projeto Meta vagas é um projeto fullstack e conta com uma api rodando em Nest
 -  [Styled-components](https://styled-components.com/)
 -  [Axios](https://axios-http.com/)
 -  [React Router](https://reactrouter.com/)
--  [Jest](https://jestjs.io/)
--  [ESLint](https://eslint.org/)
--  [Prettier](https://prettier.io/)
+-  [React Icons](https://react-icons.github.io/react-icons/)
+-  [React Toastfy](https://www.npmjs.com/package/react-toastify)
+-  [Framer Motion](https://www.framer.com/motion/)
 
 ## Funcionalidades
 
