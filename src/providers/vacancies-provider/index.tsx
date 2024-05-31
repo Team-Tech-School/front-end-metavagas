@@ -1,11 +1,7 @@
 import { createContext, ReactNode, useContext, useState } from "react";
 import { api } from "../../api/api";
 import { useAuthContext } from "../auth-provider";
-
-interface Vacancy {
-   id: number;
-   title: string;
-}
+import { Vacancy, VacancyFilters } from "../../@types";
 
 interface VacanciesProps {
    children: ReactNode;
@@ -16,7 +12,7 @@ interface VacanciesContextData {
    mostRecentVacancies: Vacancy[];
    fetchMostRecentVacancies: () => Promise<void>;
    fetchVacanciesForSelectedCategory: (search: string) => Promise<void>;
-   fetchVacanciesByFilters: (filters: { tecName?: string; location?: string; vacancyType?: string; level?: string }) => Promise<void>;
+   fetchVacanciesByFilters: (filters: VacancyFilters) => Promise<void>;
    fetchAllVacancies: () => Promise<void>;
 }
 
@@ -30,10 +26,11 @@ export const VacanciesProvider = ({ children }: VacanciesProps) => {
    const fetchMostRecentVacancies = async () => {
       try {
          const response = await api.get(`/vacancy/public?limit=4`);
+
          setMostRecentVacancies(response.data.vacancies);
       } catch (error: any) {
          console.error("Something went wrong at fetchMostRecentVacancies: ", error);
-         setVacancies([]);
+         setMostRecentVacancies([]);
          throw new Error(error);
       }
    };
@@ -41,6 +38,7 @@ export const VacanciesProvider = ({ children }: VacanciesProps) => {
    const fetchVacanciesForSelectedCategory = async (categoryType: string) => {
       try {
          const response = await api.get(`/vacancy/public?limit=12&${categoryType}=`);
+
          setVacancies(response.data.vacancies);
       } catch (error: any) {
          console.error("Something went wrong at fetchVacanciesForSelectedCategory: ", error);
@@ -49,12 +47,17 @@ export const VacanciesProvider = ({ children }: VacanciesProps) => {
       }
    };
 
-   const fetchVacanciesByFilters = async (filters?: { tecName?: string; location?: string; vacancyType?: string; level?: string }) => {
+   const fetchVacanciesByFilters = async (filters: { tecName?: string; location?: string; vacancyType?: string; level?: string; minSalary?: number; maxSalary?: number }) => {
       try {
          const endpoint = isLoggedIn ? `/vacancy/private` : `/vacancy/public`;
+
          const headers = isLoggedIn ? { Authorization: `Bearer ${localStorage.getItem("accessToken")}` } : {};
 
-         const response = await api.get(endpoint, { headers: headers, params: { ...filters, limit: 10 } });
+         const response = await api.get(endpoint, {
+            headers: headers,
+            params: { ...filters },
+         });
+
          setVacancies(response.data.vacancies);
       } catch (error: any) {
          console.error("Something went wrong at fetchVacanciesByFilters: ", error);
@@ -66,9 +69,11 @@ export const VacanciesProvider = ({ children }: VacanciesProps) => {
    const fetchAllVacancies = async () => {
       try {
          const endpoint = isLoggedIn ? `/vacancy/private` : `/vacancy/public`;
+
          const headers = isLoggedIn ? { Authorization: `Bearer ${localStorage.getItem("accessToken")}` } : {};
 
-         const response = await api.get(endpoint, { headers: headers, params: { limit: 10 } });
+         const response = await api.get(endpoint, { headers: headers });
+
          setVacancies(response.data.vacancies);
       } catch (error: any) {
          console.error("Something went wrong at fetchVacanciesByFilters: ", error);
@@ -78,7 +83,16 @@ export const VacanciesProvider = ({ children }: VacanciesProps) => {
    };
 
    return (
-      <VacanciesContext.Provider value={{ vacancies, mostRecentVacancies, fetchMostRecentVacancies, fetchAllVacancies, fetchVacanciesForSelectedCategory, fetchVacanciesByFilters }}>
+      <VacanciesContext.Provider
+         value={{
+            vacancies,
+            mostRecentVacancies,
+            fetchMostRecentVacancies,
+            fetchAllVacancies,
+            fetchVacanciesForSelectedCategory,
+            fetchVacanciesByFilters,
+         }}
+      >
          {children}
       </VacanciesContext.Provider>
    );
