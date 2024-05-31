@@ -1,7 +1,6 @@
-import { createContext, ReactNode, useCallback, useContext, useState } from "react";
+import { createContext, ReactNode, useContext, useState } from "react";
 import { api } from "../../api/api";
 import { useAuthContext } from "../auth-provider";
-import { SalaryRangeCheckbox } from "../../components";
 import { Vacancy } from "../../@types";
 
 interface VacanciesProps {
@@ -13,7 +12,7 @@ interface VacanciesContextData {
    mostRecentVacancies: Vacancy[];
    fetchMostRecentVacancies: () => Promise<void>;
    fetchVacanciesForSelectedCategory: (search: string) => Promise<void>;
-   fetchVacanciesByFilters: (filters: { tecName?: string; location?: string; vacancyType?: string; level?: string; wageMin?: number }) => Promise<void>;
+   fetchVacanciesByFilters: (filters: { tecName?: string; location?: string; vacancyType?: string; level?: string; minSalary?: number; maxSalary?: number }) => Promise<void>;
    fetchAllVacancies: () => Promise<void>;
 }
 
@@ -21,7 +20,6 @@ const VacanciesContext = createContext<VacanciesContextData>({} as VacanciesCont
 
 export const VacanciesProvider = ({ children }: VacanciesProps) => {
    const [vacancies, setVacancies] = useState<Vacancy[]>([]);
-   const [salaryRange, setSalaryRange] = useState<{ min: number; max: number }>({ min: 0, max: 10000 });
    const [mostRecentVacancies, setMostRecentVacancies] = useState<Vacancy[]>([]);
    const { isLoggedIn } = useAuthContext();
 
@@ -49,7 +47,7 @@ export const VacanciesProvider = ({ children }: VacanciesProps) => {
       }
    };
 
-   const fetchVacanciesByFilters = async (filters: { tecName?: string; location?: string; vacancyType?: string; level?: string; wageMin?: number }) => {
+   const fetchVacanciesByFilters = async (filters: { tecName?: string; location?: string; vacancyType?: string; level?: string; minSalary?: number; maxSalary?: number }) => {
       try {
          const endpoint = isLoggedIn ? `/vacancy/private` : `/vacancy/public`;
 
@@ -57,7 +55,7 @@ export const VacanciesProvider = ({ children }: VacanciesProps) => {
 
          const response = await api.get(endpoint, {
             headers: headers,
-            params: { ...filters, wageMin: salaryRange.min, wageMax: salaryRange.max },
+            params: { ...filters },
          });
 
          setVacancies(response.data.vacancies);
@@ -84,10 +82,6 @@ export const VacanciesProvider = ({ children }: VacanciesProps) => {
       }
    };
 
-   const handleSalaryRangeChange = useCallback((range: { min: number; max: number }) => {
-      setSalaryRange(range);
-   }, []);
-
    return (
       <VacanciesContext.Provider
          value={{
@@ -99,7 +93,6 @@ export const VacanciesProvider = ({ children }: VacanciesProps) => {
             fetchVacanciesByFilters,
          }}
       >
-         <SalaryRangeCheckbox min={0} max={10000} onChange={handleSalaryRangeChange} />
          {children}
       </VacanciesContext.Provider>
    );

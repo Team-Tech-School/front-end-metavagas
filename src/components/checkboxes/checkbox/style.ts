@@ -9,11 +9,13 @@ export const CheckboxFilterContainer = styled.div`
    flex-direction: column;
    margin-left: 10px;
 `;
+
 export const CheckboxLabel = styled.label`
    margin-bottom: 0.5rem;
 `;
+
 export const CheckboxInput = styled.input`
-   margin-right: 0.5rem;
+   margin-right: 0.2rem;
    width: 15px; /* Tornar quadrado */
    height: 15px; /* Tornar quadrado */
    cursor: pointer; /* Cursor pointer para indicar que é clicável */

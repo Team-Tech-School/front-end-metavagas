@@ -1,16 +1,16 @@
-import { ButtonSalved, Container, RegularText, SpanBold, SpanButton } from "./style";
+import * as S from "./style";
 import Salve from "../../assets/images/salve.png";
 
 export const SaveSearch = () => {
    return (
-      <Container>
-         <RegularText>
-            Salve essa busca, te <SpanBold>avisaremos por e-mail</SpanBold> quando encontrarmos mais vagas
-         </RegularText>
-         <ButtonSalved>
+      <S.Container>
+         <S.RegularText>
+            Salve essa busca, te <S.SpanBold>avisaremos por e-mail</S.SpanBold> quando encontrarmos mais vagas
+         </S.RegularText>
+         <S.ButtonSalved>
             <img src={Salve} alt="Salvar" />
-            <SpanButton>Salvar busca</SpanButton>
-         </ButtonSalved>
-      </Container>
+            <S.SpanButton>Salvar busca</S.SpanButton>
+         </S.ButtonSalved>
+      </S.Container>
    );
 };

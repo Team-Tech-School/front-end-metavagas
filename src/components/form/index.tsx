@@ -1,10 +1,10 @@
 import { DetailedHTMLProps, FormEvent, FormHTMLAttributes, useState } from "react";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
 import { Input, OrangeButton } from "../index";
 import * as S from "./style";
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import { useAuthContext } from "../../providers/auth-provider";
+import { useAuthContext } from "../../providers";
 
 interface FormProps extends DetailedHTMLProps<FormHTMLAttributes<HTMLFormElement>, HTMLFormElement> {
    isSignup: boolean;
@@ -38,7 +38,6 @@ export const Form = ({ isSignup, formTitle, linkText, link, buttonTitle }: FormP
    const handleSubmit = async (e: FormEvent) => {
       e.preventDefault();
 
-      // Resetando estados
       setNameError(false);
       setEmailError(false);
       setPasswordError(false);

@@ -1,76 +1,95 @@
-import { useState, KeyboardEvent, useEffect, useCallback } from "react";
+import { useState, KeyboardEvent, useEffect } from "react";
 import * as S from "./style";
 import tableBrazil from "../../assets/images/table-brazil.png";
 import tableReact from "../../assets/images/table-react.png";
-import { InputsAndButton, CustomButton, FilterButton, OrangeButton, Checkbox, SalaryRangeCheckbox, NumberVacancies, BlurredImageWith, InfoJobs, SaveSearch } from "../../components/index";
-import { useVacanciesContext } from "../../providers/vacancies-provider";
-import { useAuthContext } from "../../providers/auth-provider";
+import { InputsAndButton, CustomButton, FilterButton, OrangeButton, Checkbox, NumberVacancies, BlurredImageWith, InfoJobs, SaveSearch, SalaryRangerSlider } from "../../components/index";
+import { useVacanciesContext, useAuthContext } from "../../providers";
 
 export const ShowVacanciesPage = () => {
    const { isLoggedIn } = useAuthContext();
+   const { fetchVacanciesByFilters, fetchAllVacancies, vacancies } = useVacanciesContext();
 
-   const [searchPlaceholder, setSearchPlaceholder] = useState("React");
-   const [selectedButton, setSelectedButton] = useState("React");
+   const [searchValue, setSearchValue] = useState(localStorage.getItem("searchValue") || "");
+   const [cityValue, setCityValue] = useState(localStorage.getItem("cityValue") || "");
+   const [selectedButton, setSelectedButton] = useState(searchValue);
+   const [currentSearchTerm, setCurrentSearchTerm] = useState(searchValue);
 
    const updateSearchPlaceholder = (text: string) => {
-      setSearchPlaceholder(text);
+      setSelectedButton(text);
+      setCurrentSearchTerm(text);
+      setSearchValue(text);
+      executeSearch({ tecName: text });
    };
 
    const [tecName, setTecName] = useState<string[]>([]);
    const [vacancyType, setVacancyType] = useState<string[]>([]);
    const [level, setLevel] = useState<string[]>([]);
-   const [salaryRange, setSalaryRange] = useState<{ min: number; max: number }>({ min: 0, max: 10000 });
    const [selectedWorkRegime, setSelectedWorkRegime] = useState<string[]>([]);
    const [selectedCompanySize, setSelectedCompanySize] = useState<string[]>([]);
+
+   const [minSalary, setMinSalary] = useState(0);
+   const [maxSalary, setMaxSalary] = useState(30000);
 
    const handleCheckboxTechnologyChange = (optionsSelected: string[]) => {
       setTecName(optionsSelected);
    };
+
    const handleCheckboxTypeOfVacancyChange = (optionsSelected: string[]) => {
       setVacancyType(optionsSelected);
    };
+
    const handleCheckboxWorkRegimeChange = (optionsSelected: string[]) => {
       setSelectedWorkRegime(optionsSelected);
    };
+
    const handleCheckboxCompanySizeChange = (optionsSelected: string[]) => {
       setSelectedCompanySize(optionsSelected);
    };
+
    const handleCheckboxExperienceLevelChange = (optionsSelected: string[]) => {
       setLevel(optionsSelected);
    };
-   const handleSalaryRangeChange = useCallback((range: { min: number; max: number }) => {
-      setSalaryRange(range);
-   }, []);
 
-   const clearAllFilters = () => {
+   const handleSalaryChange = (min: number, max: number) => {
+      setMinSalary(min);
+      setMaxSalary(max);
+   };
+
+   const clearAllFilters = async () => {
       setTecName([]);
       setVacancyType([]);
       setSelectedWorkRegime([]);
       setSelectedCompanySize([]);
       setLevel([]);
+      setSearchValue("");
+      setCityValue("");
+      setCurrentSearchTerm("Tudo");
+      setSelectedButton("");
+      setMinSalary(0);
+      setMaxSalary(10000);
+      await fetchAllVacancies();
    };
 
-   const { fetchVacanciesByFilters, fetchAllVacancies, vacancies } = useVacanciesContext();
-
-   const executeSearch = async () => {
+   const executeSearch = async (overrideFilters = {}) => {
       const filters = {
-         tecName: tecName.join(","),
-         vacancyType: vacancyType.join(","),
-         level: level.join(","),
-         salaryRange: `${salaryRange.min}-${salaryRange.max}`,
+         tecName: tecName.join(", "),
+         vacancyType: vacancyType.join(", "),
+         level: level.join(", "),
+         minSalary: minSalary,
+         maxSalary: maxSalary,
+         location: cityValue,
+         ...overrideFilters,
       };
-      if (!filters.tecName && !filters.vacancyType && !filters.level && !filters.salaryRange) {
+
+      const noFiltersApplied = !filters.tecName && !filters.vacancyType && !filters.level && filters.minSalary && filters.maxSalary && !filters.location;
+
+      if (noFiltersApplied) {
          await fetchAllVacancies();
       } else {
          await fetchVacanciesByFilters(filters);
       }
+      setCurrentSearchTerm(filters.tecName);
    };
-
-   const TecName = ["React", "PHP", "Java", "Python", ".Net", "CSS", "HTML", "Ruby"];
-   const VacancyType = ["Remoto", "Presencial", "Híbrido"];
-   const workRegime = ["CLT", "PJ"];
-   const companySize = ["Pequena", "Média", "Grande"];
-   const Level = ["Júnior", "Pleno", "Sênior"];
 
    const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Enter") {
@@ -79,27 +98,40 @@ export const ShowVacanciesPage = () => {
    };
 
    useEffect(() => {
-      fetchAllVacancies();
-   }, []);
+      const fetchInitialVacancies = async () => {
+         const filter = {
+            tecName: searchValue,
+            location: cityValue,
+         };
+         try {
+            await fetchVacanciesByFilters(filter);
+         } catch (error) {
+            console.error("Failed to fetch vacancies by filters:", error);
+         }
+      };
 
-   useEffect(() => {
-      executeSearch();
-   }, [tecName, vacancyType, level]);
+      fetchInitialVacancies();
+   }, [searchValue, cityValue]);
+
+   const TecName = ["React", "PHP", "Java", "Python", ".Net", "CSS", "HTML", "Ruby"];
+   const VacancyType = ["Remoto", "Presencial", "Híbrido"];
+   const workRegime = ["CLT", "PJ"];
+   const companySize = ["Pequena", "Média", "Grande"];
+   const Level = ["Júnior", "Pleno", "Sênior"];
 
    return (
       <>
          <div>
             <S.PurpleBackgroundDiv>
-               <div style={{ paddingTop: "5%", margin: "0px 0px 5px -45px" }}>
-                  <InputsAndButton searchPlaceholder={searchPlaceholder} cityPlaceholder={"Localização"} colorWhiteLabel={true} onKeyDown={handleKeyDown} />
-               </div>
+               <S.DivForInputsAndButton>
+                  <InputsAndButton updateSearchTerm={updateSearchPlaceholder} searchValue={searchValue} cityValue={cityValue} colorWhiteLabel={true} onKeyDown={handleKeyDown} />
+               </S.DivForInputsAndButton>
                <S.DivButton>
                   <CustomButton title={"Java"} selectedButton={selectedButton} setSelectedButton={setSelectedButton} updateSearchPlaceholder={updateSearchPlaceholder} />
                   <CustomButton title={"PHP"} selectedButton={selectedButton} setSelectedButton={setSelectedButton} updateSearchPlaceholder={updateSearchPlaceholder} />
                   <CustomButton title={"Python"} selectedButton={selectedButton} setSelectedButton={setSelectedButton} updateSearchPlaceholder={updateSearchPlaceholder} />
                   <CustomButton title={"React"} selectedButton={selectedButton} setSelectedButton={setSelectedButton} updateSearchPlaceholder={updateSearchPlaceholder} />
                </S.DivButton>
-               )
                {isLoggedIn && (
                   <S.SaveSearchComponent>
                      <SaveSearch />
@@ -109,17 +141,15 @@ export const ShowVacanciesPage = () => {
          </div>
 
          <S.ContainerBodyPageDIV>
-            <div style={{ marginLeft: "20px" }}>
-               <NumberVacancies searchPlaceholder={searchPlaceholder} vacanciesFound={vacancies.length} />
-            </div>
+            <S.DivForNumberVacancies>
+               <NumberVacancies searchPlaceholder={currentSearchTerm} vacanciesFound={vacancies.length} />
+            </S.DivForNumberVacancies>
 
             <S.ContainerFilterResult>
                <S.FilterDiv>
                   <S.HeadDivisionDiv>
                      <S.FilterTitle>Filtre sua busca</S.FilterTitle>
-                     <S.ClearLink href="#" onClick={clearAllFilters}>
-                        Limpar
-                     </S.ClearLink>
+                     <S.ClearLink onClick={clearAllFilters}>Limpar</S.ClearLink>
                   </S.HeadDivisionDiv>
                   <div>
                      <div>
@@ -129,7 +159,7 @@ export const ShowVacanciesPage = () => {
                      <Checkbox title={"Tipo de vaga"} options={VacancyType} onFilterChange={handleCheckboxTypeOfVacancyChange} selectedFilters={vacancyType} />
                      <Checkbox title={"Regime de trabalho"} options={workRegime} onFilterChange={handleCheckboxWorkRegimeChange} selectedFilters={selectedWorkRegime} />
                      <Checkbox title={"Tamanho da empresa"} options={companySize} onFilterChange={handleCheckboxCompanySizeChange} selectedFilters={selectedCompanySize} />
-                     <SalaryRangeCheckbox min={0} max={10000} onChange={handleSalaryRangeChange} />
+                     <SalaryRangerSlider onSalaryChange={handleSalaryChange} />
                      <Checkbox title={"Nível de experiência"} options={Level} onFilterChange={handleCheckboxExperienceLevelChange} selectedFilters={level} />
                   </div>
                   <FilterButton onClickExecuteSearch={executeSearch} />

@@ -1,5 +1,5 @@
 import Logo from "../../../assets/images/metavagas.png";
-import { useAuthContext } from "../../../providers/auth-provider";
+import { useAuthContext } from "../../../providers";
 import { OrangeButton, SmallButton, UserProfile } from "../../index";
 import * as S from "./style";
 

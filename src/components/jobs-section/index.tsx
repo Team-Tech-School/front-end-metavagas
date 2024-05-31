@@ -5,8 +5,8 @@ import { GrLocation } from "react-icons/gr";
 import { FaBriefcase } from "react-icons/fa";
 import { JobAndCategorySelected, RegistrationBanner } from "../index";
 import * as S from "./style";
-import { useVacanciesContext } from "../../providers/vacancies-provider";
-import { useAuthContext } from "../../providers/auth-provider";
+import { useVacanciesContext, useAuthContext } from "../../providers";
+import { AnimatePresence } from "framer-motion";
 
 interface JobSectionProps {
    children: React.ReactNode;
@@ -17,23 +17,12 @@ interface JobSectionProps {
 
 const Category = ({ onClick, isSelected, children, icon }: JobSectionProps) => {
    return (
-      <>
-         {isSelected ? (
-            <S.CategoryContainer isSelected={isSelected} onClick={onClick} style={{ borderBottom: "2px solid #e18309" }}>
-               <div style={{ margin: "18px 10px 10px -1px" }}>
-                  <IconContext.Provider value={{ color: "#fbb04d", size: "22px" }}>{icon}</IconContext.Provider>
-               </div>
-               {children}
-            </S.CategoryContainer>
-         ) : (
-            <S.CategoryContainer isSelected={isSelected} onClick={onClick}>
-               <div style={{ margin: "18px 10px 10px -1px" }}>
-                  <IconContext.Provider value={{ color: "#f1f1f1", size: "22px" }}>{icon}</IconContext.Provider>
-               </div>
-               {children}
-            </S.CategoryContainer>
-         )}
-      </>
+      <S.CategoryContainer isSelected={isSelected} onClick={onClick}>
+         <S.DivForIcon>
+            <IconContext.Provider value={{ color: isSelected ? "#fbb04d" : "#f1f1f1", size: "22px" }}>{icon}</IconContext.Provider>
+         </S.DivForIcon>
+         {children}
+      </S.CategoryContainer>
    );
 };
 
@@ -59,7 +48,7 @@ export const JobsSection = () => {
             categoryType = "tecName";
       }
       fetchVacanciesForSelectedCategory(categoryType);
-   }, [selectedCategory]);
+   }, [selectedCategory, fetchVacanciesForSelectedCategory]);
 
    const handleCategoryClick = (category: string) => {
       setSelectedCategory(category);
@@ -80,11 +69,13 @@ export const JobsSection = () => {
                Cargos
             </Category>
          </S.CategoriesWrapper>
-         <div style={{ display: "flex", flexWrap: "wrap", width: "fit-content", justifyContent: "center", alignItems: "center" }}>
-            {vacancies.map((item: any) => (
-               <JobAndCategorySelected key={item.id} info={item} category={selectedCategory} />
-            ))}
-         </div>
+         <AnimatePresence mode="wait">
+            <S.VacanciesContainer key={selectedCategory} initial={{ opacity: 0, x: 100 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -100 }} transition={{ duration: 0.4 }}>
+               {vacancies.map((item: any) => (
+                  <JobAndCategorySelected key={item.id} info={item} category={selectedCategory} />
+               ))}
+            </S.VacanciesContainer>
+         </AnimatePresence>
       </S.PurpleBackground>
    );
 };

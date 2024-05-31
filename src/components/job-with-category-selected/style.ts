@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const CardBackground = styled.div`
    background-color: #fff;
-   width: 255px;
+   width: 255px; // Largura fixa para todos os cartões
    padding: 25px 20px;
    border-radius: 10px;
    text-size-adjust: initial;
@@ -30,4 +30,7 @@ export const CardInfo = styled.div`
    color: ${({ theme }) => theme.colors.darkPurple};
    font-weight: 400;
    font-size: 16px;
+   white-space: nowrap;
+   overflow: hidden;
+   text-overflow: ellipsis;
 `;

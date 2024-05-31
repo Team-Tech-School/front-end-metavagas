@@ -4,7 +4,7 @@ import Email from "../../../assets/icons/email.png";
 import Location from "../../../assets/icons/local.png";
 import { OrangeButton, SmallButton, Title } from "../../index";
 import * as S from "./style";
-import { useAuthContext } from "../../../providers/auth-provider";
+import { useAuthContext } from "../../../providers";
 
 export const Footer = () => {
    const { isLoggedIn } = useAuthContext();

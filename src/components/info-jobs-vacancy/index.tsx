@@ -4,58 +4,11 @@ import Cifrao from "../../assets/images/cifrao.png";
 import Local from "../../assets/images/local-mini.png";
 import Computer from "../../assets/images/computer-line.png";
 import { NewCard } from "../index";
-import { useAuthContext } from "../../providers/auth-provider";
+import { useAuthContext } from "../../providers";
 import { IconContext } from "react-icons";
 import { FaAngleRight } from "react-icons/fa6";
 import { useNavigate } from "react-router-dom";
-
-interface Company {
-   id: number;
-   name: string;
-   city: string;
-   state: string;
-   address: string;
-   foundedAt: string;
-   description: string;
-   createAt: string;
-   updateAt: string;
-   deleteAt: string | null;
-}
-
-interface Advertiser {
-   id: number;
-   name: string;
-   email: string;
-   role: string;
-   createAt: string;
-   updateAt: string;
-   deleteAt: string | null;
-}
-
-interface Technology {
-   id: number;
-   tecName: string;
-   creatorsName: string;
-   createAt: string;
-   updateAt: string;
-   deleteAt: string | null;
-}
-
-interface Vacancy {
-   id: number;
-   vacancyRole: string;
-   wage: number;
-   location: string;
-   vacancyType: string;
-   vacancyDescription: string;
-   level: string;
-   createAt: string;
-   updateAt: string;
-   deleteAt: string | null;
-   company: Company;
-   advertiser: Advertiser;
-   technologies: Technology[];
-}
+import { Vacancy } from "../../@types";
 
 interface InfoJobsProps {
    vacancy: Vacancy;
@@ -68,11 +21,7 @@ const isNewVacancy = (createAt: string): boolean => {
    const diffInMs = now.getTime() - createdAtDate.getTime();
    const diffInMinutes = diffInMs / (1000 * 60);
 
-   console.log("createdAtDate:", createdAtDate);
-   console.log("now:", now);
-   console.log("diffInMinutes:", diffInMinutes);
-
-   return diffInMinutes < 60;
+   return diffInMinutes < 1440;
 };
 
 export const InfoJobs = ({ vacancy, page }: InfoJobsProps) => {
@@ -85,8 +34,6 @@ export const InfoJobs = ({ vacancy, page }: InfoJobsProps) => {
    };
 
    const newVacancy = isNewVacancy(vacancy.createAt);
-
-   console.log("newVacancy:", newVacancy);
 
    return (
       <S.ResultInfoJobsDiv newVacancy={newVacancy}>

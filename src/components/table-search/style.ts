@@ -3,6 +3,7 @@ import styled, { css } from "styled-components";
 export const blurredStyle = css`
    filter: blur(5px);
 `;
+
 export const Container = styled.div<{ blurred?: boolean }>`
    position: relative;
    width: 440px;
@@ -14,6 +15,7 @@ export const Container = styled.div<{ blurred?: boolean }>`
    margin-right: -10px;
    ${(props) => props.blurred && blurredStyle}
 `;
+
 export const BackgroundImage = styled.img`
    position: absolute;
    width: 90%;
@@ -21,6 +23,7 @@ export const BackgroundImage = styled.img`
    background-size: cover;
    background-position: center;
 `;
+
 export const Button = styled.button`
    position: absolute;
    background-color: #fbb04d;
