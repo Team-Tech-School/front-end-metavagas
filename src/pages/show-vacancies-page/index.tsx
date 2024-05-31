@@ -14,6 +14,11 @@ export const ShowVacanciesPage = () => {
    const [selectedButton, setSelectedButton] = useState(searchValue);
    const [currentSearchTerm, setCurrentSearchTerm] = useState(searchValue);
 
+   useEffect(() => {
+      setSearchValue(localStorage.getItem("searchValue") || "");
+      setCityValue(localStorage.getItem("cityValue") || "");
+   }, []);
+
    const updateSearchPlaceholder = (text: string) => {
       setSelectedButton(text);
       setCurrentSearchTerm(text);
