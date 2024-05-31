@@ -11,10 +11,10 @@ export const DivForInputs = styled.div`
    display: flex;
    justify-content: center;
    align-items: center;
-   margin: 6px -5px -10px -12px;
+   margin: 6px -2px -10px -12px;
 `;
 
 export const ButtonDiv = styled.div`
    margin-top: 55px;
-   margin-left: 20px;
+   margin-left: 10px;
 `;
