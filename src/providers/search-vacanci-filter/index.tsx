@@ -4,7 +4,7 @@ import { createContext, useCallback, useContext, useState } from "react";
 import { Vacancy, VacancyContextProps, VacancyFilters, VacancyProviderProps } from "../../@types";
 import { api } from "../../api/api";
 //import components
-import { SalaryRangeCheckbox } from "../../components";
+
 
 
 const VacancyFilterContext = createContext<VacancyContextProps | undefined>(undefined);  
@@ -19,7 +19,6 @@ export const useVacancyFilterContext = (): VacancyContextProps  => {
 
 export const SearchVacanciesFilterProvider = ({children}: VacancyProviderProps) => {
     const [vacancies, setVacancies] = useState<Vacancy[]>([]); 
-    const [salaryRange, setSalaryRange] = useState<{ min: number; max: number }>({ min: 0, max: 10000 });
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
     
@@ -35,8 +34,8 @@ export const SearchVacanciesFilterProvider = ({children}: VacancyProviderProps) 
                     tecName: filters.tecName,
                     vacancyType: filters.vacancyType,
                     level: filters.level,
-                    wageMin: salaryRange.min,
-                    wageMax: salaryRange.max,
+                    minSalary: filters.minSalary,
+                    maxSalary: filters.maxSalary,
                 }
             })            
             setVacancies(response.data);             
@@ -47,13 +46,10 @@ export const SearchVacanciesFilterProvider = ({children}: VacancyProviderProps) 
             setLoading(false);
           }
     }
-    const handleSalaryRangeChange = useCallback((range: { min: number; max: number }) => {
-        setSalaryRange(range);
-    }, []);
+   
 
     return (
         <VacancyFilterContext.Provider value={{vacancies, fetchVacancies, loading, error}}>
-            <SalaryRangeCheckbox min={0} max={10000} onChange={handleSalaryRangeChange} />
             {children}
         </VacancyFilterContext.Provider>
     );
