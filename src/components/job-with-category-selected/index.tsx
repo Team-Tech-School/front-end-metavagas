@@ -33,7 +33,7 @@ export const JobAndCategorySelected: any = ({ info, category }: JobAndCategoryPr
                <S.CardInfo>{displayText}</S.CardInfo>
             </div>
             <div>
-               <IconContext.Provider value={{ color: "#1a1033", size: "22px" }}>
+               <IconContext.Provider value={{ color: "#1a1033", size: "1.38em" }}>
                   <BiRightArrowAlt />
                </IconContext.Provider>
             </div>
