@@ -1,10 +1,10 @@
-import { DetailedHTMLProps, FormEvent, FormHTMLAttributes, useEffect, useState } from "react";
+import { DetailedHTMLProps, FormEvent, FormHTMLAttributes, useState } from "react";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
 import { Input, OrangeButton } from "../index";
 import * as S from "./style";
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import { useAuthContext } from "../../providers/auth-provider";
+import { useAuthContext } from "../../providers";
 
 interface FormProps extends DetailedHTMLProps<FormHTMLAttributes<HTMLFormElement>, HTMLFormElement> {
    isSignup: boolean;
@@ -24,13 +24,7 @@ export const Form = ({ isSignup, formTitle, linkText, link, buttonTitle }: FormP
    const [emailError, setEmailError] = useState(false);
    const [passwordError, setPasswordError] = useState(false);
    const [confirmPasswordError, setConfirmPasswordError] = useState(false);
-
-   const [nameActive, setNameActive] = useState(false);
-   const [emailActive, setEmailActive] = useState(false);
-   const [passwordActive, setPasswordActive] = useState(false);
-   const [confirmPasswordActive, setConfirmPasswordActive] = useState(false);
-
-   const [formSuccess, setFormSuccess] = useState(false);
+   const [isSuccess, setIsSuccess] = useState(false);
 
    const { register, login } = useAuthContext();
    const navigate = useNavigate();
@@ -43,6 +37,12 @@ export const Form = ({ isSignup, formTitle, linkText, link, buttonTitle }: FormP
 
    const handleSubmit = async (e: FormEvent) => {
       e.preventDefault();
+
+      setNameError(false);
+      setEmailError(false);
+      setPasswordError(false);
+      setConfirmPasswordError(false);
+      setIsSuccess(false);
 
       let hasError = false;
 
@@ -57,26 +57,18 @@ export const Form = ({ isSignup, formTitle, linkText, link, buttonTitle }: FormP
          if (!name) {
             setNameError(true);
             hasError = true;
-         } else {
-            setNameError(false);
          }
          if (!email) {
             setEmailError(true);
             hasError = true;
-         } else {
-            setEmailError(false);
          }
          if (!password) {
             setPasswordError(true);
             hasError = true;
-         } else {
-            setPasswordError(false);
          }
          if (!confirmPassword) {
             setConfirmPasswordError(true);
             hasError = true;
-         } else {
-            setConfirmPasswordError(false);
          }
 
          if (hasError) {
@@ -87,29 +79,25 @@ export const Form = ({ isSignup, formTitle, linkText, link, buttonTitle }: FormP
          try {
             await register({ name, email, password });
             toast.success("Cadastro realizado com sucesso.");
-            setFormSuccess(true);
+            setIsSuccess(true);
             setTimeout(() => {
                navigate("/fazer-login");
             }, 2000);
          } catch (error) {
+            toast.error("Erro ao realizar cadastro.");
             setNameError(true);
             setEmailError(true);
             setPasswordError(true);
             setConfirmPasswordError(true);
-            toast.error("Erro ao realizar cadastro.");
          }
       } else {
          if (!email) {
             setEmailError(true);
             hasError = true;
-         } else {
-            setEmailError(false);
          }
          if (!password) {
             setPasswordError(true);
             hasError = true;
-         } else {
-            setPasswordError(false);
          }
 
          if (hasError) {
@@ -120,24 +108,17 @@ export const Form = ({ isSignup, formTitle, linkText, link, buttonTitle }: FormP
          try {
             await login({ email, password });
             toast.success("Login realizado com sucesso.");
-            setFormSuccess(true);
+            setIsSuccess(true);
             setTimeout(() => {
                navigate("/buscar-vagas");
             }, 2000);
          } catch (error) {
+            toast.error("Erro ao realizar login.");
             setEmailError(true);
             setPasswordError(true);
-            toast.error("Erro ao realizar login.");
          }
       }
    };
-
-   useEffect(() => {
-      setNameActive(!!name);
-      setEmailActive(!!email);
-      setPasswordActive(!!password);
-      setConfirmPasswordActive(!!confirmPassword);
-   }, [name, email, password, confirmPassword]);
 
    return (
       <S.FormWrapper>
@@ -153,8 +134,7 @@ export const Form = ({ isSignup, formTitle, linkText, link, buttonTitle }: FormP
                      value={name}
                      onChange={(e) => setName(e.target.value)}
                      hasError={nameError}
-                     isActive={nameActive}
-                     isSuccess={formSuccess && !nameError}
+                     isSuccess={isSuccess && !nameError}
                   />
                </S.DivForMargin>
             )}
@@ -167,8 +147,7 @@ export const Form = ({ isSignup, formTitle, linkText, link, buttonTitle }: FormP
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   hasError={emailError}
-                  isActive={emailActive}
-                  isSuccess={formSuccess && !emailError}
+                  isSuccess={isSuccess && !emailError}
                />
             </S.DivForMargin>
             <S.DivForMargin marginBottom="45px">
@@ -183,8 +162,7 @@ export const Form = ({ isSignup, formTitle, linkText, link, buttonTitle }: FormP
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   hasError={passwordError}
-                  isActive={passwordActive}
-                  isSuccess={formSuccess && !passwordError}
+                  isSuccess={isSuccess && !passwordError}
                />
             </S.DivForMargin>
             {isSignup && (
@@ -200,8 +178,7 @@ export const Form = ({ isSignup, formTitle, linkText, link, buttonTitle }: FormP
                      value={confirmPassword}
                      onChange={(e) => setConfirmPassword(e.target.value)}
                      hasError={confirmPasswordError}
-                     isActive={confirmPasswordActive}
-                     isSuccess={formSuccess && !confirmPasswordError}
+                     isSuccess={isSuccess && !confirmPasswordError}
                   />
                </S.DivForMargin>
             )}
