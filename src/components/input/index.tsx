@@ -28,7 +28,7 @@ export const Input = ({
    label,
    whiteLabel = false,
    isForPasswordShow = false,
-   padding = "20px 10px 20px 50px",
+   padding = "1.25em 0.63em 1.25em 3.13em",
    value,
    onChange,
    hasError,
