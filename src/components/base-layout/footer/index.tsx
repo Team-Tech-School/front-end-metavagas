@@ -16,27 +16,27 @@ export const Footer = () => {
                <S.LogoAndContactDiv>
                   <S.Logo src={Logo} />
                   <S.ContactAndAddressDiv>
-                     <S.TitleContainer marginBottom="10px">
-                        <Title color="#fbb04d" fontWeight="500" fontSize="15px">
+                     <S.TitleContainer marginBottom="0.63em">
+                        <Title color="#fbb04d" fontWeight="500" fontSize="0.94em">
                            Contato e Endereço
                         </Title>
                      </S.TitleContainer>
-                     <S.TitleContainer marginBottom="13px">
-                        <Title iconSrc={Phone} iconSize="23px" color="#f1f1f1" fontWeight="300" fontSize="15px">
+                     <S.TitleContainer marginBottom="0.81em">
+                        <Title iconSrc={Phone} iconSize="1.44em" color="#f1f1f1" fontWeight="300" fontSize="0.94em">
                            4003-5442
                         </Title>
                      </S.TitleContainer>
-                     <S.TitleContainer marginBottom="13px">
-                        <Title iconSrc={Email} iconSize="23px" color="#f1f1f1" fontWeight="300" fontSize="15px">
+                     <S.TitleContainer marginBottom="0.81em">
+                        <Title iconSrc={Email} iconSize="1.44em" color="#f1f1f1" fontWeight="300" fontSize="0.94em">
                            contato@arnia.com.br
                         </Title>
                      </S.TitleContainer>
-                     <S.TitleContainer marginBottom="13px">
-                        <Title iconSrc={Location} iconSize="23px" color="#f1f1f1" fontWeight="300" fontSize="15px">
+                     <S.TitleContainer marginBottom="0.81em">
+                        <Title iconSrc={Location} iconSize="1.44em" color="#f1f1f1" fontWeight="300" fontSize="0.94em">
                            Av. do Contorno, 2905 Santa Efigênia,
                         </Title>
                         <S.TitleContainer marginTop="8px" marginLeft="30px">
-                           <Title color="#f1f1f1" fontWeight="300" fontSize="15px">
+                           <Title color="#f1f1f1" fontWeight="300" fontSize="0.94em">
                               Belo Horizonte - MG, 30110-080
                            </Title>
                         </S.TitleContainer>
