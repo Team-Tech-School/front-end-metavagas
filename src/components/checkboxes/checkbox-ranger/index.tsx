@@ -1,35 +1,46 @@
+import { useState } from "react";
 import * as S from "./style";
 
-interface CheckboxProps {
-   title: string;
-   options: string[];
-   onFilterChange: (selectedFilters: string[]) => void;
-   selectedFilters: string[];
+interface SalaryRangerSliderProps {
+   onSalaryChange: (minSalary: number, maxSalary: number) => void;
 }
 
-export const Checkbox = ({ title, options, onFilterChange, selectedFilters }: CheckboxProps) => {
-   const handleCheckboxChange = (option: string) => {
-      const newFilters = selectedFilters.includes(option);
-      const newSelectedFilters = [...selectedFilters];
-      if (!newFilters) {
-         newSelectedFilters.push(option);
-      } else {
-         newSelectedFilters.splice(newSelectedFilters.indexOf(option), 1);
-      }
+export const SalaryRangerSlider = ({ onSalaryChange }: SalaryRangerSliderProps) => {
+   const [minSalary, setMinSalary] = useState(0);
+   const [maxSalary, setMaxSalary] = useState(30000);
 
-      onFilterChange(newSelectedFilters);
+   const handleMinSalaryChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+      const value = Number(e.target.value);
+      if (value <= maxSalary) {
+         setMinSalary(value);
+         onSalaryChange(value, maxSalary);
+      }
    };
 
+   const handleMaxSalaryChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+      const value = Number(e.target.value);
+      if (value >= minSalary) {
+         setMaxSalary(value);
+         onSalaryChange(minSalary, value);
+      }
+   };
+   const getPercentage = (value: number) => (value / 30000) * 100;
+
+   const minSalaryPercentage = getPercentage(minSalary);
+   const maxSalaryPercentage = getPercentage(maxSalary);
+
    return (
-      <S.CheckboxFilterContainer>
-         <br />
-         <S.H4Title>{title}</S.H4Title>
-         {options.map((option) => (
-            <S.CheckboxLabel key={option}>
-               <S.CheckboxInput type="checkbox" name={option} checked={selectedFilters.includes(option)} onChange={() => handleCheckboxChange(option)} />
-               <S.CheckboxOption checked={selectedFilters.includes(option)}>{option}</S.CheckboxOption>
-            </S.CheckboxLabel>
-         ))}
-      </S.CheckboxFilterContainer>
+      <S.SalaryRangeSliderContainer>
+         <S.Label>Faixa salarial</S.Label>
+         <S.Value>
+            R$ {minSalary} - R$ {maxSalary}
+         </S.Value>
+         <S.RangeContainer>
+            <S.SliderTrack />
+            <S.SliderRange left={minSalaryPercentage} width={maxSalaryPercentage - minSalaryPercentage} />
+            <S.Slider type="range" value={minSalary} onChange={handleMinSalaryChange} min="0" max="30000" step="100" style={{ zIndex: minSalary > maxSalary - 100 ? 5 : 3 }} />
+            <S.Slider type="range" value={maxSalary} onChange={handleMaxSalaryChange} min="0" max="30000" step="100" style={{ zIndex: 4 }} />
+         </S.RangeContainer>
+      </S.SalaryRangeSliderContainer>
    );
 };
