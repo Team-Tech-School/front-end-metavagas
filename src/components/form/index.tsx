@@ -125,12 +125,12 @@ export const Form = ({ isSignup, formTitle, linkText, link, buttonTitle }: FormP
          <S.FormTitle>{formTitle}</S.FormTitle>
          <form onSubmit={handleSubmit}>
             {isSignup && (
-               <S.DivForMargin marginBottom="48px">
+               <S.DivForMargin marginBottom="3em">
                   <Input
                      id="name"
                      placeholder="Digite seu nome"
                      label="Seu nome"
-                     padding="20px 55px 20px 17px"
+                     padding="1.25em 3.44em 1.25em 1.06em"
                      value={name}
                      onChange={(e) => setName(e.target.value)}
                      hasError={nameError}
@@ -138,19 +138,19 @@ export const Form = ({ isSignup, formTitle, linkText, link, buttonTitle }: FormP
                   />
                </S.DivForMargin>
             )}
-            <S.DivForMargin marginTop="1px" marginBottom="45px">
+            <S.DivForMargin marginTop="0.06em" marginBottom="2.81em">
                <Input
                   id="email"
                   placeholder="Digite seu email"
                   label="Seu e-mail"
-                  padding="20px 55px 20px 17px"
+                  padding="1.25em 3.44em 1.25em 1.06em"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   hasError={emailError}
                   isSuccess={isSuccess && !emailError}
                />
             </S.DivForMargin>
-            <S.DivForMargin marginBottom="45px">
+            <S.DivForMargin marginBottom="2.81em">
                <Input
                   id="password"
                   placeholder="Digite sua senha"
@@ -158,7 +158,7 @@ export const Form = ({ isSignup, formTitle, linkText, link, buttonTitle }: FormP
                   isForPasswordShow={true}
                   iconColor="gray"
                   size="20px"
-                  padding="20px 55px 20px 17px"
+                  padding="1.25em 3.44em 1.25em 1.06em"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   hasError={passwordError}
@@ -166,7 +166,7 @@ export const Form = ({ isSignup, formTitle, linkText, link, buttonTitle }: FormP
                />
             </S.DivForMargin>
             {isSignup && (
-               <S.DivForMargin marginBottom="45px">
+               <S.DivForMargin marginBottom="2.81em">
                   <Input
                      id="confirmPassword"
                      placeholder="Confirme sua senha"
@@ -174,7 +174,7 @@ export const Form = ({ isSignup, formTitle, linkText, link, buttonTitle }: FormP
                      isForPasswordShow={true}
                      iconColor="gray"
                      size="20px"
-                     padding="20px 55px 20px 17px"
+                     padding="1.25em 3.44em 1.25em 1.06em"
                      value={confirmPassword}
                      onChange={(e) => setConfirmPassword(e.target.value)}
                      hasError={confirmPasswordError}
@@ -182,7 +182,7 @@ export const Form = ({ isSignup, formTitle, linkText, link, buttonTitle }: FormP
                   />
                </S.DivForMargin>
             )}
-            <S.DivForMargin marginTop="-15px" marginLeft="5px">
+            <S.DivForMargin marginTop="-0.94em" marginLeft="0.31em">
                <OrangeButton title={buttonTitle} width="large" type="submit" />
             </S.DivForMargin>
          </form>
