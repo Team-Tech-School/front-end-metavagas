@@ -12,10 +12,10 @@ export const WhiteBackgroundToInputs = styled.div`
 `;
 
 export const PurpleBackgroundDiv = styled.div`
-   margin-top: 6%;
+   margin-top: 2%;
    background-color: ${({ theme }) => theme.colors.darkPurple};
    width: 100%;
-   height: 75vh;
+   height: 78vh;
 `;
 
 export const ContentDiv = styled.div`
