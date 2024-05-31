@@ -23,13 +23,13 @@ export const VacancyHomePageCard = ({ title, local, tecnology }: CardProps) => {
          <S.VacancyTitle>{title}</S.VacancyTitle>
          <S.InfoDiv>
             <S.IconDiv>
-               <IconContext.Provider value={{ color: "#fbb04d", size: "15px" }}>{<GrLocation />}</IconContext.Provider>
+               <IconContext.Provider value={{ color: "#fbb04d", size: "0.94em" }}>{<GrLocation />}</IconContext.Provider>
             </S.IconDiv>
             <S.InfoVacancy>Localização: {local}</S.InfoVacancy>
          </S.InfoDiv>
          <S.InfoDiv>
             <S.IconDiv>
-               <IconContext.Provider value={{ color: "#fbb04d", size: "15px" }}>{<CgScreen />}</IconContext.Provider>
+               <IconContext.Provider value={{ color: "#fbb04d", size: "0.94em" }}>{<CgScreen />}</IconContext.Provider>
             </S.IconDiv>
             <S.InfoVacancy>
                Tecnologia: <S.InfoBoldSpan>{tecnology}</S.InfoBoldSpan>
@@ -38,7 +38,7 @@ export const VacancyHomePageCard = ({ title, local, tecnology }: CardProps) => {
          <S.StyledLink onClick={handleClick}>
             Ver mais detalhes
             <S.IconStyledLink>
-               <IconContext.Provider value={{ color: "#5d5fef", size: "13px" }}>{<FaAngleRight />}</IconContext.Provider>
+               <IconContext.Provider value={{ color: "#5d5fef", size: "0.81em" }}>{<FaAngleRight />}</IconContext.Provider>
             </S.IconStyledLink>
          </S.StyledLink>
       </S.WhiteBackgroundForVacancies>
