@@ -40,6 +40,7 @@ export const AuthProvider = ({ children }: AuthProps) => {
    const register = async (data: RegisterType) => {
       try {
          const response = await api.post("/auth/register", data);
+         console.log("response for register: ", response)
 
          return;
       } catch (error: any) {
