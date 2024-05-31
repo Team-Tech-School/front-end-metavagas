@@ -76,7 +76,7 @@ export const InfoJobs = ({ vacancy, page }: InfoJobsProps) => {
                   <S.StyledLink onClick={handleClick}>
                      Ver mais detalhes
                      <S.IconStyledLink>
-                        <IconContext.Provider value={{ color: "#5d5fef", size: "13px" }}>{<FaAngleRight />}</IconContext.Provider>
+                        <IconContext.Provider value={{ color: "#5d5fef", size: "0.81em" }}>{<FaAngleRight />}</IconContext.Provider>
                      </S.IconStyledLink>
                   </S.StyledLink>
                </>
