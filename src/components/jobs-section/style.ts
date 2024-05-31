@@ -52,7 +52,7 @@ export const CategoriesWrapper = styled.div`
 export const VacanciesContainer = styled(motion.div)`
    display: flex;
    flex-wrap: wrap;
-   max-width: 80vw;
+   max-width: 90vw;
    justify-content: center;
    align-items: center;
 `;
