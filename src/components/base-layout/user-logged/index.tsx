@@ -55,7 +55,7 @@ export const UserProfile = ({ username, email }: UserProfileProps) => {
             <S.Initials>{getInitials(username)}</S.Initials>
          </S.ProfilePicture>
          <S.Username onClick={handleIconClick}>{username}</S.Username>
-         <IconContext.Provider value={{ color: "white", size: "20px" }}>
+         <IconContext.Provider value={{ color: "white", size: "1.25em" }}>
             <BiChevronDown />
          </IconContext.Provider>
          <S.DivForTooltip ref={tooltipRef}>
