@@ -20,7 +20,7 @@ export const MostRecentSearch = () => {
 
    return (
       <S.Container>
-         <Title color="#1a1033" fontWeight="400" fontSize="14px">
+         <Title color="#1a1033" fontWeight="400" fontSize="0.88em">
             Buscas mais recentes:
          </Title>
          <S.ContentDiv>
