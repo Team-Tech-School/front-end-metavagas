@@ -8,7 +8,7 @@ import tableBrazil from "../../assets/images/table-brazil.png";
 import tableReact from "../../assets/images/table-react.png";
 
 // import components
-import { InputsAndButton, CustomButton, FilterButton, Checkbox, SalaryRangeCheckbox, NumberVacancies, BlurredImageWith, InfoJobs, SaveSearch } from "../../components/index";
+import { InputsAndButton, CustomButton, FilterButton, Checkbox, SalaryRangerSlider ,NumberVacancies, BlurredImageWith, InfoJobs, SaveSearch } from "../../components/index";
 
 export const ShowVacanciesLogged = () => {
    // State para os filtros de busca
@@ -119,7 +119,7 @@ export const ShowVacanciesLogged = () => {
                      <Checkbox title={"Tipo de vaga"} opstions={typeOfVacancies} onFilterChange={handleCheckboxTypeOfVacancyChange} selectedFilters={selectedTypeOfVacancy} />
                      <Checkbox title={"Regime de trabalho"} opstions={workRegime} onFilterChange={handleCheckboxWorkRegimeChange} selectedFilters={selectedWorkRegime} />
                      <Checkbox title={"Tamanho da empresa"} opstions={companySize} onFilterChange={handleCheckboxCompanySizeChange} selectedFilters={selectedCompanySize} />
-                     <SalaryRangeCheckbox />
+                  
                      <Checkbox title={"Nivel de experiencia"} opstions={experienceLevel} onFilterChange={handleCheckboxExperienceLevelChange} selectedFilters={selectedExperienceLevel} />
                   </div>
                   <FilterButton onClickExecuteSearch={executeSearch} />

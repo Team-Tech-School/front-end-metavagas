@@ -1,58 +1,66 @@
 // import hooks
-import { ChangeEvent, useEffect, useState } from "react";
+import {useState} from "react";
 
 //import style
 import * as S from "./style";
 
 //tipagem
-interface RangeSliderProps {
-   min: number;
-   max: number;
-   step?: number;
-   onChange: (values: { min: number; max: number }) => void;
- }
-export const SalaryRangeCheckbox = ({min, max, step = 1, onChange}: RangeSliderProps) => {
-   const [minValue, setMinValue] = useState(min);
-   const [maxValue, setMaxValue] = useState(max);
- 
-   useEffect(() => {
-     onChange({ min: minValue, max: maxValue });
-   }, [minValue, maxValue, onChange]);
- 
-   const handleMinChange = (e: ChangeEvent<HTMLInputElement>) => {
-     const value = Math.min(Number(e.target.value), maxValue - step);
-     setMinValue(value);
-   };
- 
-   const handleMaxChange = (e: ChangeEvent<HTMLInputElement>) => {
-     const value = Math.max(Number(e.target.value), minValue + step);
-     setMaxValue(value);
-   };
- 
-   const getPercentage = (value: number) => ((value - min) / (max - min)) * 100;
+interface SalaryRangerSliderProps {
+  onSalaryChange: (minSalary: number, maxSalary: number) => void;
+}
 
-   return (
-      <S.RangeContainer>
-      <S.SliderTrack />
-      <S.SliderRange left={getPercentage(minValue)} width={getPercentage(maxValue) - getPercentage(minValue)} />
-      <S.Slider
-        type="range"
-        min={min}
-        max={max}
-        step={step}
-        value={minValue}
-        onChange={handleMinChange}
-        style={{ zIndex: minValue > max - 100 ? 5 : 3 }}
-      />
-      <S.Slider
-        type="range"
-        min={min}
-        max={max}
-        step={step}
-        value={maxValue}
-        onChange={handleMaxChange}
-        style={{ zIndex: 4 }}
-      />
-    </S.RangeContainer>
-   );   
+export const SalaryRangerSlider = ({onSalaryChange}: SalaryRangerSliderProps) => {
+  const [minSalary, setMinSalary] = useState(0);
+  const [maxSalary, setMaxSalary] = useState(30000);
+
+  const handleMinSalaryChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = Number(e.target.value);
+    if (value <= maxSalary) {
+      setMinSalary(value);
+      onSalaryChange(value, maxSalary);
+    }
+  };
+  const handleMaxSalaryChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = Number(e.target.value);
+    if (value >= minSalary) {
+      setMaxSalary(value);
+      onSalaryChange(minSalary, value);
+    }
+  };
+  const getPercentage = (value: number) => (value / 30000) * 100;
+
+  const minSalaryPercentage = getPercentage(minSalary);
+  const maxSalaryPercentage = getPercentage(maxSalary);
+
+
+  return (
+    <S.SalaryRangeSliderContainer>
+      <S.Label>Faixa salarial</S.Label>
+     <S.Value>R$ {minSalary} - R$ {maxSalary}</S.Value>
+     <S.RangeContainer>
+        <S.SliderTrack />
+       <S.SliderRange left={minSalaryPercentage} width={maxSalaryPercentage - minSalaryPercentage}/>
+        <S.Slider
+          type="range"
+          value={minSalary}
+          onChange={handleMinSalaryChange}
+          min="0"
+          max="30000"
+          step="100"
+          style={{ zIndex: minSalary > maxSalary - 100 ? 5 : 3 }}
+          
+        />
+        <S.Slider
+          type="range"
+          value={maxSalary}
+          onChange={handleMaxSalaryChange}
+          min="0"
+          max="30000"
+          step="100"
+          style={{ zIndex: 4 }}
+          
+        />
+      </S.RangeContainer>
+    </S.SalaryRangeSliderContainer>
+  );
 };
