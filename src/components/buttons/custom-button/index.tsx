@@ -7,6 +7,7 @@ interface CustomButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
    selectedButton: string;
    setSelectedButton: Dispatch<SetStateAction<string>>;
 }
+
 export const CustomButton = ({ title, updateSearchPlaceholder, selectedButton, setSelectedButton }: CustomButtonProps) => {
    const isSelected = selectedButton === title;
 
