@@ -1,7 +1,7 @@
 import { createContext, ReactNode, useContext, useState } from "react";
 import { api } from "../../api/api";
 import { useAuthContext } from "../auth-provider";
-import { Vacancy } from "../../@types";
+import { Vacancy, VacancyFilters } from "../../@types";
 
 interface VacanciesProps {
    children: ReactNode;
@@ -12,7 +12,7 @@ interface VacanciesContextData {
    mostRecentVacancies: Vacancy[];
    fetchMostRecentVacancies: () => Promise<void>;
    fetchVacanciesForSelectedCategory: (search: string) => Promise<void>;
-   fetchVacanciesByFilters: (filters: { tecName?: string; location?: string; vacancyType?: string; level?: string; minSalary?: number; maxSalary?: number }) => Promise<void>;
+   fetchVacanciesByFilters: (filters: VacancyFilters) => Promise<void>;
    fetchAllVacancies: () => Promise<void>;
 }
 
@@ -47,7 +47,7 @@ export const VacanciesProvider = ({ children }: VacanciesProps) => {
       }
    };
 
-   const fetchVacanciesByFilters = async (filters: { tecName?: string; location?: string; vacancyType?: string; level?: string; minSalary?: number; maxSalary?: number }) => {
+   const fetchVacanciesByFilters = async (filters: VacancyFilters) => {
       try {
          const endpoint = isLoggedIn ? `/vacancy/private` : `/vacancy/public`;
 
