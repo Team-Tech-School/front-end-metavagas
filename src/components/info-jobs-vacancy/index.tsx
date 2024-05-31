@@ -5,15 +5,88 @@ import Local from "../../assets/images/local-mini.png";
 import Computer from "../../assets/images/computer-line.png";
 import { NewCard } from "../index";
 import { useAuthContext } from "../../providers/auth-provider";
+import { IconContext } from "react-icons";
+import { FaAngleRight } from "react-icons/fa6";
+import { useNavigate } from "react-router-dom";
 
-interface InfoJobsProps {
-   page?: boolean;
-   newVacancy?: boolean;
+interface Company {
+   id: number;
+   name: string;
+   city: string;
+   state: string;
+   address: string;
+   foundedAt: string;
+   description: string;
+   createAt: string;
+   updateAt: string;
+   deleteAt: string | null;
 }
 
-export const InfoJobs = ({ page, newVacancy }: InfoJobsProps) => {
+interface Advertiser {
+   id: number;
+   name: string;
+   email: string;
+   role: string;
+   createAt: string;
+   updateAt: string;
+   deleteAt: string | null;
+}
+
+interface Technology {
+   id: number;
+   tecName: string;
+   creatorsName: string;
+   createAt: string;
+   updateAt: string;
+   deleteAt: string | null;
+}
+
+interface Vacancy {
+   id: number;
+   vacancyRole: string;
+   wage: number;
+   location: string;
+   vacancyType: string;
+   vacancyDescription: string;
+   level: string;
+   createAt: string;
+   updateAt: string;
+   deleteAt: string | null;
+   company: Company;
+   advertiser: Advertiser;
+   technologies: Technology[];
+}
+
+interface InfoJobsProps {
+   vacancy: Vacancy;
+   page?: boolean;
+}
+
+const isNewVacancy = (createAt: string): boolean => {
+   const createdAtDate = new Date(createAt);
+   const now = new Date();
+   const diffInMs = now.getTime() - createdAtDate.getTime();
+   const diffInMinutes = diffInMs / (1000 * 60);
+
+   console.log("createdAtDate:", createdAtDate);
+   console.log("now:", now);
+   console.log("diffInMinutes:", diffInMinutes);
+
+   return diffInMinutes < 60;
+};
+
+export const InfoJobs = ({ vacancy, page }: InfoJobsProps) => {
    const { isLoggedIn } = useAuthContext();
    const blurred = !isLoggedIn;
+   const navigate = useNavigate();
+
+   const handleClick = () => {
+      navigate("/fazer-cadastro");
+   };
+
+   const newVacancy = isNewVacancy(vacancy.createAt);
+
+   console.log("newVacancy:", newVacancy);
 
    return (
       <S.ResultInfoJobsDiv newVacancy={newVacancy}>
@@ -21,44 +94,46 @@ export const InfoJobs = ({ page, newVacancy }: InfoJobsProps) => {
             <S.ContainerTitle>
                <div>{newVacancy && <NewCard />}</div>
                <div>
-                  <S.H1InfoJobs>Desenvolvedor de Sistemas Pleno</S.H1InfoJobs>
+                  <S.H1InfoJobs>{vacancy.vacancyRole}</S.H1InfoJobs>
                   <S.SpanInfoJobs page={page} blurred={blurred}>
-                     Empresa: IZap Softworks
+                     Empresa: {vacancy.company.name}
                   </S.SpanInfoJobs>
                </div>
             </S.ContainerTitle>
             <div>
                <S.BoldText>
-                  InfoJobs<S.StyledText blurred={blurred}> • 04 ago</S.StyledText>
+                  InfoJobs<S.StyledText blurred={blurred}> • {new Date(vacancy.createAt).toLocaleDateString()}</S.StyledText>
                </S.BoldText>
             </div>
          </S.Container>
          <S.CardResultInfoJobs>
-            <RecentSearchButton title={"PHP"} />
-            <RecentSearchButton title={"Python"} />
-            <RecentSearchButton title={"React"} />
+            {vacancy.technologies.map((tech) => (
+               <RecentSearchButton key={tech.id} title={tech.tecName} />
+            ))}
          </S.CardResultInfoJobs>
          <S.ContainerFooter>
             <S.Container>
-            <span><img src={Cifrao} alt="cifrão" /><S.StyledText page={page} blurred={blurred}>
-                   Faixa Salarial: <S.BoldText>R$ 4.000,00</S.BoldText>
-               </S.StyledText></span>
-               <span> <img src={Local} alt="Localização" /><S.StyledText page={page} blurred={blurred}>
-                  Localização: <S.BoldText>Belo Horizonte</S.BoldText>
-               </S.StyledText></span>
-               
-               <span> <img src={Computer} alt="Tipo de vaga" />  <S.StyledText page={page} blurred={blurred}>
-                Tipo de vaga: <S.BoldText>Home office</S.BoldText>
-               </S.StyledText></span>
-              
+               <S.StyledText page={page} blurred={blurred}>
+                  <img src={Cifrao} alt="cifrão" /> Faixa Salarial: <S.BoldText>R$ {vacancy.wage.toLocaleString("pt-BR")}</S.BoldText>
+               </S.StyledText>
+               <S.StyledText page={page} blurred={blurred}>
+                  <img src={Local} alt="Localização" /> Localização: <S.BoldText>{vacancy.location}</S.BoldText>
+               </S.StyledText>
+               <S.StyledText page={page} blurred={blurred}>
+                  <img src={Computer} alt="Tipo de vaga" /> Tipo de vaga: <S.BoldText>{vacancy.vacancyType}</S.BoldText>
+               </S.StyledText>
             </S.Container>
-            <S.Paragraph >
-               Oferecemos um ambiente em que todos são protagonistas e agentes de transformação. Temos um excelente clima organizacional com pessoas engajadas em entregar os melhores resultados, assim
-               como grandes oportunidades...
-            </S.Paragraph>
-            <S.MaisDetalhes>
-               Ver mais detalhes {">"}
-            </S.MaisDetalhes>            
+            <S.Paragraph>{vacancy.vacancyDescription}</S.Paragraph>
+            {!isLoggedIn && (
+               <>
+                  <S.StyledLink onClick={handleClick}>
+                     Ver mais detalhes
+                     <S.IconStyledLink>
+                        <IconContext.Provider value={{ color: "#5d5fef", size: "13px" }}>{<FaAngleRight />}</IconContext.Provider>
+                     </S.IconStyledLink>
+                  </S.StyledLink>
+               </>
+            )}
          </S.ContainerFooter>
       </S.ResultInfoJobsDiv>
    );

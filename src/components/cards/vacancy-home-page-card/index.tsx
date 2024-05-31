@@ -2,6 +2,7 @@ import { FaAngleRight } from "react-icons/fa6";
 import { IconContext } from "react-icons";
 import { GrLocation } from "react-icons/gr";
 import { CgScreen } from "react-icons/cg";
+import { useNavigate } from "react-router-dom";
 import * as S from "./style";
 
 interface CardProps {
@@ -11,6 +12,12 @@ interface CardProps {
 }
 
 export const VacancyHomePageCard = ({ title, local, tecnology }: CardProps) => {
+   const navigate = useNavigate();
+
+   const handleClick = () => {
+      navigate("/fazer-cadastro");
+   };
+
    return (
       <S.WhiteBackgroundForVacancies>
          <S.VacancyTitle>{title}</S.VacancyTitle>
@@ -28,7 +35,7 @@ export const VacancyHomePageCard = ({ title, local, tecnology }: CardProps) => {
                Tecnologia: <S.InfoBoldSpan>{tecnology}</S.InfoBoldSpan>
             </S.InfoVacancy>
          </S.InfoDiv>
-         <S.StyledLink>
+         <S.StyledLink onClick={handleClick}>
             Ver mais detalhes
             <S.IconStyledLink>
                <IconContext.Provider value={{ color: "#5d5fef", size: "13px" }}>{<FaAngleRight />}</IconContext.Provider>

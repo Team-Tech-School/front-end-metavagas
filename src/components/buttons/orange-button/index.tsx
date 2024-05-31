@@ -4,9 +4,9 @@ import * as S from "./style";
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
    title: string;
-   link?: string;
    width?: "large" | "medium" | "small";
    onClick?: () => void;
+   link?: string;
 }
 
 export const OrangeButton = ({ title, width, link, onClick }: ButtonProps) => {
@@ -15,9 +15,8 @@ export const OrangeButton = ({ title, width, link, onClick }: ButtonProps) => {
    const handleClick = () => {
       if (onClick) {
          onClick();
-      } else if (link) {
-         navigate(link);
       }
+      navigate(link as any);
    };
 
    return (

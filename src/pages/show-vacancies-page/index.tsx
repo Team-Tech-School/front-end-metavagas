@@ -1,12 +1,9 @@
-//import hooks React
 import { useState } from "react";
+import { useState, KeyboardEvent, useEffect } from "react";
 import { Link } from "react-router-dom";
-//import style
 import * as S from "./style";
-//import images
 import tableBrazil from "../../assets/images/table-brazil.png";
 import tableReact from "../../assets/images/table-react.png";
-//import components
 import {
   InputsAndButton,
   CustomButton,
@@ -19,13 +16,12 @@ import {
   SaveSearch,
   SalaryRangerSlider,
 } from "../../components/index";
-//import context
-import { useVacancyFilterContext } from "../../providers/search-vacanci-filter";
+import { InputsAndButton, CustomButton, FilterButton, OrangeButton, Checkbox, SalaryRangeCheckbox, NumberVacancies, BlurredImageWith, InfoJobs, SaveSearch } from "../../components/index";
+import { useVacanciesContext } from "../../providers/vacancies-provider";
 import { useAuthContext } from "../../providers/auth-provider";
 
 export const ShowVacanciesPage = () => {
   const { isLoggedIn } = useAuthContext();
-
 
   // State para os filtros de busca
   const [searchPlaceholder, setSearchPlaceholder] = useState("React");
@@ -80,8 +76,7 @@ export const ShowVacanciesPage = () => {
     setMinSalary(0);
     setMaxSalary(10000);
   };
-
-  // Chama o Context Provider que faz a requisição da Api e retorna os dados
+    
   const { fetchVacancies, vacancies } = useVacancyFilterContext();
 
   // Função para executar a busca de filtros na API
