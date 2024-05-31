@@ -88,7 +88,7 @@ export const InputsAndButton = ({ searchValue, cityValue, colorWhiteLabel, onKey
                placeholder={"Cargo, tecnologia ou palavra-chave"}
                icon={<PiMagnifyingGlassBold />}
                iconColor="gray"
-               size="22px"
+               size="1.38em"
                value={value}
                onChange={handleValueChange}
             />
@@ -100,7 +100,7 @@ export const InputsAndButton = ({ searchValue, cityValue, colorWhiteLabel, onKey
                placeholder={"Localização"}
                icon={<GrLocation />}
                iconColor="gray"
-               size="22px"
+               size="1.38em"
                value={city}
                onChange={handleCityChange}
             />
