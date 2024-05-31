@@ -1,7 +1,5 @@
-// import style
 import { FilterButtonStyled } from "./style";
 
-// tipagem
 interface FilterButtonProps {
    onClickExecuteSearch: () => void;
 }
