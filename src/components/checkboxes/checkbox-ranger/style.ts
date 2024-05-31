@@ -4,19 +4,19 @@ export const SalaryRangeSliderContainer = styled.div`
    display: flex;
    flex-direction: column;
    align-items: flex-start;
-   margin-left: 7px;
-   margin-bottom: -12px;
+   margin-left: 0.44em;
+   margin-bottom: -0.75em;
 `;
 
 export const Label = styled.label`
    width: 100%;
-   height: 24px;
-   margin-bottom: 5px;
-   margin-top: 20px;
+   height: 1.5em;
+   margin-bottom: 0.31em;
+   margin-top: 1.25em;
    font-family: "Poppins", sans-serif;
    font-weight: 500;
-   font-size: 16px;
-   line-height: 24px;
+   font-size: 1em;
+   line-height: 1.5em;
    color: #1a1033;
 `;
 
@@ -24,16 +24,16 @@ export const Value = styled.span`
    width: 100%;
    font-family: "Poppins", sans-serif;
    font-weight: 400;
-   font-size: 14px;
-   line-height: 19.6px;
+   font-size: 0.88em;
+   line-height: 1.23em;
    color: #8c8ca1;
-   margin-bottom: -5px;
+   margin-bottom: -0.31em;
 `;
 
 export const RangeContainer = styled.div`
    position: relative;
    width: 90%;
-   height: 50px;
+   height: 3.13em;
 `;
 
 export const Slider = styled.input`
@@ -46,9 +46,9 @@ export const Slider = styled.input`
 
    &::-webkit-slider-thumb {
       pointer-events: all;
-      width: 16px;
-      height: 16px;
-      border: 2px solid #6950a1;
+      width: 1em;
+      height: 1em;
+      border: 0.13em solid #6950a1;
       background: #ffffff;
       border-radius: 50%;
       cursor: pointer;
@@ -57,9 +57,9 @@ export const Slider = styled.input`
 
    &::-moz-range-thumb {
       pointer-events: all;
-      width: 16px;
-      height: 16px;
-      border: 2px solid #ffffff;
+      width: 1em;
+      height: 1em;
+      border: 0.13em solid #ffffff;
       background: #6950a1;
       border-radius: 50%;
       cursor: pointer;
@@ -68,22 +68,22 @@ export const Slider = styled.input`
 
 export const SliderTrack = styled.div`
    position: absolute;
-   height: 4px;
+   height: 0.25em;
    background: #ddd;
    top: 50%;
    transform: translateY(-50%);
    width: 100%;
-   border-radius: 2px;
+   border-radius: 0.13em;
 `;
 
 export const SliderRange = styled.div<{ left: number; width: number }>`
    position: absolute;
-   height: 4px;
+   height: 0.25em;
    background: #6950a1;
    top: 50%;
    transform: translateY(-50%);
    left: ${(props) => props.left}%;
    width: ${(props) => props.width}%;
-   border-radius: 3px;
+   border-radius: 0.19em;
    z-index: 2;
 `;

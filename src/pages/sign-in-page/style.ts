@@ -4,11 +4,11 @@ export const PurpleBackgroundDiv = styled.div`
    margin-top: -1%;
    background-color: ${({ theme }) => theme.colors.darkPurple};
    width: 100%;
-   height: 67vh;
+   height: 80vh;
 `;
 
 export const ContentDiv = styled.div`
-   padding: 7% 5% 10% 2.5%;
+   padding: 12% 5% 10% 2.5%;
    margin-left: 7%;
    display: flex;
    flex-direction: column;

@@ -12,13 +12,13 @@ export const ContentWrapper = styled.div`
    display: flex;
    align-items: center;
    justify-content: space-between;
-   padding: 20px;
+   padding: 1.25em;
    height: 20%;
    margin: auto;
 `;
 
 export const Logo = styled.img`
-   margin: 10px 0px 10px 105px;
+   margin: 0.63em 0em 0.63em 6.56em;
 `;
 
 export const PurpleBackground = styled.div`
@@ -29,15 +29,15 @@ export const ButtonsWrapper = styled.div`
    display: flex;
    align-items: center;
    justify-content: space-between;
-   margin-right: 80px;
+   margin-right: 5em;
 
    button {
-      margin-right: 20px;
+      margin-right: 1.25em;
    }
 `;
 export const BlackLine = styled.div`
-   height: 1px;
-   width: 82.6%;
+   height: 0.06em;
+   width: 81.5vw;
    background-color: #080019;
-   margin: 0px 20px 0px 120px;
+   margin: 0em 1.25em 0em 7.5em;
 `;

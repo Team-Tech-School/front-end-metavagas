@@ -9,5 +9,5 @@ export const HeaderWrapper = styled.div`
 `;
 
 export const MainContent = styled.div`
-   margin-top: 50px;
+   margin-top: 3.13em;
 `;

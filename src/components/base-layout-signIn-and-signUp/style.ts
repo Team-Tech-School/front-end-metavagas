@@ -5,17 +5,17 @@ export const ContentDiv = styled.div`
    display: flex;
    justify-content: center;
    align-items: center;
-   margin: 50px 50px 0px 50px;
+   margin: 4em 3.13em 0em 3.13em;
 `;
 
 export const TitleDiv = styled.div`
-   margin: 10px 15px 0px 20px;
+   margin: 0.63em 0.94em 0em 1.25em;
 `;
 
 export const Img = styled.img`
    position: absolute;
-   left: 18.8%;
-   margin-top: -54px;
+   left: 16.5em;
+   margin-top: -2.9em;
 `;
 
 export const TitleAndCardsWrapper = styled.div`
@@ -24,5 +24,5 @@ export const TitleAndCardsWrapper = styled.div`
 
 export const CardsDiv = styled.div`
    display: flex;
-   margin-left: 40px;
+   margin-left: 2.5em;
 `;

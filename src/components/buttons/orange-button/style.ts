@@ -7,11 +7,11 @@ interface ButtonProps {
 const getWidth = (width?: "large" | "medium" | "small") => {
    switch (width) {
       case "large":
-         return "430px";
+         return "26.88em";
       case "medium":
-         return "290px";
+         return "18.13em";
       case "small":
-         return "150px";
+         return "9.38em";
       default:
          return "fit-content";
    }
@@ -19,14 +19,14 @@ const getWidth = (width?: "large" | "medium" | "small") => {
 
 export const Button = styled.button<ButtonProps>`
    width: ${({ width }) => getWidth(width)};
-   padding: 12px;
+   padding: 0.75em;
    border: none;
    border-radius: ${({ theme }) => theme.borderRadius.md};
    background-color: ${({ theme }) => theme.colors.orange};
-   font-size: 16px;
+   font-size: 1em;
    font-weight: ${({ theme }) => theme.fontWeight.midMedium};
    color: ${({ theme }) => theme.colors.darkPurple};
-   letter-spacing: 0.2px;
+   letter-spacing: 0.01em;
    cursor: pointer;
 
    &:hover {

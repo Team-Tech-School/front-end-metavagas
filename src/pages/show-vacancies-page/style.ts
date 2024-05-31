@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export const PurpleBackgroundDiv = styled.div`
-   margin-top: -20px;
+   margin-top: -1.25em;
    background-color: ${(props) => props.theme.colors.darkPurple};
    width: 100%;
    height: 30%;
@@ -10,80 +10,80 @@ export const PurpleBackgroundDiv = styled.div`
 
 export const DivButton = styled.div`
    display: flex;
-   margin-left: 130px;
-   margin-bottom: -40px;
+   margin-left: 8.13em;
+   margin-bottom: -2.5em;
 `;
 
 export const SaveSearchComponent = styled.div`
-   margin-top: -20px;
-   margin-left: 130px;
-   padding-bottom: 20px;
+   margin-top: -1.25em;
+   margin-left: 8.13em;
+   padding-bottom: 1.25em;
 `;
 
 export const DivForNumberVacancies = styled.div`
-   margin-left: 20px;
-   padding-top: 30px;
+   margin-left: 1.25em;
+   padding-top: 1.88em;
 `;
 
 export const DivForInputsAndButton = styled.div`
    padding-top: 5%;
-   margin: 0px 0px 5px -45px;
+   margin: 0em 0em 0.31em -2.81em;
 `;
 
 export const ContainerBodyPageDIV = styled.div`
-   margin-top: 30px;
-   margin-left: 110px;
-   margin-right: 40px;
-   margin-bottom: 30px;
+   margin-top: 1.88em;
+   margin-left: 6.88em;
+   margin-right: 2.5em;
+   margin-bottom: 1.88em;
 `;
 
 export const ContainerFilterResult = styled.div`
    display: flex;
-   gap: 5px;
+   gap: 0.31em;
 `;
 
 export const FilterDiv = styled.div`
-   margin-top: 30px;
-   margin-right: 7px;
-   margin-bottom: 30px;
-   padding: 20px;
-   width: 270px;
+   margin-top: 1.5em;
+   margin-right: 0.44em;
+   margin-bottom: 1.88em;
+   padding: 1.25em;
+   width: 16.88em;
    height: fit-content;
-   top: 457px;
-   left: 135px;
-   border-radius: 16px;
-   border: 1px solid #ecf1f4;
-   box-shadow: 0px 15px 35px 0px rgba(208, 208, 208, 0.2);
+   top: 28.56em;
+   left: 8.44em;
+   border-radius: 1em;
+   border: 0.06em solid #ecf1f4;
+   box-shadow: 0em 0.94em 2.19em 0em rgba(208, 208, 208, 0.2);
 `;
 
 export const HeadDivisionDiv = styled.div`
    display: flex;
    justify-content: space-between;
-   margin-right: 20px;
+   margin-right: 1.25em;
 `;
 
 export const FilterTitle = styled.div`
    font-family: "Poppins", sans-serif;
    font-weight: 700;
    color: ${({ theme }) => theme.colors.darkPurple};
-   font-size: 18px;
-   line-height: 24.57px;
+   font-size: 1.13em;
+   margin-left: 0.1em;
 `;
 
 export const ClearLink = styled.a`
    font-family: "Poppins", sans-serif;
    font-weight: 400;
-   font-size: 12px;
-   line-height: 16.8px;
+   font-size: 0.75em;
    color: #6950a1;
    cursor: pointer;
-   margin-top: 4px;
+   margin-top: 0.35em;
+   margin-left: 1em;
 `;
 
 export const ResultDiv = styled.div`
    width: 100%;
-   margin-top: 30px;
-   margin-bottom: 30px;
+   margin-top: 1.88em;
+   margin-bottom: 1.88em;
 `;
 
 export const ButtonContainer = styled.div`
@@ -98,47 +98,48 @@ export const ButtonContainer = styled.div`
 
 export const StyledLink = styled(Link)`
    color: ${({ theme }) => theme.colors.blue};
-   font-size: 13px;
-   margin-left: 8px;
+   font-size: 0.81em;
+   margin-left: 0.5em;
    font-weight: 600;
    text-decoration: none;
 `;
 
 export const ButtonAboveImages = styled.div`
    position: absolute;
+   top: 1.5em;
    &:nth-child(1) {
-      left: 55.5%;
+      left: 47em;
    }
    &:nth-child(2) {
-      left: 87%;
+      left: 73.5em;
    }
 `;
 
 export const GraphicDiv = styled.div`
    display: flex;
    gap: 0;
-   margin-bottom: 7px;
-   margin-top: -5px;
+   margin-bottom: 0.44em;
+   margin-top: -0.73em;
 `;
 
 export const ContainerInfoJobs = styled.div`
    display: flex;
    flex-direction: column;
-   gap: 10px;
+   gap: 0.63em;
 `;
 
 export const LabelTitle = styled.label`
    font-family: "Poppins", sans-serif;
    font-weight: 500;
-   font-size: 16px;
-   line-height: 24px;
+   font-size: 1em;
+   line-height: 1.5em;
    color: #1a1033;
 `;
 
 export const SalaryRangeSpan = styled.span`
    font-family: "Poppins", sans-serif;
    font-weight: 400;
-   font-size: 14px;
-   line-height: 19.6px;
+   font-size: 0.88em;
+   line-height: 1.23em;
    color: #8c8ca1;
 `;
