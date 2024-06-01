@@ -36,7 +36,7 @@ export const InfoJobs = ({ vacancy, page }: InfoJobsProps) => {
    const newVacancy = isNewVacancy(vacancy.createAt);
 
    return (
-      <S.ResultInfoJobsDiv newVacancy={newVacancy}>
+      <S.ResultInfoJobsDiv data-newvacancy={newVacancy}>
          <S.ContainerForTitle>
             <S.ContainerTitle>
                <div>{newVacancy && <NewCard />}</div>
