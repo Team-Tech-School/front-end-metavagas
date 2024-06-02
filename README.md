@@ -151,7 +151,7 @@ Distribuído sob a licença MIT. Veja `LICENSE` para mais informações.
 ## Visualizar Deploy
 
 -  Link do Repositório Front-end: [Front-end](https://github.com/Team-Tech-School/front-end-metavagas)
--  Link do Repositório Back-End: [FullStack](https://github.com/Team-Tech-School/back-end-metavagas)
--  Link do Projeto Final: [Front-end](https://meta-vagas.netlify.app/)
+-  Link do Repositório Back-End: [Back-End](https://github.com/Team-Tech-School/back-end-metavagas)
+-  Link do Projeto Final: [Aplicação](https://meta-vagas.netlify.app/)
 
 <h3 style="color:#7f5cd1; font-size:22px;">front-end-metavagas</h3>
